@@ -550,6 +550,27 @@ const scenicPhotos={
 };
 
 destinations.flatMap(d=>d.pois).forEach(p=>{const photo=scenicPhotos[p.name];if(photo)Object.assign(p,photo);});
+const availablePhotos={
+ '荫翠峡':{image:'https://boot-img.xuexi.cn/image/1005/process/92c86d7495364b1daa3ea3748e3c1edf.jpg',imageSource:'https://www.xakpw.com/single/19708',imageCredit:'西安科普网 · 九乡荫翠峡'},
+ '惊魂峡 · 雄狮厅':{image:'https://culture.yunnan.cn/pic/003/048/809/00304880966_963ce510.jpg',imageSource:'https://culture.yunnan.cn/system/2022/07/23/032199286.shtml',imageCredit:'云南网 · 雄狮大厅'},
+ '神田 · 雌雄双瀑':{image:'https://culture.yunnan.cn/pic/003/048/809/00304880965_a8ba3e81.jpg',imageSource:'https://culture.yunnan.cn/system/2022/07/23/032199286.shtml',imageCredit:'云南网 · 神田'},
+ '大石林 · 剑峰池':{image:'https://p9.itc.cn/q_70/images03/20231211/07cc436e9a0044079c76a6cda10889ff.jpeg',imageSource:'https://www.sohu.com/a/743228458_121124406',imageCredit:'搜狐 · 石林景区'},
+ '小石林 · 阿诗玛石':{image:'https://dimg04.c-ctrip.com/images/1me2t12000ip5f1m8BD73.jpg?proc=source%2Ftripcommunity',imageSource:'https://gs.ctrip.com/html5/you/sight/shilin271/1485665.html',imageCredit:'携程 · 阿诗玛石'},
+ '乃古石林（加选）':{image:'https://newbbs-fd.zol-img.com.cn/t_s1200x5000/g4/M0A/06/07/Cg-4zFUCPomIVbLRAAUznt_fNJcAAWoLgCOenAABTO2314.jpg',imageSource:'https://bbs.zol.com.cn/dcbbs/d268_166137.html',imageCredit:'中关村在线摄影论坛 · 乃古石林'},
+ '青龙山观景台':{image:'https://5b0988e595225.cdn.sohucs.com/images/20190731/5d4192cfddc043fb99066ed0a30be8a6.jpeg',imageSource:'https://www.sohu.com/picture/330624570',imageCredit:'搜狐 · 青龙山俯瞰普者黑'},
+ '普者黑村 · 湖岸栈道':{image:'https://newbbs-fd.zol-img.com.cn/t_s1200x5000/g7/M00/04/01/ChMkLGarCUOIJO0EABV1V-Kw2n4AAhRBgPSz-UAFXVv960.jpg',imageSource:'https://bbs.zol.com.cn/dcbbs/d232_890201_0.html',imageCredit:'中关村在线摄影论坛 · 普者黑湖岸'},
+ '仙人洞村':{image:'https://p4.itc.cn/q_70/images03/20211120/9b13df43ab4a425cbf3dc4d4626e5385.jpeg',imageSource:'https://www.sohu.com/a/502325865_121119240',imageCredit:'搜狐 · 仙人洞村'},
+ '湖上游船（运营视情况）':{image:'https://x0.ifengimg.com/res/2023/47C1DDB037344718B909C20CFF5515E8B854AD14_size1346_w1000_h819.png',imageSource:'https://news.ifeng.com/c/8QirsMqnc9m',imageCredit:'凤凰网 · 普者黑游船'},
+ '多依树观景台':{image:'https://newbbs-fd.zol-img.com.cn/t_s1200x5000/g7/M00/09/03/ChMkK2a2FSuIHmq7AAmK8JqB1wEAAhlfAGFNqEACYsI548.jpg',imageSource:'https://bbs.zol.com.cn/dcbbs/d1061_190826_0.html',imageCredit:'中关村在线摄影论坛 · 多依树梯田'},
+ '坝达梯田':{image:'https://img.pconline.com.cn/images/upload/upc/tx/photoblog/2304/20/c1/361523932_1681961622627_mthumb.jpg',imageSource:'https://dp.pconline.com.cn/photo/list_5211674.html',imageCredit:'太平洋科技摄影部落 · 坝达梯田'},
+ '阿者科村':{image:'https://www.kunming.cn/news/upload/resources/image/2026/02/25/2054405_2048x2048.jpeg',imageSource:'https://www.kunming.cn/news/c/2026-02-25/14020671.shtml',imageCredit:'昆明信息港 · 阿者科村'},
+ '箐口梯田 · 民俗村':{image:'https://www.zgjtb.com/zhitong/2024-11/08/439154_d8587c81-849f-4471-bdf5-98ebca08205b_3231x2213copy.jpg',imageSource:'https://www.zgjtb.com/zhitong/2024-11/08/content_439154.html',imageCredit:'中国交通新闻网 · 箐口村'},
+ '澄江化石地自然博物馆':{image:'https://q4.itc.cn/q_70/images03/20250716/321392def54b40ca9c1160aea9aac5f7.jpeg',imageSource:'https://www.sohu.com/a/914373228_121284943',imageCredit:'新华社图片 · 澄江化石地博物馆'},
+ '碧色寨滇越铁路历史文化公园':{image:'https://dimg04.c-ctrip.com/images/0103q120008wfmyl7B0EF_W_1024_0_Q90.jpg?proc=autoorient',imageSource:'https://you.ctrip.com/travels/100007/4027604.html',imageCredit:'携程游记 · 碧色寨车站'},
+ '东风韵艺术小镇':{image:'https://dimg04.c-ctrip.com/images/1mh5712000sdjw5ey9811_W_640_10000.jpg?proc=autoorient',imageSource:'https://you.ctrip.com/sight/mile1342/5073332.html',imageCredit:'携程 · 东风韵艺术小镇'},
+ '湖泉生态园 · 温泉':{image:'https://youimg1.c-ctrip.com/target/100m0o000000fibmw078A.jpg',imageSource:'https://touch.travel.qunar.com/comment/10152983579',imageCredit:'去哪儿攻略 · 湖泉生态园'}
+};
+destinations.flatMap(d=>d.pois).forEach(p=>{const photo=availablePhotos[p.name];if(photo)Object.assign(p,photo);});
 const itineraryOrder=['kunming','fuxian','yuanyang','jianshui','mengzi','kaiyuan','mile','shilin','jiuxiang','puzhehei','wenshan','shiping'];
 destinations.sort((a,b)=>itineraryOrder.indexOf(a.id)-itineraryOrder.indexOf(b.id));
 
