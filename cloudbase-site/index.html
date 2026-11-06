@@ -852,12 +852,13 @@ function openCustomPlace(place=null,category='play'){const dialog=document.getEl
 async function renderCustomPlaces(){
   const lists={play:document.getElementById('customPlaceList'),food:document.getElementById('foodList')};
   if(!lists.play||!lists.food)return;
+  const expanded=new Set([...document.querySelectorAll('.custom-place[open]')].map(card=>card.dataset.placeId));
   customPlaceUrls.forEach(url=>URL.revokeObjectURL(url));
   customPlaceUrls=[];
   Object.values(lists).forEach(list=>list.replaceChildren());
   for(const place of customPlaces.filter(item=>item.city===activeCity)){
     const list=lists[place.category==='food'?'food':'play'];
-    const card=document.createElement('details');card.className='poi custom-place';
+    const card=document.createElement('details');card.className='poi custom-place';card.dataset.placeId=place.id;card.open=expanded.has(place.id);
     const summary=document.createElement('summary'),media=document.createElement('div');media.className='poi-media';
     const firstImage=Array.isArray(place.images)?place.images[0]:null;
     if(firstImage){
