@@ -380,7 +380,7 @@ html,body{min-height:100%;height:auto;overflow-x:clip;overflow-y:visible}
  <label class="collab-field"><span>你的称呼</span><input id="collabNickname" type="text" maxlength="30" placeholder="例如：小黄"></label>
  <p class="collab-identity" id="collabIdentity"></p>
  <p class="collab-note">称呼可自行填写；访客标识只对应当前浏览器，无法验证微信身份。</p>
- <div class="collab-actions"><button id="collabSaveName" type="button">保存称呼</button><button id="collabRefresh" type="button">刷新共享内容</button><button id="collabImport" type="button">上传本机旧内容</button></div>
+ <div class="collab-actions"><button id="collabSaveName" type="button">保存称呼</button><button id="collabRefresh" type="button">刷新共享内容</button><button id="collabImport" type="button">上传本机旧内容</button><label class="planning-upload">导入旧页面文件<input id="collabImportFile" type="file" accept=".json,application/json"></label></div>
 </dialog>
 
 <div class="app-shell">
@@ -1087,6 +1087,43 @@ async function importLocalArchive(){
   status.textContent='本机旧内容已上传';
 }
 
+async function importArchiveFile(file){
+  if(!cloudBridge?.ready)throw new Error('云端尚未连接');
+  const archive=JSON.parse(await file.text());
+  if(archive?.format!=='yunnan-trip-archive-v1')throw new Error('文件格式不正确');
+  const days=Object.entries(archive.days||{}),places=Array.isArray(archive.places)?archive.places:[];
+  const picks=Array.isArray(archive.picks)?archive.picks:[];
+  if(!days.length&&!places.length&&!picks.length)throw new Error('文件中没有可导入的内容');
+  if(!window.confirm(`导入 ${days.length} 天行程、${places.length} 个地点及 ${picks.length} 个备选到云端？同名内容会更新。`))return;
+  const status=document.getElementById('collabStatus');status.textContent='正在导入旧页面内容…';
+  const upload=async(dataUrl)=>{
+    if(!dataUrl)return '';
+    const blob=await (await fetch(dataUrl)).blob();
+    return cloudBridge.uploadImage(blob);
+  };
+  for(const [date,day] of days){
+    const screenshots=[];
+    for(const image of day.screenshots||[]){
+      const key=`${date}:${image.id}`;
+      const fileID=image.fileID||await upload(archive.assets?.trip?.[key]);
+      screenshots.push({...image,fileID});
+    }
+    await cloudBridge.saveDay(date,{...day,screenshots});
+  }
+  for(const place of places){
+    const images=[];
+    for(const image of place.images||[]){
+      const key=`${place.id}:${image.id}`;
+      const fileID=image.fileID||await upload(archive.assets?.place?.[key]);
+      images.push({...image,fileID});
+    }
+    await cloudBridge.savePlace({...place,images});
+  }
+  for(const key of picks)await cloudBridge.savePick(key,true);
+  await cloudBridge.refresh();
+  status.textContent='旧页面内容已导入云端';
+}
+
 function initCollaboration(){
   const button=document.getElementById('collabButton'),dialog=document.getElementById('collabDialog');
   if(!window.TRIP_CLOUD_CONFIG?.envId||!window.createTripCloudSync)return;
@@ -1111,6 +1148,10 @@ function initCollaboration(){
   document.getElementById('collabImport').addEventListener('click',()=>importLocalArchive().catch(error=>{
     status.textContent=`上传失败：${error.message||'请重试'}`;
   }));
+  document.getElementById('collabImportFile').addEventListener('change',event=>{
+    const file=event.target.files?.[0];event.target.value='';
+    if(file)importArchiveFile(file).catch(error=>{status.textContent=`导入失败：${error.message||'请重试'}`;});
+  });
   cloudBridge.initialize().then(uid=>{
     nickname.value=cloudBridge.nickname;
     document.getElementById('collabIdentity').textContent=`当前浏览器标识：${uid}`;
