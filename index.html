@@ -38,7 +38,7 @@ details.poi{background:var(--card);border:1px solid var(--line);border-radius:16
 
 
 
-html,body{min-height:100%;height:auto;overflow-x:hidden;overflow-y:auto}
+html,body{min-height:100%;height:auto;overflow-x:clip;overflow-y:visible}
 
 .page-shell{min-height:100vh;display:grid;grid-template-rows:auto auto auto;background:var(--paper)}
 
@@ -128,7 +128,7 @@ html,body{min-height:100%;height:auto;overflow-x:hidden;overflow-y:auto}
 
 .map-pane,.detail-pane{min-width:0;min-height:0;height:auto;overflow:visible;overscroll-behavior:auto;scrollbar-gutter:auto;background:var(--paper)}
 
-.map-pane{border-right:1px solid var(--line)}
+.map-pane{border-right:1px solid var(--line);position:sticky;top:0;align-self:start;height:100dvh;overflow-y:auto;overscroll-behavior-y:contain;scrollbar-width:thin}
 
 .map-main{padding:12px 18px 22px}
 
@@ -209,6 +209,7 @@ html,body{min-height:100%;height:auto;overflow-x:hidden;overflow-y:auto}
  .app-shell{height:auto;min-height:0;display:flex;flex-direction:column}
 
  .map-pane,.detail-pane{height:auto;overflow:visible;scrollbar-gutter:auto}
+ .map-pane{position:static}
 
  .map-pane{border-right:none}
 
