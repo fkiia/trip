@@ -1,0 +1,1135 @@
+<!doctype html>
+
+<html lang="zh-CN">
+
+<head>
+<script>
+if(location.hostname==='fkiia.github.io'&&new URLSearchParams(location.search).get('local')!=='1'){
+ location.replace('https://fkikka-trip-d6ghf0owycf7f2f15-1300619387.tcloudbaseapp.com/'+location.hash);
+}
+</script>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="theme-color" content="#183f3a">
+
+<title>滇东南目的地与景点</title>
+
+<style>
+
+:root{--ink:#173d38;--muted:#6d7f79;--paper:#f4f3ed;--card:#fffefa;--line:#e3e5dc;--green:#2d7566;--mint:#e1eee7;--orange:#c77d52;--shadow:0 12px 32px rgba(31,58,51,.07)}
+
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:#203d38;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65}a{color:inherit}.wrap{max-width:1120px;margin:auto;padding:0 22px}
+
+.hero{background:linear-gradient(120deg,#163d38,#2d6c5e 62%,#8aa99a);color:white;padding:34px 0 28px}.eyebrow{font-size:11px;letter-spacing:.2em;color:#cde1d6;font-weight:800}.hero h1{font-size:clamp(28px,4vw,44px);line-height:1.15;letter-spacing:-.04em;margin:8px 0}.hero p{margin:0;color:#e2eee8;font-size:14px}.route-pill{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:18px}.route-pill span{font-size:12px;border:1px solid #ffffff48;border-radius:99px;padding:5px 10px;background:#ffffff12}.route-pill b{color:#f3d5ae;font-size:14px}
+
+main{padding-bottom:40px}.map-section{padding:26px 0 20px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:12px}.section-title h2{font-size:21px;margin:0;color:var(--ink)}.section-title p{font-size:12px;color:var(--muted);margin:0}.map-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:12px 16px 14px;box-shadow:var(--shadow)}.map-svg{display:block;width:100%;height:auto;max-height:420px}.map-caption{display:flex;gap:14px;flex-wrap:wrap;align-items:center;padding:4px 6px 0;font-size:12px;color:#61746c}.map-caption span{display:inline-flex;align-items:center;gap:6px}.dot{width:9px;height:9px;border-radius:50%;display:inline-block;background:#267363}.dot.optional{background:#c47a4f}.dash{width:24px;border-top:2px dashed #b47a54;display:inline-block}
+
+.tabs-wrap{position:sticky;top:0;z-index:20;background:#f7f6f0ed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:10px 0}.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}.tab{flex:0 0 auto;border:1px solid #d7e0d8;background:#fffefa;color:#536a61;border-radius:999px;padding:9px 17px;font-size:13px;font-weight:700;cursor:pointer;transition:.18s}.tab:hover{border-color:#8fb5a5;color:var(--ink)}.tab.active{background:var(--ink);color:white;border-color:var(--ink);box-shadow:0 4px 12px #173d3820}
+
+.city-panel{display:none;padding:24px 0 30px}.city-panel.active{display:block}.city-head{padding:6px 2px 16px;border-bottom:1px solid var(--line);margin-bottom:14px}.city-head .en{font-size:10px;letter-spacing:.18em;color:var(--orange);font-weight:800}.city-head h2{margin:2px 0 3px;font-size:28px;letter-spacing:-.03em;color:var(--ink)}.city-head p{margin:0;color:var(--muted);font-size:13px}.poi-list{display:flex;flex-direction:column;gap:11px}
+
+details.poi{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 4px 14px rgba(31,58,51,.035);transition:border-color .2s,box-shadow .2s}details.poi[open]{border-color:#b8cfc2;box-shadow:var(--shadow)}.poi summary{list-style:none;display:grid;grid-template-columns:190px minmax(0,1fr) 30px;gap:0;align-items:stretch;cursor:pointer;min-height:132px}.poi summary::-webkit-details-marker{display:none}.poi-media{height:132px;background:#e5e9df;overflow:hidden}.poi-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}.poi summary:hover .poi-media img{transform:scale(1.035)}.poi-copy{padding:16px 18px;display:flex;flex-direction:column;justify-content:center;gap:5px;min-width:0}.poi-titleline{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.poi-title{font-size:17px;line-height:1.35;font-weight:800;color:#203d38}.poi-type{font-size:10px;color:#5d7c6e;background:#edf3ed;border-radius:99px;padding:3px 8px;white-space:nowrap}.poi-highlight{font-size:13px;color:#667870;line-height:1.55}.poi-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:3px}.poi-tags span{font-size:10px;color:#73827a;background:#f2f3ed;border-radius:5px;padding:3px 7px}.chevron{align-self:center;justify-self:center;color:#739086;font-size:21px;transition:transform .2s}.poi[open] .chevron{transform:rotate(180deg)}.poi-detail{border-top:1px solid #edf0e9;padding:16px 20px 18px 210px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start}.poi-detail p{font-size:13px;color:#5e7068;margin:0;line-height:1.8}.poi-links{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}.poi-links a{display:inline-flex;align-items:center;gap:5px;text-decoration:none;border:1px solid #d4e0d7;background:#f8fbf7;color:#356a59;border-radius:999px;padding:7px 11px;font-size:11px;font-weight:700;white-space:nowrap}.poi-links a:hover{background:#e8f2eb;border-color:#9ab9a6}.poi-links a.photo-source{color:#78877f;background:#fffefa;border-color:#e4e8df}
+
+@media(max-width:700px){.wrap{padding:0 14px}.hero{padding:28px 0 24px}.section-title{display:block}.section-title p{margin-top:4px}.map-card{padding:8px}.map-svg{min-height:235px}.poi summary{grid-template-columns:112px minmax(0,1fr) 22px;min-height:110px}.poi-media{height:110px}.poi-copy{padding:11px 12px;gap:4px}.poi-title{font-size:14px}.poi-highlight{font-size:11.5px}.poi-tags span{font-size:9px}.poi-detail{padding:13px 14px;grid-template-columns:1fr;gap:12px}.poi-links{justify-content:flex-start}.city-head h2{font-size:25px}}
+
+@media(max-width:390px){.poi summary{grid-template-columns:94px minmax(0,1fr) 18px}.poi-media{height:106px}.poi-copy{padding:9px}.poi-title{font-size:13px}.poi-highlight{font-size:11px}.poi-tags{display:flex}.poi-tags span:not(.duration){display:none}}
+
+.map-svg{max-height:none;touch-action:pan-y}.map-scroll{overflow-x:hidden;overscroll-behavior-inline:contain;border-radius:13px}.map-scroll:focus-within{outline:2px solid #8fb5a5;outline-offset:2px}.map-place{cursor:pointer;outline:none}.map-place .pin{transition:transform .15s,fill .15s;transform-box:fill-box;transform-origin:center}.map-place:hover .pin,.map-place:focus .pin,.map-place.active .pin{transform:scale(1.25);fill:#c78355}.map-place text{font-family:inherit;font-weight:700;pointer-events:none}.map-place.active .name-plate{fill:#173d38}.map-link{stroke:#8aafa1;stroke-width:2.5;fill:none;opacity:.7;stroke-dasharray:5 7;cursor:pointer}.map-link:hover,.map-link.active{stroke:#c78355;stroke-width:4;opacity:1;stroke-dasharray:none}.route-explain{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;color:#61746c;padding:9px 6px 0}.route-explain strong{color:#2d7566}.route-legs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:14px}.leg{padding:10px 12px;text-align:left;background:#f6f9f5;border:1px solid #dfe9df;border-radius:11px;cursor:pointer;color:#34564b}.leg:hover,.leg.active{border-color:#74a38f;background:#e7f1e9}.leg b{font-size:12px;display:block}.leg small{font-size:11px;color:#6e8177}.map-footnote{font-size:11px;color:#849087;margin:10px 6px 2px}.duration{color:#a96d47!important;background:#fff1e5!important;font-weight:700}.city-time{display:inline-flex;margin-top:9px;font-size:12px;color:#8b613c;background:#f6ebe1;border-radius:99px;padding:4px 10px}.notice{border-left:3px solid #bc8864;background:#fcf3e9;color:#78624f;padding:9px 13px;border-radius:8px;font-size:12px;margin:12px 0 0}.poi-media.no-photo{display:flex;align-items:center;justify-content:center;color:#326c61;font-size:38px;background:radial-gradient(circle at 20% 20%,#f9ecce,#dae7da 60%,#bbd8c9)}.pick-status{font-size:12px;color:#dfece2;margin-top:8px}
+
+@media(max-width:700px){.route-legs{grid-template-columns:repeat(2,minmax(0,1fr))}.map-svg{min-width:0;min-height:0;width:100%;max-width:100%}.map-scroll{margin:0 -2px;overflow-x:hidden}.map-swipe{display:inline}.leg{padding:9px}.route-pill{gap:6px}}
+
+
+
+html,body{min-height:100%;height:auto;overflow-x:clip;overflow-y:visible}
+
+.page-shell{min-height:100vh;display:grid;grid-template-rows:auto auto auto;background:var(--paper)}
+
+.page-shell>.hero{padding:14px 0 12px}
+
+.page-shell>.hero .wrap{max-width:1480px;padding:0 24px}
+
+.page-shell>.hero h1{font-size:clamp(24px,2.1vw,34px);margin:4px 0}
+
+.page-shell>.hero p{font-size:12px}
+
+.page-shell>.hero .route-pill{margin-top:9px;gap:6px}
+
+.page-shell>.hero .route-pill span{padding:4px 9px;font-size:11px}
+
+.page-shell>.hero .pick-status{margin-top:5px}
+
+.planning-draft{border-bottom:1px solid var(--line);background:#f7f6f0}
+
+.planning-inner{max-width:1600px;margin:0 auto;padding:10px 22px 11px}
+
+.planning-heading{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-bottom:0}
+
+.planning-kicker{font-size:9px;letter-spacing:.16em;color:var(--orange);font-weight:800}
+
+.planning-date{font-size:10px;color:var(--muted);white-space:nowrap}
+
+.planning-days{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+
+.planning-day{min-width:0;border:1px solid #e0e6dc;border-radius:11px;background:var(--card);padding:8px 10px;box-shadow:0 3px 10px rgba(31,58,51,.025)}
+
+.planning-day--wide{grid-column:span 2}
+
+.planning-day-top{display:flex;align-items:center;gap:7px;margin-bottom:2px}
+
+.planning-day-top strong{color:#a96d47;font-size:11px}
+
+.planning-day-top span{font-size:9px;color:#627b70;background:#edf3ed;border-radius:99px;padding:2px 7px}
+
+.planning-day p{margin:0;color:#23453c;font-weight:800;font-size:11px;line-height:1.45}
+
+.planning-day small{display:block;margin-top:3px;color:#708179;font-size:10px;line-height:1.4}
+
+.planning-alternatives{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin-top:5px}
+
+.planning-alternatives span{border-radius:7px;background:#f3f5ef;padding:4px 6px;color:#5f756b;font-size:9px;line-height:1.35}
+
+.planning-draft.is-collapsed #planningDays{display:none}
+.planning-heading-actions{display:flex;align-items:center;gap:10px}
+.planning-toggle{border:1px solid #d6e2d8;border-radius:999px;background:#fffefa;color:#315f52;width:30px;height:30px;padding:0;font-size:18px;font-weight:500;line-height:1;cursor:pointer}
+.planning-summary-line{display:flex!important;align-items:center;justify-content:space-between;gap:6px;min-height:18px}
+.planning-summary-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.planning-edit-button{flex:none;border:0;border-radius:999px;background:#edf3ed;color:#356f60;padding:3px 7px;font:inherit;font-size:9px;font-weight:750;cursor:pointer}
+.planning-edit-button:hover,.planning-toggle:hover{background:#e1eee7}
+.planning-modal{width:min(460px,calc(100vw - 28px));max-width:none;max-height:calc(100dvh - 32px);overflow:auto;border:1px solid #dce5dc;border-radius:16px;background:#fffefa;padding:18px;color:#23453c;box-shadow:0 24px 80px #132d2760}
+.planning-modal::backdrop{background:#123b35a8;backdrop-filter:blur(3px)}
+.planning-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:14px}
+.planning-modal-head h3{margin:0;font-size:18px;color:#173d38}
+.planning-modal-head p{display:none}
+.planning-modal-close{flex:none;border:0;border-radius:50%;width:30px;height:30px;background:#eef2ec;color:#33584d;font-size:19px;cursor:pointer}
+.planning-edit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.planning-field{display:block;min-width:0;color:#61766c;font-size:11px}
+.planning-field>span:first-child{display:block;margin-bottom:4px}
+.planning-input-wrap{display:flex;align-items:center;gap:6px}
+.planning-input-wrap input{width:100%;min-width:0;border:1px solid #dce5dc;border-radius:8px;background:#fff;padding:9px;color:#23453c;font:inherit;font-size:12px;outline:none}
+.planning-input-wrap input:focus{border-color:#6d9c8c;box-shadow:0 0 0 2px #dfece6}
+.planning-input-wrap em{flex:none;color:#73877e;font-style:normal;font-size:11px}
+.planning-evidence{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:12px}
+.planning-upload{display:inline-flex;position:relative;overflow:hidden;align-items:center;border-radius:8px;background:#edf3ed;padding:8px 10px;color:#356f60;font-size:11px;font-weight:750;cursor:pointer}
+.planning-upload input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+.planning-save-status{color:#73877e;font-size:10px}
+.planning-shots{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.planning-shots:empty{display:none}
+.planning-shot{display:flex;align-items:center;gap:4px;margin:0;border:1px solid #e0e6dc;border-radius:999px;background:#f6f7f2;padding:4px 5px 4px 9px}
+.planning-shot{position:static;min-width:0;overflow:visible}
+.planning-shot a{display:inline-flex;height:auto;color:#356f60;font-size:10px;text-decoration:none;font-weight:700}
+.planning-shot a:hover{text-decoration:underline}
+.planning-shot button{position:static;border:0;border-radius:50%;width:20px;height:20px;background:#e7ece6;color:#596e63;font-size:13px;line-height:1;cursor:pointer}
+.map-day-controls{display:flex;flex-direction:column;gap:5px;margin:5px 0 9px}
+.map-day-buttons{display:flex;flex-wrap:wrap;gap:5px}
+.map-day-button{border:1px solid #d7e0d8;border-radius:999px;background:#fffefa;color:#5b7167;padding:5px 9px;font-size:10px;font-weight:750;cursor:pointer}
+.map-day-button[aria-pressed="true"]{border-color:#317967;background:#e5f0e9;color:#1d5e50;box-shadow:0 0 0 2px #dcece3}
+.map-day-info{min-height:15px;margin:0;color:#64796f;font-size:10px;line-height:1.45}
+.map-day-info strong{color:#315f52}
+
+.app-shell{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);min-height:0;height:auto;align-items:start}
+.map-pane,.detail-pane{min-width:0;min-height:0;height:auto;overflow:visible;overscroll-behavior:auto;scrollbar-gutter:auto;background:var(--paper)}
+
+.map-pane{border-right:1px solid var(--line);position:sticky;top:0;align-self:start;height:100dvh;overflow-y:auto;overscroll-behavior-y:contain;scrollbar-width:thin}
+
+.map-main{padding:12px 18px 22px}
+
+.map-section{padding:10px 0 18px}
+
+.section-title{display:block;margin-bottom:9px}
+
+.section-title p{margin-top:3px}
+
+.map-card{padding:9px}
+
+.map-caption{gap:9px;font-size:10px}
+
+.route-legs{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+
+.leg{padding:9px 10px}
+
+.map-footnote{font-size:10px;line-height:1.65}
+
+.detail-pane .tabs-wrap{padding:9px 15px;position:sticky;top:0}
+
+.detail-pane #cityContent{padding:0 17px 26px}
+
+.detail-pane .city-panel{padding-top:14px}
+
+.detail-pane .poi summary{grid-template-columns:clamp(118px,16vw,190px) minmax(0,1fr) 24px;min-height:128px}
+
+.detail-pane .poi-media{height:128px}
+
+.detail-pane .poi-copy{padding:13px 15px}
+
+.detail-pane .poi-detail{padding:13px 16px;grid-template-columns:1fr;gap:10px}
+
+.detail-pane .poi-links{justify-content:flex-start}
+
+.route-distance-label{cursor:pointer;outline:none}
+
+.route-distance-label text{fill:#315d52;font-family:inherit;font-size:11px;font-weight:400;pointer-events:none;stroke:#e9efe7;stroke-width:3px;stroke-linejoin:round;paint-order:stroke}
+
+.route-distance-label.active text{fill:#173d38;font-weight:600}
+
+.route-distance-label:focus text{fill:#9b5e39}
+
+.custom-place-section{margin:8px 0 22px}
+.custom-place-toolbar{display:flex;justify-content:flex-end}
+.custom-place-add{border:1px solid #d7e3d8;border-radius:999px;background:#fffefa;color:#315f52;padding:7px 12px;font-size:11px;font-weight:750;cursor:pointer}
+.custom-place-list{display:grid;gap:10px;margin-top:10px}
+.custom-place-list:empty{display:none}
+.custom-place .poi-detail{display:block}
+.custom-place-guide{white-space:pre-wrap;color:#64796f;line-height:1.65}
+.custom-place-address{display:block;margin-top:8px;color:#557c70;font-size:12px;text-decoration:none;overflow-wrap:anywhere}
+.custom-place-tools{display:flex;gap:7px;margin-top:10px}
+.custom-place-tools button{border:1px solid #dce5dc;border-radius:999px;background:#fffefa;color:#537367;padding:5px 10px;font:inherit;font-size:10px;cursor:pointer}
+.custom-place-modal{width:min(600px,calc(100vw - 28px))}
+.custom-place-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.custom-place-grid input,.custom-place-grid select,.custom-place-grid textarea{width:100%;min-width:0;border:1px solid #dce5dc;border-radius:8px;background:#fff;padding:9px;color:#23453c;font:inherit;font-size:12px;outline:none}
+.custom-place-grid textarea{resize:vertical;line-height:1.55}
+.custom-place-grid input:focus,.custom-place-grid select:focus,.custom-place-grid textarea:focus{border-color:#6d9c8c;box-shadow:0 0 0 2px #dfece6}
+.custom-place-wide{grid-column:1/-1}
+.custom-place-images{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.custom-place-image-row{display:flex;align-items:center;gap:6px;background:#f2f5ef;border-radius:999px;padding:4px 6px 4px 10px;color:#60776c;font-size:10px}
+.custom-place-image-row button{border:0;border-radius:50%;width:20px;height:20px;background:#e1e9e2;color:#526b60;cursor:pointer}
+.custom-place-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+.custom-place-actions button{border:1px solid #d7e3d8;border-radius:999px;padding:8px 14px;font:inherit;font-size:11px;font-weight:700;cursor:pointer}
+.custom-place-cancel{background:#fffefa;color:#60776c}
+.custom-place-save{background:#173d38;color:#fffefa}
+
+@media(max-width:1000px){.planning-inner{padding-left:16px;padding-right:16px}.planning-days{grid-template-columns:repeat(2,minmax(0,1fr))}.planning-day--wide{grid-column:span 2}}
+
+@media(max-width:1000px){
+
+ html,body{height:auto;overflow:auto}
+
+ body{overflow-x:hidden}
+
+ .page-shell{height:auto;min-height:100vh;display:block}
+
+ .app-shell{height:auto;min-height:0;display:flex;flex-direction:column}
+
+ .map-pane,.detail-pane{height:auto;overflow:visible;scrollbar-gutter:auto}
+ .map-pane{position:static}
+
+ .map-pane{border-right:none}
+
+ .detail-pane{border-top:1px solid var(--line)}
+
+ .map-main{padding:8px 18px 20px}
+
+ .detail-pane .tabs-wrap{position:sticky;top:0}
+
+}
+
+@media(max-width:700px){.planning-heading{align-items:center}.planning-heading-actions{width:auto}.planning-date{white-space:normal}
+
+ .page-shell>.hero{padding:16px 0}
+
+ .page-shell>.hero .wrap{padding:0 14px}
+
+ .planning-inner{padding:12px 14px}
+
+ .planning-days{grid-template-columns:1fr}
+
+ .planning-day--wide{grid-column:span 1}
+
+ .planning-alternatives{grid-template-columns:1fr}
+
+ .map-main{padding:4px 14px 18px}
+
+ .detail-pane .tabs-wrap{padding:9px 14px}
+
+ .detail-pane #cityContent{padding:0 14px 24px}
+
+ .detail-pane .poi summary{grid-template-columns:112px minmax(0,1fr) 22px;min-height:110px}
+
+ .detail-pane .poi-media{height:110px}
+
+ .detail-pane .poi-copy{padding:10px 11px}
+
+ .detail-pane .poi-detail{padding:13px 14px;grid-template-columns:1fr}
+
+  .route-distance-label text{font-size:10px}
+
+  .custom-place-grid{grid-template-columns:1fr}
+  .custom-place-wide{grid-column:auto}
+
+}
+
+@media(max-width:390px){
+
+ .detail-pane .poi summary{grid-template-columns:94px minmax(0,1fr) 18px}
+
+ .detail-pane .poi-media{height:106px}
+
+ .detail-pane .poi-copy{padding:9px}
+
+ .detail-pane .poi-title{font-size:13px}
+
+ .detail-pane .poi-highlight{font-size:11px}
+
+ .detail-pane .poi-tags{display:flex}
+
+ .detail-pane .poi-tags span:not(.duration){display:none}
+
+}
+
+
+.local-map-section{margin:0 0 15px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;box-shadow:0 4px 14px rgba(31,58,51,.035)}
+.local-map-heading,.food-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+.local-map-heading h3,.food-heading h3{margin:0;color:var(--ink);font-size:15px}
+.local-map-heading span{font-size:11px;color:var(--muted);text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.local-map-heading a{flex:none;font-size:11px;font-weight:700;color:#2d7566;text-decoration:none}
+.local-map-canvas{position:relative;width:100%;height:250px;overflow:hidden;border-radius:11px;background:#e7eee8;touch-action:pan-y;cursor:grab;user-select:none}
+.local-map-canvas.dragging{cursor:grabbing}
+.local-map-tiles{position:absolute;inset:0;pointer-events:none}
+.local-map-tile{position:absolute;width:256px;height:256px;max-width:none;pointer-events:none}
+.local-map-marker{position:absolute;left:50%;top:50%;width:13px;height:13px;transform:translate(-50%,-50%);border-radius:50%;background:#c78355;border:3px solid white;box-shadow:0 0 0 2px #c78355,0 2px 8px #294d4280;pointer-events:none}
+.local-map-controls{position:absolute;right:9px;bottom:9px;display:grid;gap:3px}
+.local-map-controls button{width:32px;height:32px;border:1px solid #d4dfd7;border-radius:7px;background:#fff;color:#17483d;font-size:20px;line-height:1;cursor:pointer}
+.local-map-credit{position:absolute;left:7px;bottom:5px;padding:1px 4px;background:#ffffffcf;border-radius:3px;font-size:10px;color:#45675d}
+.local-map-pins{display:flex;gap:5px;overflow-x:auto;padding-top:9px;scrollbar-width:thin}
+.local-map-pin{flex:none;border:1px solid #d9e3d9;border-radius:99px;background:#f6f8f3;color:#3c6a5e;padding:4px 9px;font-size:10px;cursor:pointer;text-decoration:none}
+.local-map-pin.food{border-color:#ead7c8;color:#a96d47;background:#fff6ed}
+.food-section{margin:16px 0 25px;border-top:1px solid var(--line);padding-top:14px}
+.map-place.optional .pin{fill:#c78355}
+.optional-badge{display:inline-block;vertical-align:middle;margin-left:8px;padding:2px 7px;border-radius:99px;background:#f6ebe1;color:#a96d47;font-size:10px;font-weight:700;letter-spacing:0}
+@media(max-width:1000px){.app-shell{align-items:stretch}.map-pane,.detail-pane{width:100%;max-width:100%}}
+@media(max-width:700px){.local-map-canvas{height:300px}.local-map-pins{display:flex}.map-svg{height:auto;aspect-ratio:480/580}.map-scroll{width:100%;overflow:hidden}.map-card{overflow:hidden}.tabs-wrap{max-width:100vw}.tabs{max-width:100%;overflow-x:auto}}
+.collab-button{margin-top:12px;border:1px solid #a4c7bb;background:rgba(255,255,255,.1);color:#fff;border-radius:999px;padding:7px 14px;font:inherit;cursor:pointer}.collab-button[hidden]{display:none}.collab-button:hover{background:rgba(255,255,255,.18)}.collab-field{display:grid;gap:6px;margin:14px 0;color:#284b43}.collab-field input{width:100%;border:1px solid #ccdcd3;border-radius:10px;padding:10px 12px;font:inherit}.collab-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.collab-actions button{border:1px solid #b8d3c4;border-radius:999px;background:#e8f1ea;color:#15574d;padding:8px 13px;font:inherit;cursor:pointer}.collab-actions button:hover{background:#d9e9de}.collab-note{font-size:12px;color:#6a7e75;line-height:1.55}.collab-identity{font-size:12px;word-break:break-all;color:#59736a}.collab-status{font-size:13px;color:#2b765f}
+</style>
+
+</head>
+
+<body>
+
+<header class="hero"><div class="wrap">
+
+  <div class="eyebrow">YUNNAN · DESTINATION GUIDE</div>
+
+  <h1>滇东南目的地与景点</h1>
+
+  <p>2026.12.29 — 2027.01.03</p>
+  <button class="collab-button" id="collabButton" type="button" hidden>协作 · <span id="collabTopStatus">连接中</span></button>
+
+</div></header>
+
+<section class="planning-draft is-collapsed" aria-label="行程" id="planningDraft">
+
+ <div class="planning-inner">
+
+  <div class="planning-heading"><div class="planning-heading-actions"><button class="planning-toggle" id="planningToggle" type="button" aria-label="展开行程" title="展开行程" aria-expanded="false" aria-controls="planningDays">＋</button></div></div>
+
+  <div class="planning-days" id="planningDays">
+
+   <article class="planning-day" data-planning-day="2026-12-29"><div class="planning-day-top"><strong>12/29</strong><span>抵达日</span></div><p>落地昆明</p><small>住宿：柏曼酒店（昆明长水机场T1航站楼店）</small><small class="planning-summary-line"><span class="planning-summary-text" data-plan-summary></span><button class="planning-edit-button" type="button" data-plan-edit>编辑</button></small></article>
+
+   <article class="planning-day" data-planning-day="2026-12-30"><div class="planning-day-top"><strong>12/30</strong><span>住元阳</span></div><p>昆明 → 抚仙湖 → 元阳梯田</p><small>住宿：稻田理想｜蓝色梯田全景·观景民宿</small><small class="planning-summary-line"><span class="planning-summary-text" data-plan-summary></span><button class="planning-edit-button" type="button" data-plan-edit>编辑</button></small></article>
+
+   <article class="planning-day" data-planning-day="2026-12-31"><div class="planning-day-top"><strong>12/31</strong><span>住蒙自</span></div><p>元阳梯田 → 建水 → 蒙自</p><small>住宿：蒙自南湖希尔顿欢朋酒店</small><small class="planning-summary-line"><span class="planning-summary-text" data-plan-summary></span><button class="planning-edit-button" type="button" data-plan-edit>编辑</button></small></article>
+
+   <article class="planning-day" data-planning-day="2027-01-01"><div class="planning-day-top"><strong>01/01</strong><span>住弥勒</span></div><p>蒙自 → 开远 → 弥勒</p><small>住宿：湖泉生态园</small><small class="planning-summary-line"><span class="planning-summary-text" data-plan-summary></span><button class="planning-edit-button" type="button" data-plan-edit>编辑</button></small></article>
+
+   <article class="planning-day planning-day--wide" data-planning-day="2027-01-02"><div class="planning-day-top"><strong>01/02</strong><span>住昆明</span></div><p>弥勒 → 石林 → 九乡 → 昆明</p><small>住宿：昆明市区</small><small class="planning-summary-line"><span class="planning-summary-text" data-plan-summary></span><button class="planning-edit-button" type="button" data-plan-edit>编辑</button></small></article>
+
+   <article class="planning-day" data-planning-day="2027-01-03"><div class="planning-day-top"><strong>01/03</strong><span>返程日</span></div><p>10:00 抵达机场 · 返程</p><small class="planning-summary-line"><span class="planning-summary-text" data-plan-summary></span><button class="planning-edit-button" type="button" data-plan-edit>编辑</button></small></article>
+
+  </div>
+
+  
+
+ </div>
+
+</section>
+
+<dialog class="planning-modal" id="planningEditor" aria-labelledby="planningEditorTitle">
+ <div class="planning-modal-head"><div><h3 id="planningEditorTitle">编辑每日路程</h3></div><button class="planning-modal-close" id="planningEditorClose" type="button" aria-label="关闭编辑窗口">×</button></div>
+ <div class="planning-edit-grid"><label class="planning-field"><span>当天总里程</span><span class="planning-input-wrap"><input id="planningDistance" type="text" maxlength="32" placeholder=""><em>公里</em></span></label><label class="planning-field"><span>预计驾驶时间</span><span class="planning-input-wrap"><input id="planningTime" type="text" maxlength="32" placeholder=""></span></label></div>
+ <div class="planning-evidence"><label class="planning-upload">上传高德截图<input id="planningUpload" type="file" accept="image/*" multiple aria-label="上传高德导航截图"></label><span class="planning-save-status" id="planningSaveStatus"></span></div>
+ <div class="planning-shots" id="planningShots"></div>
+ 
+</dialog>
+
+<dialog class="planning-modal custom-place-modal" id="customPlaceEditor" aria-labelledby="customPlaceTitle">
+ <form id="customPlaceForm">
+  <div class="planning-modal-head"><h3 id="customPlaceTitle">添加地点攻略</h3><button class="planning-modal-close" id="customPlaceClose" type="button" aria-label="关闭">×</button></div>
+  <input id="customPlaceId" type="hidden">
+  <div class="custom-place-grid">
+   <label class="planning-field"><span>目的地</span><select id="customPlaceCity" required></select></label>
+   <label class="planning-field"><span>分类</span><select id="customPlaceCategory"><option value="play">景点 / 好玩</option><option value="food">美食 / 好吃</option></select></label>
+   <label class="planning-field"><span>地点名称</span><input id="customPlaceName" required maxlength="80"></label>
+   <label class="planning-field"><span>类别</span><input id="customPlaceType" maxlength="40"></label>
+   <label class="planning-field"><span>建议游览时长</span><input id="customPlaceDuration" maxlength="32"></label>
+   <label class="planning-field custom-place-wide"><span>地址 / 地图链接</span><input id="customPlaceAddress" maxlength="240"></label>
+   <label class="planning-field custom-place-wide"><span>简短介绍</span><textarea id="customPlaceSummary" rows="2" maxlength="240"></textarea></label>
+   <label class="planning-field custom-place-wide"><span>攻略内容</span><textarea id="customPlaceGuide" rows="5" maxlength="5000"></textarea></label>
+  </div>
+  <div class="planning-evidence"><label class="planning-upload">上传图片<input id="customPlacePhotos" type="file" accept="image/*" multiple></label><span id="customPlaceStatus" class="planning-save-status" aria-live="polite"></span></div>
+  <div class="custom-place-images" id="customPlaceImages"></div>
+  <div class="custom-place-actions"><button class="custom-place-cancel" id="customPlaceCancel" type="button">取消</button><button class="custom-place-save" type="submit">保存</button></div>
+ </form>
+</dialog>
+
+<dialog class="planning-modal" id="collabDialog" aria-labelledby="collabTitle">
+ <div class="planning-modal-head"><h3 id="collabTitle">多人协作</h3><button class="planning-modal-close" id="collabClose" type="button" aria-label="关闭">×</button></div>
+ <p class="collab-status" id="collabStatus" aria-live="polite">连接中…</p>
+ <label class="collab-field"><span>你的称呼</span><input id="collabNickname" type="text" maxlength="30" placeholder="例如：小黄"></label>
+ <p class="collab-identity" id="collabIdentity"></p>
+ <p class="collab-note">称呼可自行填写；访客标识只对应当前浏览器，无法验证微信身份。</p>
+ <div class="collab-actions"><button id="collabSaveName" type="button">保存称呼</button><button id="collabRefresh" type="button">刷新共享内容</button><button id="collabImport" type="button">上传本机旧内容</button></div>
+</dialog>
+
+<div class="app-shell">
+
+<aside class="map-pane" aria-label="地图与自驾路段">
+
+<section class="map-main">
+
+<section class="map-section">
+
+ 
+
+ <div class="map-day-controls"><div class="map-day-buttons" id="mapDayButtons" aria-label="选择当天地图圈选"></div><p class="map-day-info" id="mapDayInfo" aria-live="polite"></p></div>
+
+ <div class="map-card">
+
+  <div class="map-scroll"><svg class="map-svg" viewBox="0 0 900 430" role="img" aria-label="昆明、抚仙湖、建水、蒙自、弥勒、石林、九乡位置关系图">
+
+   <defs><linearGradient id="terrain" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#edf0e5"/><stop offset="1" stop-color="#dcebe1"/></linearGradient></defs>
+
+   <rect x="0" y="0" width="900" height="430" rx="16" fill="url(#terrain)"/>
+
+   <g fill="none" stroke="#cbd9cf" stroke-width="1.3" opacity=".8"><path d="M20 80 Q180 25 320 80 T610 70 T880 95"/><path d="M0 175 Q170 125 330 170 T620 155 T900 185"/><path d="M10 270 Q180 220 330 260 T640 255 T890 280"/><path d="M70 380 Q230 330 390 360 T700 350 T900 370"/><path d="M250 10 Q205 150 270 260 T300 420"/><path d="M590 0 Q530 140 600 255 T630 430"/></g>
+
+   <g fill="#9cb7a5" opacity=".12"><path d="M45 95l70-40 55 38-50 45zM730 120l65-35 58 46-58 35zM335 300l55-34 55 43-52 33zM655 310l65-34 55 45-60 30z"/></g>
+
+   <!-- main loop: plotted from approximate geographic coordinates -->
+
+   <path d="M167 72 L322 135 L260 312 L687 356 L758 177 L167 72" fill="none" stroke="#fffefa" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+
+   <path d="M167 72 L322 135 L260 312 L687 356 L758 177 L167 72" fill="none" stroke="#287665" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+   <!-- nearby attractions are not on the main loop -->
+
+   <path d="M167 72 Q420 18 681 65 M167 72 Q430 90 645 111" fill="none" stroke="#bd8057" stroke-width="2.5" stroke-dasharray="7 7"/>
+
+   <g font-family="sans-serif" fill="#587268" font-size="12"><text x="24" y="24">北 ↑</text><text x="26" y="407">位置按城市/景区坐标关系绘制 · 非行政区边界图</text></g>
+
+   <!-- main cities -->
+
+   <g><circle cx="167" cy="72" r="12" fill="#1d6658" stroke="white" stroke-width="5"/><rect x="184" y="48" width="92" height="34" rx="11" fill="#1d6658"/><text x="230" y="71" text-anchor="middle" fill="white" font-size="16" font-weight="700">昆明</text></g>
+
+   <g><circle cx="322" cy="135" r="10" fill="#438f83" stroke="white" stroke-width="4"/><rect x="215" y="145" width="100" height="42" rx="11" fill="#438f83"/><text x="265" y="163" text-anchor="middle" fill="white" font-size="14" font-weight="700">澄江</text><text x="265" y="179" text-anchor="middle" fill="white" font-size="10">抚仙湖</text></g>
+
+   <g><circle cx="260" cy="312" r="10" fill="#b7794d" stroke="white" stroke-width="4"/><rect x="177" y="326" width="82" height="34" rx="11" fill="#9e6847"/><text x="218" y="349" text-anchor="middle" fill="white" font-size="15" font-weight="700">建水</text></g>
+
+   <g><circle cx="687" cy="356" r="10" fill="#b7794d" stroke="white" stroke-width="4"/><rect x="704" y="363" width="82" height="34" rx="11" fill="#9e6847"/><text x="745" y="386" text-anchor="middle" fill="white" font-size="15" font-weight="700">蒙自</text></g>
+
+   <g><circle cx="758" cy="177" r="10" fill="#1d6658" stroke="white" stroke-width="4"/><rect x="775" y="159" width="82" height="34" rx="11" fill="#1d6658"/><text x="816" y="182" text-anchor="middle" fill="white" font-size="15" font-weight="700">弥勒</text></g>
+
+   <!-- correct surrounding positions: Jiuxiang is east/northeast of Kunming; Shilin is southeast -->
+
+   <g><circle cx="681" cy="65" r="8" fill="#c47a4f" stroke="white" stroke-width="3"/><rect x="697" y="45" width="86" height="31" rx="10" fill="#fffefa" stroke="#d8c3b2"/><text x="740" y="65" text-anchor="middle" fill="#8a5d42" font-size="13" font-weight="700">九乡·宜良</text></g>
+
+   <g><circle cx="645" cy="111" r="8" fill="#c47a4f" stroke="white" stroke-width="3"/><rect x="660" y="94" width="100" height="31" rx="10" fill="#fffefa" stroke="#d8c3b2"/><text x="710" y="114" text-anchor="middle" fill="#8a5d42" font-size="13" font-weight="700">石林·石林县</text></g>
+
+   <g transform="translate(842 22)"><path d="M0 28 L12 0 L24 28 L12 22Z" fill="#315f54"/><text x="12" y="44" text-anchor="middle" fill="#587268" font-size="11">N</text></g>
+
+  </svg></div>
+
+  <div class="map-caption" hidden></div>
+
+ </div>
+
+</section>
+
+</section>
+
+</aside>
+
+<main class="detail-pane">
+
+<div class="tabs-wrap"><div class="tabs" id="tabs" role="tablist" aria-label="目的地切换"></div></div>
+
+<section id="cityContent" aria-live="polite"></section>
+
+</main>
+
+</div>
+
+</div>
+
+<script src="./cloud-config.js"></script>
+<script src="./trip-cloud-sync.js"></script>
+<script>
+
+const destinations = [{"id":"kunming","name":"昆明","en":"KUNMING","subtitle":"城市街巷 · 湖滨风光 · 近代建筑","intro":"昆明市区以老街、翠湖和滇池为主；石林与九乡属于昆明市辖县域的周边景区，位置分处昆明市区的东南与东偏北方向。","pois":[{"name":"昆明老街 · 金马碧鸡坊","highlight":"青石街巷、老建筑与城市夜生活集中在一片步行街区。","type":"历史街区","tags":["老城漫步","夜景","餐饮"],"desc":"昆明老街由光华街、文明街、景星街、钱王街等多条街巷组成，保留了清代和民国时期的街巷肌理。金马碧鸡坊是昆明城市地标，周边餐饮、咖啡和夜间商业密集，适合步行慢逛。","image":"https://5b0988e595225.cdn.sohucs.com/images/20200418/1d59b24b16f1454ab2ccde42ff59e73d.jpeg","imageSource":"https://www.sohu.com/picture/389091826","guide":"https://gs.ctrip.com/html5/you/sight/kunming29/5062400.html","guideLabel":"昆明老街攻略"},{"name":"翠湖公园","highlight":"市中心湖景公园，冬季可看红嘴鸥，适合环湖散步。","type":"城市公园","tags":["湖景","红嘴鸥","散步"],"desc":"翠湖以湖心亭、阮堤、唐堤和环湖步道为主要景观。秋冬季红嘴鸥到昆明越冬，是这里很有代表性的季节体验；周边可与云南大学、云南陆军讲武堂串联。","image":"https://img.phb123.com/uploads/allimg/210719/798-210G9112336-50.jpg","imageSource":"https://www.phb123.com/lvyou/jingdian/55587.html","guide":"https://you.ctrip.com/sight/kunming29/12098.html","guideLabel":"翠湖公园攻略"},{"name":"云南陆军讲武堂旧址","highlight":"黄色走马转角楼式建筑，近代军事史展陈。","type":"历史建筑","tags":["近代史","建筑","展馆"],"desc":"讲武堂创办于1909年，现存主体为四面围合的黄色两层建筑，保留操场、回廊和展厅。馆内常设校史及中国远征军相关展览，适合与翠湖放在同一段步行游览中。","image":"https://q3.itc.cn/images01/20240906/fe3a6199867f4b20929c5e0310d34616.jpeg","imageSource":"https://www.sohu.com/a/806840503_117402","guide":"https://you.ctrip.com/sight/kunming29/17857.html","guideLabel":"讲武堂攻略"},{"name":"滇池 · 海埂大坝","highlight":"开阔湖岸、西山远景与冬季观鸥，是昆明经典湖滨点位。","type":"湖滨自然","tags":["滇池","红嘴鸥","西山"],"desc":"海埂大坝位于滇池东岸，沿堤可近距离看湖面和西山。每年秋冬红嘴鸥在滇池周边越冬，海埂大坝和海埂公园是常见观鸥点。","image":"https://tour.youth.cn/xw/202411/W020241118281173257120.jpg","imageSource":"https://tour.youth.cn/xw/202411/t20241118_15655830.htm","guide":"https://you.ctrip.com/sight/kunming29/120220.html","guideLabel":"海埂大坝攻略"},{"name":"斗南花卉市场","highlight":"鲜切花交易市场，花材品类丰富，适合逛花市和买花。","type":"市场体验","tags":["鲜花","市集","夜间"],"desc":"斗南位于昆明市呈贡区，是大型鲜切花交易集散地。市场内有鲜花、干花和多肉等区域；白天零售与夜间交易的氛围不同，前往前可先确认当天开放区域和交易时段。","image":"https://p6.itc.cn/images01/20210129/4d908317144f4f149536f7589d5de229.jpeg","imageSource":"https://www.sohu.com/a/447491535_100126170","guide":"https://you.ctrip.com/sight/kunming29/5554372.html","guideLabel":"斗南花卉市场攻略"},{"name":"石林风景区","highlight":"位于昆明东南方向的石林彝族自治县，以地表喀斯特峰林为核心。","type":"地质景观","tags":["世界自然遗产地貌","峰林","阿诗玛"],"desc":"石林风景区位于昆明市东南方向的石林彝族自治县，并不在昆明市区附近。常规游览以大石林、小石林为主，剑峰池、阿诗玛石等是代表性景观；景区范围较大，步行和观光车结合游览。","image":"https://cdn.getyourguide.com/img/tour/035ef55db9072d5b3ad8cd1ac34808b8c125d38ec585fbe3d7e1c3f5baf04a5f.jpg/97.jpg","imageSource":"https://www.getyourguide.com/kunming-l1043/kunming-private-half-day-tour-of-stone-forest-park-t563173/","guide":"https://you.ctrip.com/sight/shilin271/44950.html","guideLabel":"石林风景区攻略"},{"name":"九乡风景区","highlight":"位于昆明东偏北的宜良县九乡乡，以溶洞、峡谷和地下河闻名。","type":"地下喀斯特","tags":["溶洞","峡谷","地下河"],"desc":"九乡位于昆明市宜良县九乡彝族回族乡，和石林不是同一个方向：九乡在昆明东偏北，石林在昆明东南。景区常见看点包括荫翠峡、惊魂峡、雄狮厅、雌雄飞瀑和神田，游览包含台阶、峡谷步道及洞内路段。","image":"https://www.islamichinatravel.com/wp-content/uploads/2022/05/Jiuxiang-Scenic-Area-1-1-700x660.jpg","imageSource":"https://www.islamichinatravel.com/destination-guide/kunming/kunming-attractions/jiuxiang-scenic-area/","guide":"https://gs.ctrip.com/html5/you/sight/yiliang2177/12097.html","guideLabel":"九乡风景区攻略"}]},{"id":"fuxian","name":"抚仙湖","en":"FUXIAN LAKE · CHENGJIANG","subtitle":"湖岸景观 · 日落 · 湿地 · 古生物","intro":"抚仙湖分属澄江、江川和华宁，湖岸各片区体验不同：东岸太阳山、小湾村偏湖景度假；西岸禄充偏传统湖岸景区；北岸有湿地和博物馆。","pois":[{"name":"小湾村 · 太阳山小镇","highlight":"东岸半山湖景、观景栈道、咖啡和度假街区。","type":"湖畔度假","tags":["湖景","日落","咖啡"],"desc":"小湾村和太阳山位于抚仙湖东岸一带。太阳山小镇依山临湖，街区有欧式风格建筑、咖啡店和湖景步道；观景栈道视野开阔，适合看湖、散步和拍日落。","image":"https://p0.itc.cn/q_70/images03/20210916/bb3204fe320a4b9095c4e51c5a9cc621.jpeg","imageSource":"https://www.sohu.com/a/490317444_121106902","guide":"https://you.ctrip.com/sight/chengjiang2171/149988287.html","guideLabel":"太阳山小镇攻略"},{"name":"禄充风景区 · 笔架山","highlight":"抚仙湖西岸的经典湖湾，可登笔架山俯瞰湖面。","type":"湖岸景区","tags":["湖景","登高","古榕"],"desc":"禄充位于抚仙湖西岸，景区内有笔架山、玉笋山、古榕树和湖岸村落。登上笔架山可俯瞰湖面，湖边也有游船和休闲活动，是比较成熟的湖岸游览区。","image":"https://youimg1.c-ctrip.com/target/100n10000000oql0d5F5B.jpg","imageSource":"https://you.ctrip.com/sight/chengjiang2171/17495.html","guide":"https://you.ctrip.com/sight/chengjiang2171/17495.html","guideLabel":"禄充风景区攻略"},{"name":"红山咀红沙滩","highlight":"红色湖岸与蓝色湖水形成反差，适合短暂停留拍照。","type":"湖岸摄影","tags":["湖岸","摄影","短停"],"desc":"红山咀一带因湖岸土色呈红褐色而被称作红沙滩。景观会受到水位、天气和岸线状态影响，适合顺路停留、远眺湖面和拍照，不必将它当作长时间游览的景区。","image":"https://p2.itc.cn/images01/20210323/3d0a8855be6347f98f660922c1b50dc6.jpeg","imageSource":"https://www.sohu.com/a/456875004_109503","guide":"https://you.ctrip.com/sight/fuxianlake2080/s0-p0.html","guideLabel":"抚仙湖景点攻略"},{"name":"广龙小镇 · 抚海湾湿地","highlight":"湖畔商业街区、湿地步道和餐饮集中，夜间活动相对方便。","type":"湖畔街区","tags":["湿地","餐饮","散步"],"desc":"广龙小镇位于抚仙湖北岸，周边有商业街区和抚海湾湿地景观。适合安排餐饮、湖边散步和轻松停留，与太阳山的半山度假氛围不同。","image":"https://imgs1.soufunimg.com/news/2017_12/07/1512632905938.jpg","imageSource":"https://news.fang.com/open/27312412.html","guide":"https://you.ctrip.com/sight/fuxianlake2080.html","guideLabel":"抚仙湖景点攻略"},{"name":"月亮湾湿地公园","highlight":"北岸椰林、沙滩式湖岸和湿地步道，适合休闲散步。","type":"滨湖休闲","tags":["湿地","沙滩","步道"],"desc":"月亮湾湿地公园位于抚仙湖北岸，靠近度假酒店片区。园内有椰林、沙滩式湖岸和湿地景观，适合沿湖散步、看湖和拍照。","image":"https://newbbs-fd.zol-img.com.cn/t_s1200x5000/g7/M00/00/0E/ChMkK2g1LtaIBpZhAARIbai3Y4IAAs4EgPAN1AABEiF317.jpg","imageSource":"https://bbs.zol.com.cn/dcbbs/d232_896986.html","guide":"https://you.ctrip.com/sight/chengjiang2171/1416854.html","guideLabel":"月亮湾湿地攻略"},{"name":"澄江化石地自然博物馆","highlight":"以5.3亿年前澄江生物群为核心，展示寒武纪生命演化。","type":"自然科学","tags":["化石","博物馆","科普"],"desc":"博物馆依托澄江化石地世界自然遗产，以寒武纪生命大爆发和澄江生物群为核心内容。展陈包括古生物化石、地球生命演化和相关科学知识，适合对自然史、地质和古生物感兴趣的人。","image":"https://lcj.yn.gov.cn/uploadfile/s37/2025/0516/20250516013607980.jpg","imageSource":"https://lcj.yn.gov.cn/special/2025/0512/6617.html","guide":"https://you.ctrip.com/sight/chengjiang2171/130369372.html","guideLabel":"博物馆参观攻略"}]},{"id":"jianshui","name":"建水","en":"JIANSHUI","subtitle":"古城建筑 · 紫陶 · 米轨铁路 · 传统村落","intro":"建水的看点集中在古城、朱家花园、团山村和城郊米轨沿线。","pois":[{"name":"建水古城 · 朝阳楼","highlight":"古城主街、城楼、传统店铺和市井生活集中区。","type":"历史街区","tags":["古城漫步","城楼","夜景"],"desc":"建水古城古称临安，朝阳楼是古城东门地标。古城内保留了多处历史建筑、街巷、古井和传统商铺，适合步行探索；早晚时段的街巷氛围不同。","image":"https://dimg04.c-ctrip.com/images/0101512000jnc9jwuDEA1.jpg","imageSource":"https://you.ctrip.com/sight/jianshui2151/17550.html","guide":"https://you.ctrip.com/sight/jianshui2151/17549.html","guideLabel":"建水古城攻略"},{"name":"朱家花园","highlight":"滇南大型私家宅院，院落、天井、木雕和园林层次丰富。","type":"传统民居","tags":["宅院","木雕","园林"],"desc":"朱家花园是清末建水朱氏家族宅院和宗祠建筑群，院落层层递进，空间布局精细，兼有厅堂、居室和园林。适合慢慢看建筑细节，也能了解当地商绅家族历史。","image":"https://x0.ifengimg.com/res/2020/2E5ABE306EDBB88338EDB7388634B0A515241C65_size57_w640_h427.jpeg","imageSource":"https://ishare.ifeng.com/c/s/7wUq5Eq411P","guide":"https://you.ctrip.com/sight/jianshui2151/17552.html","guideLabel":"朱家花园攻略"},{"name":"建水文庙","highlight":"泮池、棂星门、大成殿和古树构成完整的礼制空间。","type":"儒家文化","tags":["古建筑","儒家文化","园林"],"desc":"建水文庙是滇南重要的儒家文化建筑群，院落轴线清晰，泮池、牌坊、殿宇和园林空间层层展开。适合对传统礼制、儒家文化和古建筑感兴趣的人。","image":"https://lp-cms-production.imgix.net/2019-06/899858266a17f59f53be254682cf1505-confucian-temple.jpg","imageSource":"https://www.lonelyplanet.com/china/yunnan/jianshui/attractions/confucian-temple/a/poi-sig/1030674/1001909","guide":"https://www.topchinatravel.com/china-attractions/jianshui-confucius-temple.htm","guideLabel":"建水文庙攻略"},{"name":"紫陶街 · 紫陶里","highlight":"紫陶店铺、陶艺展示、手作体验和夜间餐饮街区。","type":"陶艺文化","tags":["建水紫陶","手作","夜间街区"],"desc":"建水紫陶街是以紫陶展示、销售和体验为主题的商业街区，适合看陶、逛店、了解建水紫陶工艺，也可以顺路品尝当地小吃。紫陶里与紫陶街是不同街区，可按实际位置分别安排。","image":"https://m.yunnan.cn/pic/003/053/202/00305320250_7310f687.jpg","imageSource":"https://m.yunnan.cn/system/2023/03/13/032503328.shtml","guide":"https://www.hh.gov.cn/info/9021/925342.htm","guideLabel":"紫陶街与非遗线路"},{"name":"建水米轨小火车 · 双龙桥","highlight":"窄轨观光列车串联田园、古桥和沿线老车站。","type":"铁路体验","tags":["米轨铁路","古桥","田园"],"desc":"建水米轨小火车从临安站出发，线路经过双龙桥、乡会桥并抵达团山站。双龙桥又称十七孔桥，是滇南著名古桥。列车有固定班次，出行前需核对当日发车时间和停靠安排。","image":"https://5b0988e595225.cdn.sohucs.com/images/20200204/72990d0244c744779360e1fcfa60893e.jpeg","imageSource":"https://www.sohu.com/picture/370518545","guide":"https://you.ctrip.com/sight/jianshui2151/1732616.html","guideLabel":"建水小火车攻略"},{"name":"团山民居","highlight":"保存较完整的滇南传统村落，粉墙黛瓦与精细木石雕刻。","type":"传统村落","tags":["古村落","民居建筑","木雕石雕"],"desc":"团山古村位于建水古城以西约13公里，是典型的家族聚居村落，保存有传统民居、寨门、宗祠和寺庙。建筑格局包括三坊一照壁、四合五天井和跑马转角楼，适合细看滇南民居建筑。","image":"https://culture.yunnan.cn/pic/003/056/992/00305699257_6573007b.jpg","imageSource":"https://culture.yunnan.cn/system/2023/09/11/032750809.shtml","guide":"https://you.ctrip.com/sight/jianshui2151/5073333.html","guideLabel":"团山民居攻略"},{"name":"蚁工坊彩陶艺术工厂","highlight":"当代陶艺建筑空间，以空心砖、色彩和光影形成独特视觉。","type":"当代建筑","tags":["建筑设计","陶艺","摄影"],"desc":"蚁工坊将建水陶文化与当代建筑设计结合，建筑群以陶主题创作、展览和体验空间为主。空心砖墙、拱门和色彩空间是主要视觉看点，与古城传统建筑形成鲜明对比。","image":"https://dimg01.c-ctrip.com/images/01A0f120008d711bwC661_W_640_10000.jpg?proc=autoorient","imageSource":"https://you.ctrip.com/sight/jianshui2151/5700918.html","guide":"https://you.ctrip.com/sight/jianshui2151/5700918.html","guideLabel":"蚁工坊攻略"}]},{"id":"mengzi","name":"蒙自","en":"MENGZI","subtitle":"滇越铁路 · 开埠历史 · 西南联大 · 南湖","intro":"蒙自的主要人文点位分布在市中心南湖周边和城郊碧色寨。南湖、西南联大旧址和海关旧址可组成城市历史步行线。","pois":[{"name":"碧色寨滇越铁路历史文化公园","highlight":"黄墙红瓦老站房、米轨与寸轨遗迹，是滇越铁路历史现场。","type":"铁路遗址","tags":["滇越铁路","法式建筑","摄影"],"desc":"碧色寨位于蒙自市草坝镇，是滇越铁路与个碧石铁路的交汇点。站房、站台、铁路遗迹及周边法式建筑保留了近代铁路商贸历史，适合建筑摄影和近代史探索。","image":"https://dulichhoangha.com/upload/files/image%283000%29.png","imageSource":"https://news.cri.cn/n/20220928/1bb3dbea-e0ae-2be3-fb57-f82ecbbeb7b9.html","guide":"https://you.ctrip.com/sight/mengzi1201/22214.html","guideLabel":"碧色寨攻略"},{"name":"南湖公园","highlight":"蒙自城市中心湖景，亭台、曲桥与湖畔街区相连。","type":"城市公园","tags":["湖景","城市漫步","夜景"],"desc":"南湖公园位于蒙自中心城区，湖中有瀛洲亭等传统园林景观，湖畔保留着开埠时期的部分西式建筑。适合散步，也方便串联西南联大蒙自分校纪念馆和周边历史建筑。","image":"https://newbbs-fd.zol-img.com.cn/t_s1200x5000/g5/M00/05/09/ChMkJlplNFuIVPgdAAQiRmNJRtAAAkRDwOYTzYABCJe280.jpg","imageSource":"https://bbs.zol.com.cn/dcbbs/d34049_5694.html","guide":"https://you.ctrip.com/sight/mengzi1201/17561.html","guideLabel":"南湖公园攻略"},{"name":"西南联大蒙自分校纪念馆","highlight":"原哥胪士洋行旧址，记录1938年西南联大在蒙自办学的历史。","type":"近代教育史","tags":["西南联大","近代史","建筑"],"desc":"纪念馆设在原哥胪士洋行旧址。1938年西南联大文学院和法商学院曾在蒙自办学，朱自清、闻一多、陈寅恪等学者曾在此活动。展陈介绍蒙自分校的办学历程、师生经历和联大精神。","image":"https://dimg04.c-ctrip.com/images/1me6612000kd8klo240C1.jpg?proc=source%2Ftripcommunity","imageSource":"https://gs.ctrip.com/html5/you/sight/mengzi1201/4284348.html","guide":"https://you.ctrip.com/sight/mengzi1201/4284348.html","guideLabel":"西南联大纪念馆攻略"},{"name":"蒙自海关旧址","highlight":"近代开埠通商历史遗存，传统中式建筑与蒙自口岸史相关。","type":"历史建筑","tags":["开埠历史","文物建筑","城市史"],"desc":"蒙自海关旧址与蒙自开埠通商历史密切相关，是理解滇越铁路、口岸贸易和近代城市发展的重要点位。可与南湖和西南联大蒙自分校纪念馆串联参观。","image":"https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/%E8%92%99%E8%87%AA%E6%B5%B7%E5%85%B3%E7%A8%8E%E5%8A%A1%E5%8F%B8%E7%BD%B2_-_2024-08-27_02.jpg/1280px-%E8%92%99%E8%87%AA%E6%B5%B7%E5%85%B3%E7%A8%8E%E5%8A%A1%E5%8F%B8%E7%BD%B2_-_2024-08-27_02.jpg","imageSource":"https://commons.wikimedia.org/wiki/Category:Mengzi_Customs_Former_Site","guide":"https://www.hhmz.gov.cn/info/1071/267761.htm","guideLabel":"蒙自精品旅游线路（含海关旧址）"},{"name":"长桥海国家湿地公园","highlight":"开阔湖面、浅滩和湿地景观，适合看水面、日落和自然环境。","type":"湿地自然","tags":["湿地","湖景","自然"],"desc":"长桥海是蒙自重要的湖泊湿地景观，水面开阔，周边有浅滩和湿地生境。适合喜欢自然风光、湖边散步和拍摄日落的人，和南湖的城市公园氛围不同。","image":"https://dimg04.c-ctrip.com/images/0102c120008s7am2k8208_W_750_0.jpg?proc=autoorient","imageSource":"https://gs.ctrip.com/html5/you/sight/mengzi1201/1827630.html","guide":"https://gs.ctrip.com/html5/you/sight/mengzi1201/1827630.html","guideLabel":"长桥海湿地攻略"}]},{"id":"kaiyuan","name":"开远","en":"KAIYUAN","subtitle":"凤凰湖 · 米轨文化 · 南洞","intro":"凤凰生态公园、南洞—凤凰谷与米轨文化景点可在开远游览。","pois":[{"name":"凤凰生态公园","type":"城市公园","duration":"约1–2小时","highlight":"凤凰湖、凤凰山与湿地。","desc":"凤凰生态公园由凤凰山森林公园、凤凰湖和凤凰湿地组成。","tags":[],"image":"","imageSource":"","guide":"https://www.hhky.gov.cn/info/1031/799142.htm","guideLabel":"景点资料"},{"name":"南洞—凤凰谷旅游区","type":"山水溶洞","duration":"约2–3小时","highlight":"喀斯特溶洞与山水景观。","desc":"南洞集山、水、洞与林木于一体，是开远的山水景区。","tags":[],"image":"","imageSource":"","guide":"https://www.hhky.gov.cn/info/1031/799142.htm","guideLabel":"景点资料"},{"name":"1909广场","type":"铁路文化","duration":"约30–60分钟","highlight":"滇越铁路主题广场与米轨展示。","desc":"1909广场位于凤凰山下、凤凰湖畔，展示滇越铁路与米轨文化。","tags":[],"image":"","imageSource":"","guide":"https://www.hhky.gov.cn/info/1031/799142.htm","guideLabel":"景点资料"}]},{"id":"mile","name":"弥勒","en":"MILE","subtitle":"艺术建筑 · 彝族文化 · 森林湖泊 · 温泉","intro":"弥勒以东风韵的当代艺术建筑、可邑小镇的阿细文化，以及太平湖和湖泉片区的休闲度假体验为主。","pois":[{"name":"东风韵艺术小镇","highlight":"红砖艺术建筑群与万花筒艺术馆，是弥勒最具辨识度的建筑景观。","type":"艺术建筑","tags":["红砖建筑","艺术馆","摄影"],"desc":"东风韵由艺术家罗旭设计，以当地红砖构筑形态独特的建筑群。万花筒艺术馆是核心建筑，园区还包含湖滨步道、艺术空间、葡萄文化相关内容，适合建筑摄影和慢逛。","image":"https://www.yourjoytravel.com/routes/zuimei-diandongnan-xingshe-11days/day4b-v5.jpg","imageSource":"https://www.xinhuanet.com/photo/20250909/ab193729e4224b719c2457534cfedc48/c.html","guide":"https://you.ctrip.com/sight/mile1342/5073332.html","guideLabel":"东风韵景区攻略"},{"name":"可邑小镇","highlight":"阿细人聚居村寨，可了解彝族阿细文化与阿细跳月。","type":"民族村寨","tags":["彝族文化","阿细跳月","村寨"],"desc":"可邑小镇位于弥勒市西三镇，是阿细文化的重要体验地。村寨建筑、民族文化展示和阿细跳月是主要看点；现场演出时间以景区当日安排为准。","image":"https://dimg04.c-ctrip.com/images/1lo6212000cx3up4h8062.jpg","imageSource":"https://gs.ctrip.com/html5/you/sight/mile1342/1673481.html","guide":"https://gs.ctrip.com/html5/you/sight/mile1342/1673481.html","guideLabel":"可邑小镇攻略"},{"name":"太平湖森林公园","highlight":"森林、湖泊、花园景观与度假设施组合，适合自然休闲。","type":"森林度假","tags":["森林","湖泊","户外"],"desc":"太平湖森林公园以森林生态、湖景、园林和度假设施为主要体验。园区较大，适合慢逛和拍照；花海景观具有季节性，游览重点可放在湖畔、林地和园林空间。","image":"https://photo.tuchong.com/3480704/f/246079524.jpg","imageSource":"https://ynjsxch.tuchong.com/94074490/","guide":"https://you.ctrip.com/sight/mile1342.html","guideLabel":"弥勒景点攻略（含太平湖）"},{"name":"湖泉生态园 · 温泉","highlight":"城市湖滨公园与温泉度假配套，适合散步和休息。","type":"温泉休闲","tags":["温泉","湖滨","休闲"],"desc":"湖泉生态园是弥勒城区重要的湖滨休闲区域，周边分布温泉酒店和度假设施。可选择湖边散步或体验温泉，具体温泉项目和开放情况以实际经营场所为准。","image":"https://img-cdn.yndaily.com/catchimages/20260115/1768460870650040843.png?x-image-process=image%2Fquality%2Cq_95%2Fstrip","imageSource":"https://www.yndaily.com/html/2026/yunxinwen_0115/140274.html","guide":"https://travelnews.qunar.com/qa_strategy/mi-le-niche-relaxed-travel-guide","guideLabel":"弥勒休闲游攻略"},{"name":"锦屏山风景区 · 弥勒寺","highlight":"山地寺院、大型弥勒佛造像与登高视野。","type":"宗教文化","tags":["寺庙","佛像","登高"],"desc":"锦屏山风景区以弥勒寺和大型弥勒佛造像为主要看点，山路、台阶和寺院空间结合，兼具宗教文化和登高观景体验。","image":"https://dimg04.c-ctrip.com/images/0101y12000mbgq012A33B_W_750_0.jpg?proc=autoorient","imageSource":"https://gs.ctrip.com/html5/you/sight/mile1342/69572403.html","guide":"https://you.ctrip.com/sight/mile1342.html","guideLabel":"弥勒景点攻略（含锦屏山）"}]},{"id":"wenshan","name":"文山","en":"WENSHAN","subtitle":"州博物馆 · 城市公园 · 三七文化","intro":"文山市可看州博物馆、城市公园与三七文化景点。","pois":[{"name":"文山州博物馆","type":"博物馆","duration":"约1–2小时","highlight":"文山历史、民族文化与铜鼓藏品。","desc":"文山州博物馆是文山市的 AAA 级旅游景区，收藏并展示文山地方历史与民族文化。","tags":[],"image":"","imageSource":"","guide":"https://www.ynwss.gov.cn/wssrmzf/ggwhfw/pc/content/content_1861595903225597952.html","guideLabel":"景点资料"},{"name":"西华公园","type":"城市公园","duration":"约1–2小时","highlight":"山地公园与城市散步。","desc":"西华公园是文山市的城市公园，可进行短时步行游览。","tags":[],"image":"","imageSource":"","guide":"https://www.ynwss.gov.cn/wssrmzf/ghxx/1887410860756131840/tOhK3BNt.pdf","guideLabel":"景点资料"}]}];
+
+// 在原有景点资料基础上扩展五站；原有图片、攻略链接及备选收藏均保留。
+
+destinations.find(d=>d.id==='kunming').pois=destinations.find(d=>d.id==='kunming').pois.filter(p=>!['石林风景区','九乡风景区'].includes(p.name));
+
+const newPOI=(name,highlight,type,duration,desc,tags=[])=>({name,highlight,type,duration,desc,tags,image:'',imageSource:'',guide:'',guideLabel:''});
+
+destinations.push(
+
+ {id:'jiuxiang',name:'九乡',en:'JIUXIANG',subtitle:'溶洞 · 峡谷 · 地下河',duration:'约2.5–4小时',intro:'位于宜良县的溶洞峡谷景区，以地下空间为主；与石林的地表石峰景观不同。',pois:[
+
+  newPOI('荫翠峡','坐船穿行峡谷，近距离看两侧岩壁与水面','峡谷水景','约30–50分钟','通常作为进入九乡景区后的前段体验。',['水上峡谷','洞前体验']),
+
+  newPOI('惊魂峡 · 雄狮厅','狭窄深切的峡谷与体量开阔的洞厅形成反差','地下喀斯特','约50–80分钟','游览以栈道、洞内照明及地形景观为主。',['溶洞','步道']),
+
+  newPOI('神田 · 雌雄双瀑','洞内钙华梯田与地下瀑布，视觉辨识度高','地质奇观','约40–60分钟','神田展示沉积形成的层叠钙华地貌，双瀑则是洞内水系的看点，二者可随景区单向游线一起参观。',['钙华','地下瀑布'])]},
+
+ {id:'shilin',name:'石林',en:'STONE FOREST',subtitle:'地表喀斯特 · 峰林 · 彝族文化',duration:'约2.5–4小时',intro:'经典石林景区通常以大石林和小石林为核心。',pois:[
+
+  newPOI('大石林 · 剑峰池','高密石峰、石隙步道和层层叠叠的灰色石阵','自然地貌','约1.5–2小时','石林最具代表性的密集石峰区，岔路与台阶多，适合慢慢穿行石阵。',['峰林','步行']),
+
+  newPOI('小石林 · 阿诗玛石','开阔草坪、标志性石峰和经典合影点','自然地貌','约1–1.5小时','与大石林的密集穿行不同，小石林空间更开阔，阿诗玛石是标志性景观。',['阿诗玛','摄影']),
+
+  newPOI('乃古石林（加选）','更原生态的黑灰色石峰群，适合时间宽裕时探访','周边景区','约1.5–2小时','与经典大、小石林不完全同一片游览区。',['可选','地质'])]},
+
+ {id:'puzhehei',name:'普者黑',en:'PUZHEHEI',subtitle:'喀斯特湖群 · 田园 · 村寨',duration:'约4–6小时或住一晚',intro:'普者黑的湖光山色比洞穴更值得作为主体。青龙山、湖岸与村落是主要看点。',pois:[
+
+  newPOI('青龙山观景台','登高俯瞰湖泊、峰丛和村寨，是普者黑代表性视角','山顶观景','约1–1.5小时','山路以台阶为主，日出和日落时段有侧逆光层次。',['登高','摄影']),
+
+  newPOI('普者黑村 · 湖岸栈道','村落、湖面与喀斯特孤峰相映，适合轻松漫步','湖畔村落','约1–2小时','沿湖漫步、在村内喝咖啡或吃饭，冬季更适合慢节奏拍照。',['湖岸','散步']),
+
+  newPOI('仙人洞村','依湖的彝族撒尼村寨，民宿与餐饮较集中','传统村落','约1–1.5小时','适合在午后逛村寨、观察民居与湖岸风光，可与青龙山搭配。',['村寨','餐饮']),
+
+  newPOI('湖上游船（运营视情况）','从水面看峰林和湖群，但冬季航线可能不同','水上活动','约1–2小时','从湖面观赏峰林与湖群。',['游船','可选'])]},
+
+ {id:'yuanyang',name:'元阳梯田',en:'YUANYANG TERRACES',subtitle:'梯田光影 · 云海 · 哈尼村落',duration:'约5–8小时，摄影推荐过夜',intro:'这里按新街镇以南的哈尼梯田核心观景区规划，不是元阳县城。多依树与坝达是梯田观景区的代表性点位。',pois:[
+
+  newPOI('多依树观景台','层叠梯田、晨雾与日出光线，冬季水田很有层次','日出摄影','约1–1.5小时','经典日出点。这里可观看梯田晨间光影。',['日出','梯田']),
+
+  newPOI('坝达梯田','层层铺开的梯田大景与傍晚侧光','日落摄影','约1–1.5小时','适合观察坡面梯田的曲线和光影变化，夕阳时段是热门选择，冬季实际可见度受天气影响。',['日落','摄影']),
+
+  newPOI('阿者科村','哈尼蘑菇房、传统村落与梯田生活','传统村寨','约1–2小时','村落至今保有传统蘑菇房建筑和梯田农耕文化，可安排村寨漫步与文化观察。',['哈尼文化','蘑菇房']),
+
+  newPOI('箐口梯田 · 民俗村','梯田与村寨相邻，比较适合短暂停留','村落梯田','约40–70分钟','梯田与村寨相邻，可步行观赏哈尼村寨和山地梯田。',['梯田','顺路'])]},
+
+ {id:'shiping',name:'石屏',en:'SHIPING',subtitle:'明清古城 · 豆腐 · 异龙湖',duration:'约2–4小时',intro:'石屏在建水以西，并不是元阳到建水的必经直线点位。',pois:[
+
+  newPOI('石屏古城','石板街、明清民居与书院建筑，游客密度相对低','历史街区','约1–1.5小时','在古城里步行看院落、古井和传统街道，适合喜欢建水古城氛围但想找安静街巷的人。',['古城','慢逛']),
+
+  newPOI('石屏豆腐 · 市井小吃','现烤豆腐蘸料、当地小吃和老城日常气息','地方美食','约40–60分钟','石屏豆腐是当地代表性小吃，古城街巷内可见现烤豆腐与蘸料。',['豆腐','餐饮']),
+
+  newPOI('异龙湖 · 湖岸步道','湿地、湖景和落日晚霞','湖滨自然','约1–1.5小时','湖滨步道串联湿地与开阔湖面。',['湖景','日落']),
+
+  newPOI('郑营村（加选）','传统民居与老村布局，可细看滇南建筑','历史村落','约1–1.5小时','适合对传统建筑特别感兴趣的人，与石屏古城同一主题。',['古建','可选'])]}
+
+);
+
+
+
+const scenicPhotos={
+
+ '荫翠峡':{image:'https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Jiuxiang_1.JPG/1280px-Jiuxiang_1.JPG',imageSource:'https://commons.wikimedia.org/wiki/File:Jiuxiang_1.JPG',imageCredit:'Deadkid dk · CC BY-SA 3.0'},
+
+ '惊魂峡 · 雄狮厅':{image:'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Jiuxiang_2.JPG/1280px-Jiuxiang_2.JPG',imageSource:'https://commons.wikimedia.org/wiki/File:Jiuxiang_2.JPG',imageCredit:'Deadkid dk · CC BY-SA 3.0'},
+
+ '神田 · 雌雄双瀑':{image:'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Jiuxiang_Fairy_Falls.jpg/1280px-Jiuxiang_Fairy_Falls.jpg',imageSource:'https://commons.wikimedia.org/wiki/File:Jiuxiang_Fairy_Falls.jpg',imageCredit:'Deadkid dk · CC BY-SA 3.0'},
+
+ '大石林 · 剑峰池':{image:'https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/Shilin_Yunnan_China_Shilin-Stone-Forest-01.jpg/1280px-Shilin_Yunnan_China_Shilin-Stone-Forest-01.jpg',imageSource:'https://commons.wikimedia.org/wiki/File:Shilin_Yunnan_China_Shilin-Stone-Forest-01.jpg',imageCredit:'CEphoto, Uwe Aranas · CC BY-SA 3.0'},
+
+ '小石林 · 阿诗玛石':{image:'https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Shilin_Yunnan_China_Shilin-Stone-Forest-03.jpg/1280px-Shilin_Yunnan_China_Shilin-Stone-Forest-03.jpg',imageSource:'https://commons.wikimedia.org/wiki/File:Shilin_Yunnan_China_Shilin-Stone-Forest-03.jpg',imageCredit:'CEphoto, Uwe Aranas · CC BY-SA 3.0'},
+
+ '乃古石林（加选）':{image:'https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Shilin_Yunnan_China_Shilin-Stone-Forest-05.jpg/1280px-Shilin_Yunnan_China_Shilin-Stone-Forest-05.jpg',imageSource:'https://commons.wikimedia.org/wiki/File:Shilin_Yunnan_China_Shilin-Stone-Forest-05.jpg',imageCredit:'CEphoto, Uwe Aranas · CC BY-SA 3.0'},
+
+ '青龙山观景台':{image:'https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Puzhehei_in_Yunnan%2C_China.jpg/1280px-Puzhehei_in_Yunnan%2C_China.jpg',imageSource:'https://commons.wikimedia.org/wiki/File:Puzhehei_in_Yunnan,_China.jpg',imageCredit:'Zhangmoon618 · CC BY-SA 3.0'},
+
+ '普者黑村 · 湖岸栈道':{image:'https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Puzhehei_Yunnan_-_panoramio.jpg/1280px-Puzhehei_Yunnan_-_panoramio.jpg',imageSource:'https://commons.wikimedia.org/wiki/File:Puzhehei_Yunnan_-_panoramio.jpg',imageCredit:'Anders Johnson · CC BY 3.0'},
+
+ '仙人洞村':{image:'https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Puzhehei_Yunnan_-_panoramio_%283%29.jpg/1280px-Puzhehei_Yunnan_-_panoramio_%283%29.jpg',imageSource:'https://commons.wikimedia.org/wiki/File:Puzhehei_Yunnan_-_panoramio_(3).jpg',imageCredit:'Anders Johnson · CC BY 3.0'},
+
+ '湖上游船（运营视情况）':{image:'https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Puzhehei_Yunnan_-_panoramio_%284%29.jpg/1280px-Puzhehei_Yunnan_-_panoramio_%284%29.jpg',imageSource:'https://commons.wikimedia.org/wiki/File:Puzhehei_Yunnan_-_panoramio_(4).jpg',imageCredit:'Anders Johnson · CC BY 3.0'},
+
+ '多依树观景台':{image:'https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/1_yuanyang_rice_terrace_duoyishu_sunrise_2012.jpg/1280px-1_yuanyang_rice_terrace_duoyishu_sunrise_2012.jpg',imageSource:'https://commons.wikimedia.org/wiki/File:1_yuanyang_rice_terrace_duoyishu_sunrise_2012.jpg',imageCredit:'Chensiyuan · CC BY-SA 4.0'},
+
+ '坝达梯田':{image:'https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/1_yuanyang_county_rice_terrace_bada_view_2012.jpg/1280px-1_yuanyang_county_rice_terrace_bada_view_2012.jpg',imageSource:'https://commons.wikimedia.org/wiki/File:1_yuanyang_county_rice_terrace_bada_view_2012.jpg',imageCredit:'Chensiyuan · CC BY-SA 4.0'},
+
+ '阿者科村':{image:'https://img2.chinadaily.com.cn/images/202411/15/6736d71ca310f1268d84ed48.jpeg',imageSource:'https://en.chinaculture.org/a/202411/15/WS6736b8f4a310f1265a1cd96e.html',imageCredit:'China Daily / China Culture · 来源页'},
+
+ '箐口梯田 · 民俗村':{image:'https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Hani_Rice_Terraces_%2853696480740%29.jpg/1280px-Hani_Rice_Terraces_%2853696480740%29.jpg',imageSource:'https://commons.wikimedia.org/wiki/File:Hani_Rice_Terraces_(53696480740).jpg',imageCredit:'xiquinhosilva · CC BY 2.0 · 元阳梯田区域参考'},
+
+ '石屏古城':{image:'https://dimg04.c-ctrip.com/images/1me1z12000qr8e9962157_R_640_10000_Q90.jpg?proc=source%2Ftripcommunity',imageSource:'https://gs.ctrip.com/html5/you/sight/shiping2191/1416891.html',imageCredit:'携程景点图源 · 来源页'},
+
+ '石屏豆腐 · 市井小吃':{image:'https://image.ku.lifeweek.com.cn/content/1/721/151428706380613.jpg?x-oss-process=image%2Fresize%2Ch_500',imageSource:'https://ny.zdline.cn/h5/article/detailAuth.do?artId=24490',imageCredit:'三联生活周刊图源 · 来源页'},
+
+ '异龙湖 · 湖岸步道':{image:'https://www.ynxc.gov.cn/uploadfile/s61/2026/0428/20260428090207588.jpg',imageSource:'https://www.ynxc.gov.cn/html/2026/ggzslm_0422/3033437.html',imageCredit:'云南省级媒体图源 · 来源页'},
+
+ '郑营村（加选）':{image:'https://honghe.yunnan.cn/pic/003/055/259/00305525976_edf95065.jpg',imageSource:'https://honghe.yunnan.cn/system/2023/06/20/032636757.shtml',imageCredit:'云南网 · 来源页'}
+
+};
+
+destinations.flatMap(d=>d.pois).forEach(p=>{const photo=scenicPhotos[p.name];if(photo)Object.assign(p,photo);});
+const availablePhotos={
+ '荫翠峡':{image:'https://boot-img.xuexi.cn/image/1005/process/92c86d7495364b1daa3ea3748e3c1edf.jpg',imageSource:'https://www.xakpw.com/single/19708',imageCredit:'西安科普网 · 九乡荫翠峡'},
+ '惊魂峡 · 雄狮厅':{image:'https://culture.yunnan.cn/pic/003/048/809/00304880966_963ce510.jpg',imageSource:'https://culture.yunnan.cn/system/2022/07/23/032199286.shtml',imageCredit:'云南网 · 雄狮大厅'},
+ '神田 · 雌雄双瀑':{image:'https://culture.yunnan.cn/pic/003/048/809/00304880965_a8ba3e81.jpg',imageSource:'https://culture.yunnan.cn/system/2022/07/23/032199286.shtml',imageCredit:'云南网 · 神田'},
+ '大石林 · 剑峰池':{image:'https://p9.itc.cn/q_70/images03/20231211/07cc436e9a0044079c76a6cda10889ff.jpeg',imageSource:'https://www.sohu.com/a/743228458_121124406',imageCredit:'搜狐 · 石林景区'},
+ '小石林 · 阿诗玛石':{image:'https://dimg04.c-ctrip.com/images/1me2t12000ip5f1m8BD73.jpg?proc=source%2Ftripcommunity',imageSource:'https://gs.ctrip.com/html5/you/sight/shilin271/1485665.html',imageCredit:'携程 · 阿诗玛石'},
+ '乃古石林（加选）':{image:'https://newbbs-fd.zol-img.com.cn/t_s1200x5000/g4/M0A/06/07/Cg-4zFUCPomIVbLRAAUznt_fNJcAAWoLgCOenAABTO2314.jpg',imageSource:'https://bbs.zol.com.cn/dcbbs/d268_166137.html',imageCredit:'中关村在线摄影论坛 · 乃古石林'},
+ '青龙山观景台':{image:'https://5b0988e595225.cdn.sohucs.com/images/20190731/5d4192cfddc043fb99066ed0a30be8a6.jpeg',imageSource:'https://www.sohu.com/picture/330624570',imageCredit:'搜狐 · 青龙山俯瞰普者黑'},
+ '普者黑村 · 湖岸栈道':{image:'https://newbbs-fd.zol-img.com.cn/t_s1200x5000/g7/M00/04/01/ChMkLGarCUOIJO0EABV1V-Kw2n4AAhRBgPSz-UAFXVv960.jpg',imageSource:'https://bbs.zol.com.cn/dcbbs/d232_890201_0.html',imageCredit:'中关村在线摄影论坛 · 普者黑湖岸'},
+ '仙人洞村':{image:'https://p4.itc.cn/q_70/images03/20211120/9b13df43ab4a425cbf3dc4d4626e5385.jpeg',imageSource:'https://www.sohu.com/a/502325865_121119240',imageCredit:'搜狐 · 仙人洞村'},
+ '湖上游船（运营视情况）':{image:'https://x0.ifengimg.com/res/2023/47C1DDB037344718B909C20CFF5515E8B854AD14_size1346_w1000_h819.png',imageSource:'https://news.ifeng.com/c/8QirsMqnc9m',imageCredit:'凤凰网 · 普者黑游船'},
+ '多依树观景台':{image:'https://newbbs-fd.zol-img.com.cn/t_s1200x5000/g7/M00/09/03/ChMkK2a2FSuIHmq7AAmK8JqB1wEAAhlfAGFNqEACYsI548.jpg',imageSource:'https://bbs.zol.com.cn/dcbbs/d1061_190826_0.html',imageCredit:'中关村在线摄影论坛 · 多依树梯田'},
+ '坝达梯田':{image:'https://img.pconline.com.cn/images/upload/upc/tx/photoblog/2304/20/c1/361523932_1681961622627_mthumb.jpg',imageSource:'https://dp.pconline.com.cn/photo/list_5211674.html',imageCredit:'太平洋科技摄影部落 · 坝达梯田'},
+ '阿者科村':{image:'https://www.kunming.cn/news/upload/resources/image/2026/02/25/2054405_2048x2048.jpeg',imageSource:'https://www.kunming.cn/news/c/2026-02-25/14020671.shtml',imageCredit:'昆明信息港 · 阿者科村'},
+ '箐口梯田 · 民俗村':{image:'https://www.zgjtb.com/zhitong/2024-11/08/439154_d8587c81-849f-4471-bdf5-98ebca08205b_3231x2213copy.jpg',imageSource:'https://www.zgjtb.com/zhitong/2024-11/08/content_439154.html',imageCredit:'中国交通新闻网 · 箐口村'},
+ '澄江化石地自然博物馆':{image:'https://q4.itc.cn/q_70/images03/20250716/321392def54b40ca9c1160aea9aac5f7.jpeg',imageSource:'https://www.sohu.com/a/914373228_121284943',imageCredit:'新华社图片 · 澄江化石地博物馆'},
+ '碧色寨滇越铁路历史文化公园':{image:'https://dimg04.c-ctrip.com/images/0103q120008wfmyl7B0EF_W_1024_0_Q90.jpg?proc=autoorient',imageSource:'https://you.ctrip.com/travels/100007/4027604.html',imageCredit:'携程游记 · 碧色寨车站'},
+ '东风韵艺术小镇':{image:'https://dimg04.c-ctrip.com/images/1mh5712000sdjw5ey9811_W_640_10000.jpg?proc=autoorient',imageSource:'https://you.ctrip.com/sight/mile1342/5073332.html',imageCredit:'携程 · 东风韵艺术小镇'},
+ '湖泉生态园 · 温泉':{image:'https://youimg1.c-ctrip.com/target/100m0o000000fibmw078A.jpg',imageSource:'https://touch.travel.qunar.com/comment/10152983579',imageCredit:'去哪儿攻略 · 湖泉生态园'},
+ '禄充风景区 · 笔架山':{image:'https://newbbs-fd.zol-img.com.cn/t_s1200x5000/g7/M00/0E/04/ChMkK2gv3yOIbXbuAAT9VIGCy6AAAstywNu5GAABP1s546.jpg',imageSource:'https://bbs.zol.com.cn/dcbbs/d34019_165110.html',imageCredit:'中关村在线摄影论坛 · 禄充笔架山'},
+ '建水文庙':{image:'https://dimg04.c-ctrip.com/images/1mh1d12000c3cg5ti3986_W_640_10000.jpg?proc=autoorient',imageSource:'https://you.ctrip.com/sight/jianshui2151/17551.html',imageCredit:'携程 · 建水文庙'}
+};
+destinations.flatMap(d=>d.pois).forEach(p=>{const photo=availablePhotos[p.name];if(photo)Object.assign(p,photo);});
+const itineraryOrder=['kunming','fuxian','yuanyang','jianshui','mengzi','kaiyuan','mile','shilin','jiuxiang','puzhehei','wenshan','shiping'];
+destinations.sort((a,b)=>itineraryOrder.indexOf(a.id)-itineraryOrder.indexOf(b.id));
+
+function amapSearchUrl(city,keyword){const params=new URLSearchParams({keyword:keyword||city.name,city:city.name,view:'map',callnative:'0',src:'yunnan-guide'});return 'https://uri.amap.com/search?'+params.toString();}
+function renderLocalMap(focus=''){
+ const city=destinations.find(item=>item.id===activeCity),canvas=document.getElementById('localMapCanvas'),tiles=document.getElementById('localMapTiles'),pins=document.getElementById('localMapPins'),focusLabel=document.getElementById('localMapFocus'),openLink=document.getElementById('localMapOpen');
+ if(!city||!canvas||!tiles||!pins)return;
+ const entries=[...city.pois.map(p=>({name:p.name,query:city.name+' '+p.name,kind:'play'})),...customPlaces.filter(p=>p.city===city.id).map(p=>({name:p.name,query:city.name+' '+(p.address||p.name),kind:p.category==='food'?'food':'play'}))];
+ pins.innerHTML=entries.map((p,i)=>`<a href="${esc(amapSearchUrl(city,p.query))}" target="_blank" rel="noopener noreferrer" data-local-pin="${i}" class="local-map-pin ${p.kind==='food'?'food':''}">${p.kind==='food'?'● ':'• '}${esc(p.name)}</a>`).join('');
+ const state={lng:locs[city.id][0],lat:locs[city.id][1],zoom:12};
+ const size=()=>256*2**state.zoom;
+ const x=lng=>(lng+180)/360*size();
+ const y=lat=>(1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2*size();
+ const lngOf=px=>px/size()*360-180;
+ const latOf=py=>Math.atan(Math.sinh(Math.PI*(1-2*py/size())))*180/Math.PI;
+ const draw=()=>{
+  const rect=canvas.getBoundingClientRect(),left=x(state.lng)-rect.width/2,top=y(state.lat)-rect.height/2,minX=Math.floor(left/256),maxX=Math.floor((left+rect.width)/256),minY=Math.floor(top/256),maxY=Math.floor((top+rect.height)/256),limit=2**state.zoom;
+  let html='';for(let tx=minX;tx<=maxX;tx++)for(let ty=minY;ty<=maxY;ty++){if(ty<0||ty>=limit)continue;const tileX=((tx%limit)+limit)%limit;html+=`<img class="local-map-tile" alt="" draggable="false" loading="lazy" src="https://webrd02.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;scale=1&amp;style=7&amp;x=${tileX}&amp;y=${ty}&amp;z=${state.zoom}" style="left:${Math.round(tx*256-left)}px;top:${Math.round(ty*256-top)}px">`;}
+  tiles.innerHTML=html;
+  const marker=canvas.querySelector('.local-map-marker'),mx=x(locs[city.id][0])-left,my=y(locs[city.id][1])-top;marker.style.left=mx+'px';marker.style.top=my+'px';marker.style.display=mx>=0&&mx<=rect.width&&my>=0&&my<=rect.height?'block':'none';
+ };
+ let drag=null;
+ canvas.addEventListener('pointerdown',event=>{if(event.target.closest('button'))return;drag={x:event.clientX,y:event.clientY,lng:state.lng,lat:state.lat};canvas.setPointerCapture(event.pointerId);canvas.classList.add('dragging');});
+ canvas.addEventListener('pointermove',event=>{if(!drag)return;state.lng=lngOf(x(drag.lng)-(event.clientX-drag.x));state.lat=latOf(y(drag.lat)-(event.clientY-drag.y));draw();});
+ const stop=()=>{drag=null;canvas.classList.remove('dragging')};canvas.addEventListener('pointerup',stop);canvas.addEventListener('pointercancel',stop);
+ canvas.querySelectorAll('[data-map-zoom]').forEach(button=>button.addEventListener('click',()=>{state.zoom=Math.max(5,Math.min(17,state.zoom+Number(button.dataset.mapZoom)));draw();}));
+ canvas.addEventListener('wheel',event=>{event.preventDefault();state.zoom=Math.max(5,Math.min(17,state.zoom+(event.deltaY<0?1:-1)));draw();},{passive:false});
+ const show=query=>{focusLabel.textContent=query?query.replace(city.name+' ',''):city.name;openLink.href=amapSearchUrl(city,query||city.name);};
+ show(focus||city.name+' 景点');draw();
+}
+const cityDurations={kunming:'约3–6小时',fuxian:'约3–6小时',jianshui:'约4–8小时',mengzi:'约3–5小时',kaiyuan:'约2–4小时',mile:'约3–6小时',wenshan:'约2–3小时'};
+
+const originalDurations={kunming:['1–2小时','1小时','40–60分钟','1小时','40–60分钟'],fuxian:['1–2小时','1–1.5小时','20–40分钟','40–60分钟','40–60分钟','1–1.5小时'],jianshui:['1–2小时','45–75分钟','1–1.5小时','1–2小时','约半天','1–1.5小时','1小时'],mengzi:['1.5–2小时','40–60分钟','45–60分钟','30–45分钟','1–1.5小时'],mile:['1.5–2.5小时','1–2小时','2–3小时','1–2小时','1–1.5小时']};
+
+destinations.forEach(d=>d.pois.forEach((p,i)=>p.duration=p.duration||originalDurations[d.id]?.[i]||'约1小时'));
+
+const tabs = document.getElementById('tabs');
+
+const content = document.getElementById('cityContent');
+
+let activeCity = 'kunming';
+
+let selected = [];
+
+try { selected = JSON.parse(localStorage.getItem('yunnan-poi-selected') || '[]'); } catch(e) { selected = []; }
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+// 仅为自驾规划参考，连接是双向的，不预设环线方向；距离以景区/城区常用入口估算。
+
+const legs=[
+
+ ['kunming','jiuxiang','90–100','1小时20分–1小时50分'],
+
+ ['jiuxiang','shilin','35–45','40–60分钟'],
+
+ ['shilin','mile','55–70','1–1.5小时'],
+
+ ['mile','puzhehei','145–165','2.5–3小时'],
+ ['mengzi','kaiyuan','55–70','约1–1.5小时'],
+ ['kaiyuan','mile','90–100','约1–1.5小时'],
+ ['puzhehei','wenshan','100–120','约1.5–2小时'],
+ ['mengzi','wenshan','105–125','约1.5–2小时'],
+
+ ['puzhehei','mengzi','195–225','3–3.5小时'],
+
+ ['mengzi','yuanyang','130–150','2.5–3.5小时'],
+
+ ['yuanyang','jianshui','130–150','2.5–3小时'],
+
+ ['jianshui','shiping','45–55','45–60分钟'],
+
+ ['jianshui','fuxian','135–150','2–2.5小时'],
+
+ ['fuxian','kunming','60–75','1–1.5小时'],
+
+ ['mile','mengzi','125–145','1.5–2.5小时'],
+
+ ['fuxian','shilin','65–85','1–1.5小时'],
+
+ ['jianshui','mengzi','75–90','55–70分钟'],
+
+ ['shilin','kunming','80–95','1–1.5小时'],
+
+ ['mile','jiuxiang','90–105','1小时15分–1小时35分']
+
+].map(([a,b,km,time],i)=>({a,b,km,time,i}));
+
+const locs={kunming:[102.7075,25.0429],jiuxiang:[103.3811,25.0689],shilin:[103.3246,24.8157],mile:[103.4127,24.4139],puzhehei:[104.1295,24.1272],mengzi:[103.38,23.37],yuanyang:[102.7947,23.0922],shiping:[102.4906,23.7165],jianshui:[102.8241,23.6165],fuxian:[102.90,24.51],kaiyuan:[103.27,23.72],wenshan:[104.24,23.37],airport:[102.9397246,25.1087786]};
+
+const planRoutes=[
+ {date:'2026-12-29',label:'12/29',text:'昆明长水机场 · 柏曼酒店（T1附近）',color:'#c78355',places:['airport'],paths:[]},
+ {date:'2026-12-30',label:'12/30',text:'昆明 → 抚仙湖 → 元阳梯田',color:'#397c9a',places:['airport','fuxian','yuanyang'],paths:[['airport','fuxian','yuanyang']]},
+ {date:'2026-12-31',label:'12/31',text:'元阳梯田 → 建水 → 蒙自',color:'#8c67a8',places:['yuanyang','jianshui','mengzi'],paths:[['yuanyang','jianshui','mengzi']]},
+ {date:'2027-01-01',label:'01/01',text:'蒙自 → 开远 → 弥勒',color:'#bd8b2f',places:['mengzi','kaiyuan','mile'],paths:[['mengzi','kaiyuan','mile']]},
+ {date:'2027-01-02',label:'01/02',text:'弥勒 → 石林 → 九乡 → 昆明',color:'#397b64',places:['mile','shilin','jiuxiang','kunming'],paths:[['mile','shilin','jiuxiang','kunming']]},
+ {date:'2027-01-03',label:'01/03',text:'10:00 抵达昆明长水机场 · 返程',color:'#bb6262',places:['airport'],paths:[]}
+];
+let activePlanDate='2026-12-30';
+
+const labelOffsets={kunming:[14,-34],jiuxiang:[12,-34],shilin:[12,-22],mile:[12,11],puzhehei:[-106,-27],mengzi:[12,7],yuanyang:[12,-23],shiping:[-94,-28],jianshui:[12,6],fuxian:[-104,-31],kaiyuan:[12,-27],wenshan:[-94,11]};
+
+const mobileLabelOffsets={kunming:[-18,-38],jiuxiang:[-65,-35],shilin:[-66,10],mile:[-60,-35],puzhehei:[-85,-37],mengzi:[-59,12],yuanyang:[-35,12],shiping:[-62,10],jianshui:[-16,-37],fuxian:[-83,-31],kaiyuan:[8,-34],wenshan:[-65,13]};
+const mapSvg=document.querySelector('.map-svg');
+
+const mobileMap=()=>window.matchMedia('(max-width:700px)').matches;
+const coord=id=>mobileMap()?({x:Math.round(45+(locs[id][0]-102.35)/1.97*385),y:Math.round(46+(25.13-locs[id][1])/2.22*520)}):({x:Math.round(84+(locs[id][0]-102.35)/1.97*836),y:Math.round(42+(25.13-locs[id][1])/2.22*415)});
+
+function dailyPlanOverlay(){const plan=planRoutes.find(x=>x.date===activePlanDate)||planRoutes[1];const points=plan.places.map(id=>coord(id));const xs=points.map(p=>p.x),ys=points.map(p=>p.y);const cx=(Math.min(...xs)+Math.max(...xs))/2,cy=(Math.min(...ys)+Math.max(...ys))/2;const rx=Math.min(450,Math.max(42,(Math.max(...xs)-Math.min(...xs))/2+34)),ry=Math.min(220,Math.max(29,(Math.max(...ys)-Math.min(...ys))/2+27));const paths=plan.paths.map(ids=>`<polyline points="${ids.map(id=>{const p=coord(id);return `${p.x},${p.y}`;}).join(' ')}" fill="none" stroke="${plan.color}" stroke-opacity=".82" stroke-width="4" stroke-dasharray="9 7" stroke-linecap="round" stroke-linejoin="round"/>`).join('');const stops=[...new Set(plan.places)].map(id=>{const p=coord(id);return `<circle cx="${p.x}" cy="${p.y}" r="17" fill="${plan.color}" fill-opacity=".08" stroke="${plan.color}" stroke-width="2.4" stroke-opacity=".88" stroke-dasharray="4 3"/>`;}).join('');return `<g class="daily-plan-overlay" aria-label="${esc(plan.label)}行程范围"><ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="${plan.color}" fill-opacity=".035" stroke="${plan.color}" stroke-width="3" stroke-opacity=".72" stroke-dasharray="10 7" vector-effect="non-scaling-stroke"/>${paths}${stops}</g>`;}
+
+function airportMarker(){if(!planRoutes.find(p=>p.date===activePlanDate)?.places.includes('airport'))return '';const p=coord('airport');return `<g class="map-airport"><circle cx="${p.x}" cy="${p.y}" r="7" fill="#bc7047" stroke="white" stroke-width="3"/><rect x="${p.x+10}" y="${p.y+9}" width="86" height="27" rx="8" fill="#fffefa" stroke="#d8c3b2"/><text x="${p.x+53}" y="${p.y+27}" text-anchor="middle" fill="#855c43" font-size="11" font-weight="700">长水机场</text><title>昆明长水机场 · 位置参考点</title></g>`;}
+
+function refreshPlanDayPicker(){const holder=document.getElementById('mapDayButtons');if(!holder)return;if(!holder.children.length){holder.innerHTML=planRoutes.map(p=>`<button class="map-day-button" type="button" data-map-day="${p.date}" aria-pressed="false">${p.label}</button>`).join('');holder.querySelectorAll('[data-map-day]').forEach(btn=>btn.addEventListener('click',()=>selectPlanDay(btn.dataset.mapDay)));}holder.querySelectorAll('[data-map-day]').forEach(btn=>btn.setAttribute('aria-pressed',String(btn.dataset.mapDay===activePlanDate)));const plan=planRoutes.find(x=>x.date===activePlanDate)||planRoutes[1],info=document.getElementById('mapDayInfo');if(info)info.innerHTML=`<strong>${esc(plan.label)}</strong>　${esc(plan.text)}`;}
+
+function selectPlanDay(date,scrollToMap=false){if(!planRoutes.some(x=>x.date===date))return;activePlanDate=date;renderMap();refreshPlanDayPicker();if(scrollToMap)document.querySelector('.map-section')?.scrollIntoView({behavior:'smooth',block:'start'});}
+
+function renderMap(){
+
+ mapSvg.setAttribute('viewBox',mobileMap()?'0 0 480 580':'0 0 980 510');mapSvg.setAttribute('aria-label','滇东南目的地可点击路线关系图');
+
+ const paths=legs.map(l=>{const a=coord(l.a),b=coord(l.b);return `<line data-leg="${l.i}" class="map-link" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"><title>${esc(destinations.find(d=>d.id===l.a).name)} ↔ ${esc(destinations.find(d=>d.id===l.b).name)} · 路网估算约${l.km}公里 · ${l.time}</title></line>`;}).join('');
+
+ const distanceLabels=legs.map(l=>{const a=coord(l.a),b=coord(l.b),x=Math.round((a.x+b.x)/2),y=Math.round((a.y+b.y)/2),label=`约${l.km}公里`,from=destinations.find(d=>d.id===l.a).name,to=destinations.find(d=>d.id===l.b).name;return `<g class="route-distance-label" data-leg="${l.i}" tabindex="0" role="button" aria-label="${esc(from)} ↔ ${esc(to)}，路网估算约${esc(l.km)}公里" transform="translate(${x} ${y})"><text text-anchor="middle" dominant-baseline="central">${esc(label)}</text><title>${esc(from)} ↔ ${esc(to)} · 路网估算约${esc(l.km)}公里 · ${esc(l.time)}</title></g>`;}).join('');
+ const nodes=destinations.map(d=>{const {x,y}=coord(d.id);const [dx,dy]=(mobileMap()?mobileLabelOffsets:labelOffsets)[d.id];const w=mobileMap()?(d.name.length>=4?78:d.name.length===3?65:55):(d.name.length>=4?96:d.name.length===3?78:70);return `<g class="map-place ${d.id===activeCity?'active':''} ${['puzhehei','wenshan'].includes(d.id)?'optional':''}" data-city="${d.id}" tabindex="0" role="button" aria-label="查看${esc(d.name)}的景点与游玩时长"><circle class="pin" cx="${x}" cy="${y}" r="9" fill="#267565" stroke="#fffefa" stroke-width="4"/><rect class="name-plate" x="${x+dx}" y="${y+dy}" width="${w}" height="${mobileMap()?25:30}" rx="10" fill="${d.id===activeCity?'#173d38':'#fffefa'}" stroke="#a6bdb1"/><text x="${x+dx+w/2}" y="${y+dy+(mobileMap()?17:20)}" text-anchor="middle" fill="${d.id===activeCity?'white':'#305e53'}" font-size="${mobileMap()?11:13}">${esc(d.name)}</text><title>点击查看${esc(d.name)}景点</title></g>`;}).join('');
+
+ mapSvg.innerHTML=`<defs><linearGradient id="terrainNew" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eef2e6"/><stop offset="1" stop-color="#dfece7"/></linearGradient></defs><rect x="0" y="0" width="${mobileMap()?480:980}" height="${mobileMap()?580:510}" rx="16" fill="url(#terrainNew)"/><g fill="none" stroke="#c8d9cd" stroke-width="1.1" opacity=".7"><path d="M25 110 Q230 40 420 90 T950 100"/><path d="M0 250 Q240 190 450 250 T980 265"/><path d="M20 375 Q245 320 470 380 T980 400"/><path d="M200 10 Q145 210 260 490"/><path d="M630 0 Q555 220 690 510"/></g><text x="24" y="30" font-size="13" fill="#54756b">北 ↑</text>${dailyPlanOverlay()}${paths}${airportMarker()}${nodes}${distanceLabels}`;
+
+ mapSvg.querySelectorAll('[data-city]').forEach(g=>{const open=()=>setActiveCity(g.dataset.city,true);g.addEventListener('click',open);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});});
+
+ mapSvg.querySelectorAll('[data-leg]').forEach(g=>g.addEventListener('click',()=>selectLeg(+g.dataset.leg)));
+
+ mapSvg.querySelectorAll('.route-distance-label').forEach(g=>g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectLeg(+g.dataset.leg);}}));
+
+}
+
+
+
+
+
+
+
+function selectLeg(i){mapSvg.querySelectorAll('[data-leg]').forEach(x=>x.classList.toggle('active',+x.dataset.leg===i));}
+
+function setActiveCity(id,scroll=false){activeCity=id;renderTabs();renderCity();renderMap();if(scroll)document.getElementById('cityContent').scrollIntoView({behavior:'smooth',block:'start'});}
+
+function renderTabs(){
+
+  tabs.innerHTML = destinations.map((city,i)=>`<button class="tab ${city.id===activeCity?'active':''}" role="tab" aria-selected="${city.id===activeCity}" aria-controls="panel-${city.id}" data-tab="${city.id}">${city.name}</button>`).join('');
+
+  tabs.querySelectorAll('[data-tab]').forEach(btn=>btn.addEventListener('click',()=>setActiveCity(btn.dataset.tab)));
+
+}
+
+function renderCity(){
+
+ const city=destinations.find(x=>x.id===activeCity);
+
+ content.innerHTML=`<section class="city-panel active" id="panel-${city.id}" role="tabpanel">
+
+  <div class="city-head"><div class="en">${esc(city.en)}</div><h2>${esc(city.name)}${['puzhehei','wenshan'].includes(city.id)?'<span class="optional-badge">备选</span>':''}</h2><p>${esc(city.subtitle)}。${esc(city.intro)}</p><span class="city-time">⏱ 整站建议游览：${esc(city.duration||cityDurations[city.id]||'约半天')}</span></div>
+
+  <section class="local-map-section"><div class="local-map-heading"><h3>景点与美食地图</h3><span id="localMapFocus"></span><a id="localMapOpen" target="_blank" rel="noopener noreferrer">打开高德 ↗</a></div><div class="local-map-canvas" id="localMapCanvas" role="img" aria-label="${esc(city.name)}高德地图"><div class="local-map-tiles" id="localMapTiles"></div><div class="local-map-marker" aria-hidden="true"></div><div class="local-map-controls"><button type="button" data-map-zoom="1" aria-label="放大地图">+</button><button type="button" data-map-zoom="-1" aria-label="缩小地图">−</button></div><span class="local-map-credit">高德地图</span></div><div class="local-map-pins" id="localMapPins"></div></section>
+
+  <div class="poi-list">${city.pois.map((p,i)=>{
+
+    const key=city.name+'｜'+p.name; const isSelected=selected.includes(key);
+
+    return `<details class="poi">
+
+      <summary>
+
+       <div class="poi-media ${p.image?'':'no-photo'}">${p.image?`<img src="${esc(p.image)}" alt="${esc(p.name)}景点照片" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#dbe7dc,#b8cec1)'">`:'<span aria-hidden="true">✺</span>'}</div>
+
+       <div class="poi-copy"><div class="poi-titleline"><span class="poi-title">${esc(p.name)}</span><span class="poi-type">${esc(p.type)}</span></div><div class="poi-highlight">${esc(p.highlight)}</div><div class="poi-tags"><span class="duration">⏱ ${esc(p.duration)}</span>${p.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div></div>
+
+       <div class="chevron">⌄</div>
+
+      </summary>
+
+      <div class="poi-detail"><p>${esc(p.desc)}</p><div class="poi-links">${p.guide?`<a href="${esc(p.guide)}" target="_blank" rel="noopener noreferrer">↗ ${esc(p.guideLabel||'查看攻略')}</a>`:''}${p.imageSource?`<a class="photo-source" href="${esc(p.imageSource)}" target="_blank" rel="noopener noreferrer">图片来源 · ${esc(p.imageCredit||'查看来源页')}</a>`:''}<button class="tab" data-pick="${esc(key)}">${isSelected?'已加入备选':'＋ 加入备选'}</button></div></div>
+
+    </details>`;
+
+  }).join('')}</div>
+
+  <section class="custom-place-section"><div class="custom-place-toolbar"><button type="button" class="custom-place-add" id="addCustomPlace">＋ 添加景点</button></div><div class="custom-place-list" id="customPlaceList"></div></section>
+  <section class="food-section"><div class="food-heading"><h3>美食</h3><button type="button" class="custom-place-add" id="addFood">＋ 添加美食</button></div><div class="custom-place-list" id="foodList"></div></section>
+
+ </section>`;
+
+  renderCustomPlaces();
+  renderLocalMap();
+  content.querySelector('#addCustomPlace')?.addEventListener('click',()=>openCustomPlace(null,'play'));
+  content.querySelector('#addFood')?.addEventListener('click',()=>openCustomPlace(null,'food'));
+
+ content.querySelectorAll('[data-pick]').forEach(btn=>btn.addEventListener('click',()=>{
+
+   const key=btn.dataset.pick;
+
+   if(selected.includes(key)) selected=selected.filter(x=>x!==key); else selected.push(key);
+
+   try{localStorage.setItem('yunnan-poi-selected',JSON.stringify(selected));}catch(e){}
+   if(cloudBridge?.ready)cloudBridge.savePick(key,selected.includes(key)).catch(showCloudSaveError);
+
+   btn.textContent=selected.includes(key)?'已加入备选':'＋ 加入备选';
+
+   btn.style.background=selected.includes(key)?'#e1eee7':'#fffefa';
+
+   btn.style.borderColor=selected.includes(key)?'#9ab9a6':'#d7e0d8';
+
+
+ }));
+
+}
+
+const TRIP_PLAN_KEY='yunnan-trip-plan-v1';
+const TRIP_ASSET_DB='yunnan-trip-plan-assets-v1';
+const CUSTOM_PLACE_KEY='yunnan-custom-places-v1';
+const CUSTOM_PLACE_DB='yunnan-custom-place-assets-v1';
+let tripDraft={};
+try{const savedPlan=JSON.parse(localStorage.getItem(TRIP_PLAN_KEY)||'{}');if(savedPlan&&typeof savedPlan==='object')tripDraft=savedPlan;}catch(e){tripDraft={};}
+let customPlaces=[];
+try{const savedCustomPlaces=JSON.parse(localStorage.getItem(CUSTOM_PLACE_KEY)||'[]');if(Array.isArray(savedCustomPlaces))customPlaces=savedCustomPlaces;}catch(e){customPlaces=[];}
+let cloudBridge=null;
+const LOCAL_ARCHIVE_KEY='yunnan-before-cloud-backup-v1';
+const localArchive=(()=>{const current={days:JSON.parse(JSON.stringify(tripDraft)),places:JSON.parse(JSON.stringify(customPlaces)),picks:[...selected]};try{const saved=JSON.parse(localStorage.getItem(LOCAL_ARCHIVE_KEY)||'null');if(saved)return saved;if(Object.keys(current.days).length||current.places.length||current.picks.length)localStorage.setItem(LOCAL_ARCHIVE_KEY,JSON.stringify(current));}catch(e){}return current;})();
+const daySyncTimers=new Map();
+function showCloudSaveError(error){console.error('云端保存失败',error);const status=document.getElementById('collabTopStatus');if(status)status.textContent='同步失败';const dialogStatus=document.getElementById('collabStatus');if(dialogStatus)dialogStatus.textContent='同步失败，本机内容仍在当前浏览器';}
+function queueCloudDay(date){if(!cloudBridge?.ready||!date)return;clearTimeout(daySyncTimers.get(date));daySyncTimers.set(date,setTimeout(()=>{daySyncTimers.delete(date);cloudBridge.saveDay(date,tripDraft[date]||{}).catch(showCloudSaveError);},650));}
+
+function persistTripDraft(date){try{localStorage.setItem(TRIP_PLAN_KEY,JSON.stringify(tripDraft));queueCloudDay(date);return true;}catch(e){return false;}}
+
+function openTripAssetDB(){return new Promise((resolve,reject)=>{if(!window.indexedDB){reject(new Error('indexedDB unavailable'));return;}const req=indexedDB.open(TRIP_ASSET_DB,1);req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains('screenshots'))db.createObjectStore('screenshots');};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error||new Error('database open failed'));});}
+
+function tripAssetRequest(mode,key,value){return openTripAssetDB().then(db=>new Promise((resolve,reject)=>{const tx=db.transaction('screenshots',mode);const store=tx.objectStore('screenshots');const req=mode==='readonly'?store.get(key):value===undefined?store.delete(key):store.put(value,key);let result,failed=false;req.onsuccess=()=>{result=req.result;};req.onerror=()=>{failed=true;db.close();reject(req.error||new Error('asset request failed'));};tx.oncomplete=()=>{db.close();if(!failed)resolve(result);};tx.onerror=()=>{db.close();if(!failed)reject(tx.error||new Error('asset transaction failed'));};tx.onabort=()=>{db.close();if(!failed)reject(tx.error||new Error('asset transaction aborted'));};}));}
+
+function persistCustomPlaces(){try{localStorage.setItem(CUSTOM_PLACE_KEY,JSON.stringify(customPlaces));return true;}catch(e){return false;}}
+
+function openCustomPlaceDB(){return new Promise((resolve,reject)=>{if(!window.indexedDB){reject(new Error('indexedDB unavailable'));return;}const req=indexedDB.open(CUSTOM_PLACE_DB,1);req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains('photos'))db.createObjectStore('photos');};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error||new Error('database open failed'));});}
+
+function customPlaceAssetRequest(mode,key,value){return openCustomPlaceDB().then(db=>new Promise((resolve,reject)=>{const tx=db.transaction('photos',mode),store=tx.objectStore('photos'),req=mode==='readonly'?store.get(key):value===undefined?store.delete(key):store.put(value,key);let result,failed=false;req.onsuccess=()=>{result=req.result;};req.onerror=()=>{failed=true;db.close();reject(req.error||new Error('asset request failed'));};tx.oncomplete=()=>{db.close();if(!failed)resolve(result);};tx.onerror=()=>{db.close();if(!failed)reject(tx.error||new Error('asset transaction failed'));};tx.onabort=()=>{db.close();if(!failed)reject(tx.error||new Error('asset transaction aborted'));};}));}
+
+function customWebUrl(value){try{const url=new URL(value);return ['https:','http:'].includes(url.protocol)?url.href:'';}catch(e){return '';}}
+
+let customEditorImages=[];
+let customPlaceUrls=[];
+
+function renderCustomEditorImages(){const box=document.getElementById('customPlaceImages');if(!box)return;box.replaceChildren();customEditorImages.forEach((image,index)=>{const row=document.createElement('span');row.className='custom-place-image-row';const name=document.createElement('span');name.textContent=image.name||`图片 ${index+1}`;const remove=document.createElement('button');remove.type='button';remove.textContent='×';remove.setAttribute('aria-label',`移除${name.textContent}`);remove.addEventListener('click',()=>{customEditorImages=customEditorImages.filter(item=>item.id!==image.id);renderCustomEditorImages();});row.append(name,remove);box.appendChild(row);});}
+
+function openCustomPlace(place=null,category='play'){const dialog=document.getElementById('customPlaceEditor'),form=document.getElementById('customPlaceForm');form.reset();document.getElementById('customPlaceId').value=place?.id||'';document.getElementById('customPlaceTitle').textContent=place?'编辑地点攻略':'添加地点攻略';document.getElementById('customPlaceCity').value=place?.city||activeCity;document.getElementById('customPlaceCategory').value=place?.category||category;document.getElementById('customPlaceName').value=place?.name||'';document.getElementById('customPlaceType').value=place?.type||'';document.getElementById('customPlaceDuration').value=place?.duration||'';document.getElementById('customPlaceAddress').value=place?.address||'';document.getElementById('customPlaceSummary').value=place?.summary||'';document.getElementById('customPlaceGuide').value=place?.guide||'';document.getElementById('customPlaceStatus').textContent='';customEditorImages=Array.isArray(place?.images)?place.images.map(image=>({...image})):[];renderCustomEditorImages();dialog.showModal();}
+
+async function renderCustomPlaces(){
+  const lists={play:document.getElementById('customPlaceList'),food:document.getElementById('foodList')};
+  if(!lists.play||!lists.food)return;
+  customPlaceUrls.forEach(url=>URL.revokeObjectURL(url));
+  customPlaceUrls=[];
+  Object.values(lists).forEach(list=>list.replaceChildren());
+  for(const place of customPlaces.filter(item=>item.city===activeCity)){
+    const list=lists[place.category==='food'?'food':'play'];
+    const card=document.createElement('details');card.className='poi custom-place';
+    const summary=document.createElement('summary'),media=document.createElement('div');media.className='poi-media';
+    const firstImage=Array.isArray(place.images)?place.images[0]:null;
+    if(firstImage){
+      try{
+        const remoteUrl=firstImage.fileID&&cloudBridge?.ready?await cloudBridge.fileUrl(firstImage.fileID):'';
+        const blob=remoteUrl?null:await customPlaceAssetRequest('readonly',`${place.id}:${firstImage.id}`);
+        if(remoteUrl||blob){
+          const url=remoteUrl||URL.createObjectURL(blob);
+          if(blob)customPlaceUrls.push(url);
+          const link=document.createElement('a');link.href=url;link.target='_blank';link.rel='noopener noreferrer';
+          const img=document.createElement('img');img.src=url;img.alt=`${place.name}照片`;
+          link.appendChild(img);media.appendChild(link);
+        }else media.classList.add('no-photo');
+      }catch(e){media.classList.add('no-photo');}
+    }else media.classList.add('no-photo');
+    if(media.classList.contains('no-photo')){const star=document.createElement('span');star.setAttribute('aria-hidden','true');star.textContent='✺';media.appendChild(star);}
+    const copy=document.createElement('div');copy.className='poi-copy';
+    const titleLine=document.createElement('div');titleLine.className='poi-titleline';
+    const title=document.createElement('span');title.className='poi-title';title.textContent=place.name||'未命名地点';titleLine.appendChild(title);
+    if(place.type){const type=document.createElement('span');type.className='poi-type';type.textContent=place.type;titleLine.appendChild(type);}
+    const highlight=document.createElement('div');highlight.className='poi-highlight';highlight.textContent=place.summary||place.address||'';
+    const tags=document.createElement('div');tags.className='poi-tags';
+    if(place.duration){const duration=document.createElement('span');duration.className='duration';duration.textContent=`⏱ ${place.duration}`;tags.appendChild(duration);}
+    copy.append(titleLine,highlight,tags);
+    const chevron=document.createElement('div');chevron.className='chevron';chevron.textContent='⌄';
+    summary.append(media,copy,chevron);card.appendChild(summary);
+    const detail=document.createElement('div');detail.className='poi-detail';
+    if(place.guide){const guide=document.createElement('p');guide.className='custom-place-guide';guide.textContent=place.guide;detail.appendChild(guide);}
+    if(place.address){
+      const mapUrl=customWebUrl(place.address);
+      if(mapUrl){const link=document.createElement('a');link.className='custom-place-address';link.href=mapUrl;link.target='_blank';link.rel='noopener noreferrer';link.textContent='打开地图';detail.appendChild(link);}
+      else{const address=document.createElement('p');address.className='custom-place-guide';address.textContent=place.address;detail.appendChild(address);}
+    }
+    const tools=document.createElement('div');tools.className='custom-place-tools';
+    for(const [action,label] of [['edit','编辑'],['delete','删除']]){const button=document.createElement('button');button.type='button';button.dataset.customAction=action;button.dataset.customId=place.id;button.textContent=label;tools.appendChild(button);}
+    detail.appendChild(tools);card.appendChild(detail);list.appendChild(card);
+  }
+  document.querySelectorAll('[data-custom-action]').forEach(button=>button.addEventListener('click',async event=>{
+    event.preventDefault();event.stopPropagation();
+    const place=customPlaces.find(item=>item.id===button.dataset.customId);if(!place)return;
+    if(button.dataset.customAction==='edit'){openCustomPlace(place);return;}
+    if(!window.confirm(`删除“${place.name}”？`))return;
+    try{if(cloudBridge?.ready)await cloudBridge.deletePlace(place);}catch(error){showCloudSaveError(error);return;}
+    for(const image of place.images||[]){try{await customPlaceAssetRequest('readwrite',`${place.id}:${image.id}`);}catch(e){}}
+    customPlaces=customPlaces.filter(item=>item.id!==place.id);
+    persistCustomPlaces();renderCustomPlaces();renderLocalMap();
+  }));
+}
+
+function initCustomPlaces(){
+  const citySelect=document.getElementById('customPlaceCity');
+  citySelect.innerHTML=destinations.map(city=>`<option value="${esc(city.id)}">${esc(city.name)}</option>`).join('');
+  const dialog=document.getElementById('customPlaceEditor'),form=document.getElementById('customPlaceForm'),photos=document.getElementById('customPlacePhotos');
+  document.getElementById('customPlaceClose').addEventListener('click',()=>dialog.close());
+  document.getElementById('customPlaceCancel').addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
+  form.addEventListener('submit',async event=>{
+    event.preventDefault();
+    const status=document.getElementById('customPlaceStatus');status.textContent='保存中…';
+    const id=document.getElementById('customPlaceId').value||`place-${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
+    const previous=customPlaces.find(item=>item.id===id);
+    const entry={id,category:document.getElementById('customPlaceCategory').value,city:citySelect.value,
+      name:document.getElementById('customPlaceName').value.trim(),type:document.getElementById('customPlaceType').value.trim(),
+      duration:document.getElementById('customPlaceDuration').value.trim(),address:document.getElementById('customPlaceAddress').value.trim(),
+      summary:document.getElementById('customPlaceSummary').value.trim(),guide:document.getElementById('customPlaceGuide').value.trim(),
+      images:customEditorImages.map(image=>({...image}))};
+    try{
+      for(const file of Array.from(photos.files||[])){
+        if(!file.type.startsWith('image/'))continue;
+        const imageId=`${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
+        const fileID=cloudBridge?.ready?await cloudBridge.uploadImage(file):'';
+        await customPlaceAssetRequest('readwrite',`${id}:${imageId}`,file);
+        entry.images.push({id:imageId,name:file.name||'地点照片',fileID});
+      }
+      if(cloudBridge?.ready)await cloudBridge.savePlace(entry);
+      for(const image of previous?.images||[]){
+        if(!entry.images.some(saved=>saved.id===image.id)){
+          try{await customPlaceAssetRequest('readwrite',`${id}:${image.id}`);}catch(e){}
+        }
+      }
+      customPlaces=customPlaces.filter(item=>item.id!==id);customPlaces.push(entry);
+      if(!persistCustomPlaces())throw new Error('无法保存到本机浏览器');
+      dialog.close();photos.value='';
+      if(entry.city!==activeCity)setActiveCity(entry.city);
+      else{renderCustomPlaces();renderLocalMap(entry.address||entry.name);}
+    }catch(error){status.textContent=`保存失败：${error.message||'请重试'}`;showCloudSaveError(error);}
+  });
+}
+
+const tripShotRenderVersion=new WeakMap();
+async function drawTripShots(date){
+  const box=document.getElementById('planningShots');if(!box)return;
+  const version=(tripShotRenderVersion.get(box)||0)+1;tripShotRenderVersion.set(box,version);
+  box.querySelectorAll('a[href^="blob:"]').forEach(link=>URL.revokeObjectURL(link.href));box.replaceChildren();
+  const shots=Array.isArray(tripDraft[date]?.screenshots)?tripDraft[date].screenshots:[];
+  for(let i=0;i<shots.length;i++){
+    const shot=shots[i];
+    try{
+      const remoteUrl=shot.fileID&&cloudBridge?.ready?await cloudBridge.fileUrl(shot.fileID):'';
+      const blob=remoteUrl?null:await tripAssetRequest('readonly',`${date}:${shot.id}`);
+      if(tripShotRenderVersion.get(box)!==version)return;
+      if(!remoteUrl&&!blob)continue;
+      const item=document.createElement('div');item.className='planning-shot';
+      const link=document.createElement('a');link.href=remoteUrl||URL.createObjectURL(blob);link.target='_blank';link.rel='noopener noreferrer';
+      link.textContent=`打开截图 ${i+1}`;link.title=shot.name||'高德导航截图';
+      const remove=document.createElement('button');remove.type='button';remove.textContent='×';remove.setAttribute('aria-label',`删除第${i+1}张截图`);
+      remove.addEventListener('click',async()=>{
+        const current=tripDraft[date];
+        const next={...current,screenshots:current.screenshots.filter(x=>x.id!==shot.id)};
+        try{
+          if(cloudBridge?.ready)await cloudBridge.saveDay(date,next);
+          if(!shot.fileID)await tripAssetRequest('readwrite',`${date}:${shot.id}`);
+          tripDraft[date]=next;persistTripDraft();updateTripSummary(date);await drawTripShots(date);
+          document.getElementById('planningSaveStatus').textContent='已移除截图';
+        }catch(error){document.getElementById('planningSaveStatus').textContent='移除失败，请重试';showCloudSaveError(error);}
+      });
+      item.append(link,remove);box.appendChild(item);
+    }catch(e){document.getElementById('planningSaveStatus').textContent='无法读取已保存截图';}
+  }
+}
+
+function updateTripSummary(date){const article=[...document.querySelectorAll('[data-planning-day]')].find(x=>x.dataset.planningDay===date);if(!article)return;const current=tripDraft[date]||{},distance=(current.distance||'').trim(),time=(current.time||'').trim(),text=article.querySelector('[data-plan-summary]');if(text){text.textContent=distance&&time?`${distance} 公里 · ${time}`:distance?`${distance} 公里`:time?`${time}`:'';text.hidden=!distance&&!time;}const button=article.querySelector('[data-plan-edit]');if(button){button.textContent='编辑';button.setAttribute('aria-label',current.screenshots?.length?`编辑路程，已有${current.screenshots.length}张截图`:'编辑路程');}}
+
+function initTripPlanner(){
+  const dialog=document.getElementById('planningEditor'),distance=document.getElementById('planningDistance'),
+    time=document.getElementById('planningTime'),upload=document.getElementById('planningUpload'),status=document.getElementById('planningSaveStatus');
+  let editingDate='';
+  document.getElementById('planningEditorClose').addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
+  document.querySelectorAll('[data-planning-day]').forEach(article=>{
+    const date=article.dataset.planningDay;
+    const current=tripDraft[date]&&typeof tripDraft[date]==='object'?tripDraft[date]:{};
+    current.distance=typeof current.distance==='string'?current.distance:'';
+    current.time=typeof current.time==='string'?current.time:'';
+    current.screenshots=Array.isArray(current.screenshots)?current.screenshots:[];
+    tripDraft[date]=current;updateTripSummary(date);
+    article.querySelector('[data-plan-edit]').addEventListener('click',()=>{
+      editingDate=date;
+      const latest=tripDraft[date]||{distance:'',time:'',screenshots:[]};
+      const label=article.querySelector('.planning-day-top strong').textContent;
+      document.getElementById('planningEditorTitle').textContent=`${label} · 编辑路程与截图`;
+      distance.value=latest.distance||'';time.value=latest.time||'';
+      status.textContent=latest.screenshots?.length?`已有 ${latest.screenshots.length} 张截图`:'';
+      drawTripShots(date);dialog.showModal();
+    });
+  });
+  const onEdit=()=>{
+    if(!editingDate)return;
+    const current=tripDraft[editingDate]||{screenshots:[]};
+    current.distance=distance.value.trim();current.time=time.value.trim();tripDraft[editingDate]=current;
+    persistTripDraft(editingDate);updateTripSummary(editingDate);
+    status.textContent=cloudBridge?.ready?'同步中…':'已保存至本机';
+  };
+  distance.addEventListener('input',onEdit);time.addEventListener('input',onEdit);
+  upload.addEventListener('change',async()=>{
+    if(!editingDate)return;
+    const files=Array.from(upload.files||[]);if(!files.length)return;
+    status.textContent='保存中…';
+    const date=editingDate;
+    const current=tripDraft[date]||{distance:'',time:'',screenshots:[]};
+    for(const file of files){
+      if(!file.type.startsWith('image/'))continue;
+      const id=`${Date.now()}-${Math.random().toString(36).slice(2,9)}`;
+      try{
+        const fileID=cloudBridge?.ready?await cloudBridge.uploadImage(file):'';
+        await tripAssetRequest('readwrite',`${date}:${id}`,file);
+        current.screenshots.push({id,name:file.name||'高德路线截图',fileID});
+        tripDraft[date]=current;persistTripDraft(date);
+      }catch(error){status.textContent=`截图未能保存：${error.message||'请重试'}`;showCloudSaveError(error);break;}
+    }
+    upload.value='';updateTripSummary(date);await drawTripShots(date);
+    if(!status.textContent.includes('未能'))status.textContent=cloudBridge?.ready?'同步中…':`已保存 ${current.screenshots.length} 张截图`;
+  });
+}
+
+function initPlanningCollapse(){const draft=document.getElementById('planningDraft'),toggle=document.getElementById('planningToggle');if(!draft||!toggle)return;const refresh=()=>{const collapsed=draft.classList.contains('is-collapsed'),label=collapsed?'展开行程':'收起行程';toggle.setAttribute('aria-expanded',String(!collapsed));toggle.setAttribute('aria-label',label);toggle.title=label;toggle.textContent=collapsed?'＋':'−';};toggle.addEventListener('click',()=>{draft.classList.toggle('is-collapsed');refresh();});refresh();}
+
+function applyCloudSnapshot(snapshot){
+  if(!snapshot.hasContent){
+    document.getElementById('collabStatus').textContent='云端暂无行程修改，可上传本机旧内容';
+    return;
+  }
+  const pendingDays=[...daySyncTimers.keys()].map(date=>[date,tripDraft[date]]);
+  tripDraft=snapshot.days;
+  for(const [date,day] of pendingDays)tripDraft[date]=day;
+  customPlaces=snapshot.places;
+  selected=snapshot.picks;
+  try{
+    localStorage.setItem(TRIP_PLAN_KEY,JSON.stringify(tripDraft));
+    localStorage.setItem(CUSTOM_PLACE_KEY,JSON.stringify(customPlaces));
+    localStorage.setItem('yunnan-poi-selected',JSON.stringify(selected));
+  }catch(e){}
+  document.querySelectorAll('[data-planning-day]').forEach(article=>updateTripSummary(article.dataset.planningDay));
+  renderCity();
+}
+
+async function importLocalArchive(){
+  if(!cloudBridge?.ready)throw new Error('云端尚未连接');
+  const days=Object.entries(localArchive.days||{});
+  const places=localArchive.places||[];
+  const picks=localArchive.picks||[];
+  if(!days.length&&!places.length&&!picks.length)throw new Error('本机没有旧内容');
+  if(!window.confirm(`上传本机保存的 ${days.length} 天行程、${places.length} 个地点及 ${picks.length} 个备选？同名内容将更新云端。`))return;
+  const status=document.getElementById('collabStatus');status.textContent='正在上传本机内容…';
+  for(const [date,day] of days){
+    const screenshots=[];
+    for(const image of day.screenshots||[]){
+      let fileID=image.fileID||'';
+      if(!fileID){
+        const blob=await tripAssetRequest('readonly',`${date}:${image.id}`);
+        if(!blob)continue;
+        fileID=await cloudBridge.uploadImage(blob);
+      }
+      screenshots.push({...image,fileID});
+    }
+    await cloudBridge.saveDay(date,{...day,screenshots});
+  }
+  for(const place of places){
+    const images=[];
+    for(const image of place.images||[]){
+      let fileID=image.fileID||'';
+      if(!fileID){
+        const blob=await customPlaceAssetRequest('readonly',`${place.id}:${image.id}`);
+        if(!blob)continue;
+        fileID=await cloudBridge.uploadImage(blob);
+      }
+      images.push({...image,fileID});
+    }
+    await cloudBridge.savePlace({...place,images});
+  }
+  for(const key of picks)await cloudBridge.savePick(key,true);
+  localStorage.setItem('yunnan-local-imported-v1','true');
+  await cloudBridge.refresh();
+  status.textContent='本机旧内容已上传';
+}
+
+function initCollaboration(){
+  const button=document.getElementById('collabButton'),dialog=document.getElementById('collabDialog');
+  if(!window.TRIP_CLOUD_CONFIG?.envId||!window.createTripCloudSync)return;
+  button.hidden=false;
+  button.addEventListener('click',()=>dialog.showModal());
+  document.getElementById('collabClose').addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
+  const topStatus=document.getElementById('collabTopStatus'),status=document.getElementById('collabStatus');
+  const nickname=document.getElementById('collabNickname');
+  cloudBridge=window.createTripCloudSync({
+    onStatus(value){topStatus.textContent=value;status.textContent=value;},
+    onSnapshot:applyCloudSnapshot
+  });
+  document.getElementById('collabSaveName').addEventListener('click',async()=>{
+    try{await cloudBridge.setNickname(nickname.value);status.textContent='称呼已保存';}
+    catch(error){status.textContent=`保存失败：${error.message||'请重试'}`;}
+  });
+  document.getElementById('collabRefresh').addEventListener('click',async()=>{
+    try{await cloudBridge.refresh();status.textContent='已刷新';}
+    catch(error){status.textContent=`刷新失败：${error.message||'请重试'}`;}
+  });
+  document.getElementById('collabImport').addEventListener('click',()=>importLocalArchive().catch(error=>{
+    status.textContent=`上传失败：${error.message||'请重试'}`;
+  }));
+  cloudBridge.initialize().then(uid=>{
+    nickname.value=cloudBridge.nickname;
+    document.getElementById('collabIdentity').textContent=`当前浏览器标识：${uid}`;
+  }).catch(error=>{
+    console.error('CloudBase 连接失败',error);
+    topStatus.textContent='未连接';
+    status.textContent=`云端未连接：${error.message||'请稍后重试'}`;
+  });
+}
+
+let lastMapMode=mobileMap();
+initTripPlanner();
+initCustomPlaces();
+initPlanningCollapse();
+renderTabs();renderCity();renderMap();refreshPlanDayPicker();initCollaboration();window.addEventListener('resize',()=>{const next=mobileMap();if(next!==lastMapMode){lastMapMode=next;renderMap();renderLocalMap();}});
+
+</script>
+
+</body>
+
+</html>
+
