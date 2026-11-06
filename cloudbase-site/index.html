@@ -369,7 +369,7 @@ html,body{min-height:100%;height:auto;overflow-x:clip;overflow-y:visible}
    <label class="planning-field custom-place-wide"><span>地址 / 地图链接</span><input id="customPlaceAddress" maxlength="240"></label>
    <label class="planning-field custom-place-wide"><span>简短介绍</span><textarea id="customPlaceSummary" rows="2" maxlength="240"></textarea></label>
    <label class="planning-field custom-place-wide"><span>攻略内容</span><textarea id="customPlaceGuide" rows="5" maxlength="5000"></textarea></label>
-   <label class="planning-field custom-place-wide"><span>攻略链接（小红书等）</span><input id="customPlaceGuideUrl" type="text" inputmode="url" maxlength="1500" placeholder="粘贴链接或分享文案，自动带入首图"></label>
+   <label class="planning-field custom-place-wide"><span>攻略链接（小红书等）</span><input id="customPlaceGuideUrl" type="text" inputmode="url" maxlength="1500" placeholder="粘贴链接或小红书分享文案"></label>
   </div>
   <div class="planning-evidence"><label class="planning-upload">上传图片<input id="customPlacePhotos" type="file" accept="image/*" multiple></label><span id="customPlaceStatus" class="planning-save-status" aria-live="polite"></span></div>
   <div class="custom-place-images" id="customPlaceImages"></div>
@@ -934,7 +934,6 @@ function initCustomPlaces(){
       guideUrl:normalizeGuideUrl(document.getElementById('customPlaceGuideUrl').value)||normalizeGuideUrl(document.getElementById('customPlaceGuide').value),
       images:customEditorImages.map(image=>({...image}))};
     if(document.getElementById('customPlaceGuideUrl').value.trim()&&!entry.guideUrl){status.textContent='请填写有效的 http 或 https 攻略链接';return;}
-    let coverError='';
     try{
       for(const file of Array.from(photos.files||[])){
         if(!file.type.startsWith('image/'))continue;
@@ -942,19 +941,6 @@ function initCustomPlaces(){
         const fileID=cloudBridge?.ready?await cloudBridge.uploadImage(file):'';
         await customPlaceAssetRequest('readwrite',`${id}:${imageId}`,file);
         entry.images.push({id:imageId,name:file.name||'地点照片',fileID});
-      }
-      if(!entry.images.length&&entry.guideUrl&&cloudBridge?.ready){
-        const host=new URL(entry.guideUrl).hostname.toLowerCase();
-        if(['xhslink.cn','xhslink.com','xiaohongshu.com','www.xiaohongshu.com'].includes(host)){
-          status.textContent='正在读取小红书首图…';
-          try{
-            const file=await cloudBridge.fetchXhsCover(entry.guideUrl);
-            const imageId=`${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
-            const fileID=await cloudBridge.uploadImage(file);
-            await customPlaceAssetRequest('readwrite',`${id}:${imageId}`,file);
-            entry.images.push({id:imageId,name:file.name,fileID});
-          }catch(error){coverError=error.message||'首图读取失败';}
-        }
       }
       if(cloudBridge?.ready)await cloudBridge.savePlace(entry);
       for(const image of previous?.images||[]){
@@ -967,7 +953,6 @@ function initCustomPlaces(){
       dialog.close();photos.value='';
       if(entry.city!==activeCity)setActiveCity(entry.city);
       else{renderCustomPlaces();renderLocalMap(entry.address||entry.name);}
-      if(coverError)window.alert(`攻略链接已保存，首图暂未带入：${coverError}。可稍后重试或手动上传。`);
     }catch(error){status.textContent=`保存失败：${error.message||'请重试'}`;showCloudSaveError(error);}
   });
 }
