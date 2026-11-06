@@ -211,6 +211,15 @@
       savePick(key, selected) {
         return write(`pick_${hashKey(key)}`, { kind: 'pick', key, selected: !!selected }, '更新备选', key);
       },
+      async fetchXhsCover(url) {
+        if (!ready) throw new Error('云端尚未连接');
+        const response = await app.callFunction({ name: 'xhsCover', data: { url } });
+        if (response?.error) throw response.error;
+        const result = response?.result || response?.data?.result || response?.data;
+        if (!result?.ok || !result.imageBase64) throw new Error(result?.message || '首图读取失败');
+        const bytes = Uint8Array.from(atob(result.imageBase64), char => char.charCodeAt(0));
+        return new File([bytes], '小红书首图.jpg', { type: result.mime || 'image/jpeg' });
+      },
       async uploadImage(file) {
         if (!ready) throw new Error('云端尚未连接');
         const blob = await compactImage(file);
