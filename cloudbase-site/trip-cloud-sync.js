@@ -200,6 +200,7 @@
           address: String(place.address || '').slice(0, 240),
           summary: String(place.summary || '').slice(0, 240),
           guide: String(place.guide || '').slice(0, 5000),
+          guideUrl: String(place.guideUrl || '').slice(0, 1500),
           images: (place.images || []).map(item => ({ id: item.id, name: item.name || '', fileID: item.fileID || '' }))
         };
         return write(`place_${place.id}`, { kind: 'place', deleted: false, place: clean }, '编辑地点', clean.name);
