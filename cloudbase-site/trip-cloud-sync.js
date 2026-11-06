@@ -201,6 +201,8 @@
           summary: String(place.summary || '').slice(0, 240),
           guide: String(place.guide || '').slice(0, 5000),
           guideUrl: String(place.guideUrl || '').slice(0, 1500),
+          location: Number.isFinite(Number(place.location?.lng)) && Number.isFinite(Number(place.location?.lat))
+            ? { lng: Number(place.location.lng), lat: Number(place.location.lat) } : null,
           images: (place.images || []).map(item => ({ id: item.id, name: item.name || '', fileID: item.fileID || '' }))
         };
         return write(`place_${place.id}`, { kind: 'place', deleted: false, place: clean }, '编辑地点', clean.name);
@@ -210,6 +212,18 @@
       },
       savePick(key, selected) {
         return write(`pick_${hashKey(key)}`, { kind: 'pick', key, selected: !!selected }, '更新备选', key);
+      },
+      async fetchXhsCover(url) {
+        if (!config.coverApiUrl) throw new Error('首图服务尚未配置');
+        const response = await fetch(config.coverApiUrl, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url })
+        });
+        if (!response.ok) throw new Error(`首图服务暂不可用（${response.status}）`);
+        const result = await response.json();
+        if (!result?.ok || !result.imageBase64) throw new Error(result?.message || '首图读取失败');
+        const bytes = Uint8Array.from(atob(result.imageBase64), char => char.charCodeAt(0));
+        return new File([bytes], '小红书首图.jpg', { type: result.mime || 'image/jpeg' });
       },
       async uploadImage(file) {
         if (!ready) throw new Error('云端尚未连接');
