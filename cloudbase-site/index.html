@@ -291,6 +291,8 @@ html,body{min-height:100%;height:auto;overflow-x:clip;overflow-y:visible}
 .local-map-tiles{position:absolute;inset:0;pointer-events:none}
 .local-map-tile{position:absolute;width:256px;height:256px;max-width:none;pointer-events:none}
 .local-map-marker{position:absolute;left:50%;top:50%;width:13px;height:13px;transform:translate(-50%,-50%);border-radius:50%;background:#c78355;border:3px solid white;box-shadow:0 0 0 2px #c78355,0 2px 8px #3b2a4c80;pointer-events:none}
+.local-map-point-layer{position:absolute;inset:0;pointer-events:none}.local-map-place-marker{position:absolute;transform:translate(-50%,-100%);z-index:3;max-width:120px;border:1px solid #fff;border-radius:99px;background:#6f4d90;color:#fff;padding:4px 8px;font-family:inherit;font-size:11px;font-weight:600;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 2px 8px #34244455;pointer-events:auto;cursor:pointer}.local-map-place-marker.food{background:#b46c46}
+.custom-geo-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:1px 0 7px}.custom-geo-tools button{border:1px solid #aa93bf;border-radius:99px;background:#f5f0fa;color:#624779;padding:5px 10px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer}.custom-geo-tools small{font-size:11px;color:#776986}.custom-geo-map{position:relative;height:190px;overflow:hidden;border:1px solid #ddd2e7;border-radius:10px;background:#eae7ee;touch-action:none;cursor:crosshair;user-select:none}.custom-geo-map .local-map-tile{pointer-events:none}.custom-geo-marker{position:absolute;width:18px;height:18px;border:3px solid white;border-radius:50%;background:#b46c46;transform:translate(-50%,-50%);box-shadow:0 0 0 2px #b46c46,0 2px 8px #34244466;pointer-events:none}.custom-geo-zoom{position:absolute;right:9px;top:9px;display:grid;gap:3px}.custom-geo-zoom button{width:29px;height:29px;border:1px solid #d8cee1;border-radius:6px;background:#fff;color:#59416f;font-size:18px;cursor:pointer}.custom-geo-coords{margin-top:6px!important}
 .local-map-controls{position:absolute;right:9px;bottom:9px;display:grid;gap:3px}
 .local-map-controls button{width:32px;height:32px;border:1px solid #d9d4df;border-radius:7px;background:#fff;color:#301946;font-size:20px;line-height:1;cursor:pointer}
 .local-map-credit{position:absolute;left:7px;bottom:5px;padding:1px 4px;background:#ffffffcf;border-radius:3px;font-size:10px;color:#564666}
@@ -367,9 +369,10 @@ html,body{min-height:100%;height:auto;overflow-x:clip;overflow-y:visible}
    <label class="planning-field"><span>类别</span><input id="customPlaceType" maxlength="40"></label>
    <label class="planning-field"><span>建议游览时长</span><input id="customPlaceDuration" maxlength="32"></label>
    <label class="planning-field custom-place-wide"><span>地址 / 地图链接</span><input id="customPlaceAddress" maxlength="240"></label>
+   <div class="planning-field custom-place-wide"><span>地点位置</span><div class="custom-geo-tools"><button id="customPlaceAmapSearch" type="button">在高德搜索地点 ↗</button><small>在下方地图点选位置，保存后会标在该目的地的小地图上</small></div><div id="customGeoMap" class="custom-geo-map" aria-label="点选地点位置"><div id="customGeoTiles" class="local-map-tiles"></div><div id="customGeoMarker" class="custom-geo-marker" hidden></div><div class="custom-geo-zoom"><button type="button" data-geo-zoom="1" aria-label="放大选点地图">+</button><button type="button" data-geo-zoom="-1" aria-label="缩小选点地图">−</button></div></div><input id="customPlaceCoords" class="custom-geo-coords" type="text" inputmode="decimal" placeholder="也可填写高德坐标：经度, 纬度"></div>
    <label class="planning-field custom-place-wide"><span>简短介绍</span><textarea id="customPlaceSummary" rows="2" maxlength="240"></textarea></label>
    <label class="planning-field custom-place-wide"><span>攻略内容</span><textarea id="customPlaceGuide" rows="5" maxlength="5000"></textarea></label>
-   <label class="planning-field custom-place-wide"><span>攻略链接（小红书等）</span><input id="customPlaceGuideUrl" type="text" inputmode="url" maxlength="1500" placeholder="粘贴链接或小红书分享文案"></label>
+   <label class="planning-field custom-place-wide"><span>攻略链接（小红书等）</span><input id="customPlaceGuideUrl" type="text" inputmode="url" maxlength="1500" placeholder="粘贴小红书链接，保存时自动带入首图"></label>
   </div>
   <div class="planning-evidence"><label class="planning-upload">上传图片<input id="customPlacePhotos" type="file" accept="image/*" multiple></label><span id="customPlaceStatus" class="planning-save-status" aria-live="polite"></span></div>
   <div class="custom-place-images" id="customPlaceImages"></div>
@@ -598,12 +601,14 @@ const itineraryOrder=['kunming','fuxian','yuanyang','jianshui','mengzi','kaiyuan
 destinations.sort((a,b)=>itineraryOrder.indexOf(a.id)-itineraryOrder.indexOf(b.id));
 
 function amapSearchUrl(city,keyword){const params=new URLSearchParams({keyword:keyword||city.name,city:city.name,view:'map',callnative:'0',src:'yunnan-guide'});return 'https://uri.amap.com/search?'+params.toString();}
+function placeLocation(value){const lng=Number(value?.lng),lat=Number(value?.lat);return Number.isFinite(lng)&&Number.isFinite(lat)&&lng>=-180&&lng<=180&&lat>=-85&&lat<=85?{lng,lat}:null;}
 function renderLocalMap(focus=''){
- const city=destinations.find(item=>item.id===activeCity),canvas=document.getElementById('localMapCanvas'),tiles=document.getElementById('localMapTiles'),pins=document.getElementById('localMapPins'),focusLabel=document.getElementById('localMapFocus'),openLink=document.getElementById('localMapOpen');
- if(!city||!canvas||!tiles||!pins)return;
- const entries=[...city.pois.map(p=>({name:p.name,query:city.name+' '+p.name,kind:'play'})),...customPlaces.filter(p=>p.city===city.id).map(p=>({name:p.name,query:city.name+' '+(p.address||p.name),kind:p.category==='food'?'food':'play'}))];
+ const city=destinations.find(item=>item.id===activeCity),canvas=document.getElementById('localMapCanvas'),tiles=document.getElementById('localMapTiles'),pins=document.getElementById('localMapPins'),pointLayer=document.getElementById('localMapPointLayer'),focusLabel=document.getElementById('localMapFocus'),openLink=document.getElementById('localMapOpen');
+ if(!city||!canvas||!tiles||!pins||!pointLayer)return;
+ const entries=[...city.pois.map(p=>({name:p.name,query:city.name+' '+p.name,kind:'play'})),...customPlaces.filter(p=>p.city===city.id).map(p=>({name:p.name,query:city.name+' '+(p.address||p.name),kind:p.category==='food'?'food':'play',location:placeLocation(p.location)}))];
  pins.innerHTML=entries.map((p,i)=>`<a href="${esc(amapSearchUrl(city,p.query))}" target="_blank" rel="noopener noreferrer" data-local-pin="${i}" class="local-map-pin ${p.kind==='food'?'food':''}">${p.kind==='food'?'● ':'• '}${esc(p.name)}</a>`).join('');
- const state={lng:locs[city.id][0],lat:locs[city.id][1],zoom:12};
+ const focused=entries.find(p=>p.location&&(p.name===focus||p.query.includes(focus)));
+ const state={lng:focused?.location.lng??locs[city.id][0],lat:focused?.location.lat??locs[city.id][1],zoom:12};
  const size=()=>256*2**state.zoom;
  const x=lng=>(lng+180)/360*size();
  const y=lat=>(1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2*size();
@@ -614,6 +619,12 @@ function renderLocalMap(focus=''){
   let html='';for(let tx=minX;tx<=maxX;tx++)for(let ty=minY;ty<=maxY;ty++){if(ty<0||ty>=limit)continue;const tileX=((tx%limit)+limit)%limit;html+=`<img class="local-map-tile" alt="" draggable="false" loading="lazy" src="https://webrd02.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;scale=1&amp;style=7&amp;x=${tileX}&amp;y=${ty}&amp;z=${state.zoom}" style="left:${Math.round(tx*256-left)}px;top:${Math.round(ty*256-top)}px">`;}
   tiles.innerHTML=html;
   const marker=canvas.querySelector('.local-map-marker'),mx=x(locs[city.id][0])-left,my=y(locs[city.id][1])-top;marker.style.left=mx+'px';marker.style.top=my+'px';marker.style.display=mx>=0&&mx<=rect.width&&my>=0&&my<=rect.height?'block':'none';
+  pointLayer.replaceChildren();
+  for(const place of entries.filter(p=>p.location)){
+   const px=x(place.location.lng)-left,py=y(place.location.lat)-top;
+   if(px<0||px>rect.width||py<0||py>rect.height)continue;
+   const pin=document.createElement('button');pin.type='button';pin.className=`local-map-place-marker ${place.kind==='food'?'food':''}`;pin.style.left=px+'px';pin.style.top=py+'px';pin.textContent=place.name;pin.title=place.name;pin.addEventListener('click',()=>show(place.query));pointLayer.appendChild(pin);
+  }
  };
  let drag=null;
  canvas.addEventListener('pointerdown',event=>{if(event.target.closest('button'))return;drag={x:event.clientX,y:event.clientY,lng:state.lng,lat:state.lat};canvas.setPointerCapture(event.pointerId);canvas.classList.add('dragging');});
@@ -622,6 +633,7 @@ function renderLocalMap(focus=''){
  canvas.querySelectorAll('[data-map-zoom]').forEach(button=>button.addEventListener('click',()=>{state.zoom=Math.max(5,Math.min(17,state.zoom+Number(button.dataset.mapZoom)));draw();}));
  canvas.addEventListener('wheel',event=>{event.preventDefault();state.zoom=Math.max(5,Math.min(17,state.zoom+(event.deltaY<0?1:-1)));draw();},{passive:false});
  const show=query=>{focusLabel.textContent=query?query.replace(city.name+' ',''):city.name;openLink.href=amapSearchUrl(city,query||city.name);};
+ pins.querySelectorAll('[data-local-pin]').forEach(link=>link.addEventListener('click',event=>{const place=entries[Number(link.dataset.localPin)];if(!place?.location)return;event.preventDefault();state.lng=place.location.lng;state.lat=place.location.lat;show(place.query);draw();}));
  show(focus||city.name+' 景点');draw();
 }
 const cityDurations={kunming:'约3–6小时',fuxian:'约3–6小时',jianshui:'约4–8小时',mengzi:'约3–5小时',kaiyuan:'约2–4小时',mile:'约3–6小时',wenshan:'约2–3小时'};
@@ -755,7 +767,7 @@ function renderCity(){
 
   <div class="city-head"><div class="en">${esc(city.en)}</div><h2>${esc(city.name)}${['puzhehei','wenshan'].includes(city.id)?'<span class="optional-badge">备选</span>':''}</h2><p>${esc(city.subtitle)}。${esc(city.intro)}</p><span class="city-time">⏱ 整站建议游览：${esc(city.duration||cityDurations[city.id]||'约半天')}</span></div>
 
-  <section class="local-map-section"><div class="local-map-heading"><h3>景点与美食地图</h3><span id="localMapFocus"></span><a id="localMapOpen" target="_blank" rel="noopener noreferrer">打开高德 ↗</a></div><div class="local-map-canvas" id="localMapCanvas" role="img" aria-label="${esc(city.name)}高德地图"><div class="local-map-tiles" id="localMapTiles"></div><div class="local-map-marker" aria-hidden="true"></div><div class="local-map-controls"><button type="button" data-map-zoom="1" aria-label="放大地图">+</button><button type="button" data-map-zoom="-1" aria-label="缩小地图">−</button></div><span class="local-map-credit">高德地图</span></div><div class="local-map-pins" id="localMapPins"></div></section>
+  <section class="local-map-section"><div class="local-map-heading"><h3>景点与美食地图</h3><span id="localMapFocus"></span><a id="localMapOpen" target="_blank" rel="noopener noreferrer">打开高德 ↗</a></div><div class="local-map-canvas" id="localMapCanvas" role="img" aria-label="${esc(city.name)}高德地图"><div class="local-map-tiles" id="localMapTiles"></div><div class="local-map-marker" aria-hidden="true"></div><div id="localMapPointLayer" class="local-map-point-layer"></div><div class="local-map-controls"><button type="button" data-map-zoom="1" aria-label="放大地图">+</button><button type="button" data-map-zoom="-1" aria-label="缩小地图">−</button></div><span class="local-map-credit">高德地图</span></div><div class="local-map-pins" id="localMapPins"></div></section>
 
   <div class="poi-list">${city.pois.map((p,i)=>{
 
@@ -844,10 +856,25 @@ function normalizeGuideUrl(value){
 
 let customEditorImages=[];
 let customPlaceUrls=[];
+let customGeoState={lng:103.8,lat:25,zoom:13,selected:null};
+
+function drawCustomGeoMap(){
+ const canvas=document.getElementById('customGeoMap'),tiles=document.getElementById('customGeoTiles'),marker=document.getElementById('customGeoMarker');if(!canvas||!canvas.clientWidth)return;
+ const state=customGeoState,size=256*2**state.zoom;
+ const x=lng=>(lng+180)/360*size,y=lat=>(1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2*size;
+ const rect=canvas.getBoundingClientRect(),left=x(state.lng)-rect.width/2,top=y(state.lat)-rect.height/2,limit=2**state.zoom;
+ let html='';for(let tx=Math.floor(left/256);tx<=Math.floor((left+rect.width)/256);tx++)for(let ty=Math.floor(top/256);ty<=Math.floor((top+rect.height)/256);ty++){if(ty<0||ty>=limit)continue;html+=`<img class="local-map-tile" alt="" draggable="false" src="https://webrd02.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;scale=1&amp;style=7&amp;x=${((tx%limit)+limit)%limit}&amp;y=${ty}&amp;z=${state.zoom}" style="left:${Math.round(tx*256-left)}px;top:${Math.round(ty*256-top)}px">`;}
+ tiles.innerHTML=html;
+ if(state.selected){marker.hidden=false;marker.style.left=x(state.selected.lng)-left+'px';marker.style.top=y(state.selected.lat)-top+'px';}
+ else marker.hidden=true;
+}
+function setCustomGeoLocation(location){customGeoState.selected=placeLocation(location);if(customGeoState.selected){customGeoState.lng=customGeoState.selected.lng;customGeoState.lat=customGeoState.selected.lat;document.getElementById('customPlaceCoords').value=`${customGeoState.lng.toFixed(6)}, ${customGeoState.lat.toFixed(6)}`;}else document.getElementById('customPlaceCoords').value='';drawCustomGeoMap();}
+function initCustomGeoPicker(location){const city=document.getElementById('customPlaceCity').value,center=locs[city]||locs.kunming;customGeoState={lng:center[0],lat:center[1],zoom:13,selected:null};setCustomGeoLocation(location);requestAnimationFrame(drawCustomGeoMap);}
+function parsePlaceCoords(value){const parts=String(value||'').split(/[,，]/).map(p=>p.trim());return parts.length===2&&parts.every(Boolean)?placeLocation({lng:Number(parts[0]),lat:Number(parts[1])}):null;}
 
 function renderCustomEditorImages(){const box=document.getElementById('customPlaceImages');if(!box)return;box.replaceChildren();customEditorImages.forEach((image,index)=>{const row=document.createElement('span');row.className='custom-place-image-row';const name=document.createElement('span');name.textContent=image.name||`图片 ${index+1}`;const remove=document.createElement('button');remove.type='button';remove.textContent='×';remove.setAttribute('aria-label',`移除${name.textContent}`);remove.addEventListener('click',()=>{customEditorImages=customEditorImages.filter(item=>item.id!==image.id);renderCustomEditorImages();});row.append(name,remove);box.appendChild(row);});}
 
-function openCustomPlace(place=null,category='play'){const dialog=document.getElementById('customPlaceEditor'),form=document.getElementById('customPlaceForm');form.reset();document.getElementById('customPlaceId').value=place?.id||'';document.getElementById('customPlaceTitle').textContent=place?'编辑地点攻略':'添加地点攻略';document.getElementById('customPlaceCity').value=place?.city||activeCity;document.getElementById('customPlaceCategory').value=place?.category||category;document.getElementById('customPlaceName').value=place?.name||'';document.getElementById('customPlaceType').value=place?.type||'';document.getElementById('customPlaceDuration').value=place?.duration||'';document.getElementById('customPlaceAddress').value=place?.address||'';document.getElementById('customPlaceSummary').value=place?.summary||'';document.getElementById('customPlaceGuide').value=place?.guide||'';document.getElementById('customPlaceGuideUrl').value=place?.guideUrl||normalizeGuideUrl(place?.guide);document.getElementById('customPlaceStatus').textContent='';customEditorImages=Array.isArray(place?.images)?place.images.map(image=>({...image})):[];renderCustomEditorImages();dialog.showModal();}
+function openCustomPlace(place=null,category='play'){const dialog=document.getElementById('customPlaceEditor'),form=document.getElementById('customPlaceForm');form.reset();document.getElementById('customPlaceId').value=place?.id||'';document.getElementById('customPlaceTitle').textContent=place?'编辑地点攻略':'添加地点攻略';document.getElementById('customPlaceCity').value=place?.city||activeCity;document.getElementById('customPlaceCategory').value=place?.category||category;document.getElementById('customPlaceName').value=place?.name||'';document.getElementById('customPlaceType').value=place?.type||'';document.getElementById('customPlaceDuration').value=place?.duration||'';document.getElementById('customPlaceAddress').value=place?.address||'';document.getElementById('customPlaceSummary').value=place?.summary||'';document.getElementById('customPlaceGuide').value=place?.guide||'';document.getElementById('customPlaceGuideUrl').value=place?.guideUrl||normalizeGuideUrl(place?.guide);document.getElementById('customPlaceStatus').textContent='';customEditorImages=Array.isArray(place?.images)?place.images.map(image=>({...image})):[];renderCustomEditorImages();dialog.showModal();initCustomGeoPicker(place?.location);}
 
 async function renderCustomPlaces(){
   const lists={play:document.getElementById('customPlaceList'),food:document.getElementById('foodList')};
@@ -919,6 +946,17 @@ function initCustomPlaces(){
   const citySelect=document.getElementById('customPlaceCity');
   citySelect.innerHTML=destinations.map(city=>`<option value="${esc(city.id)}">${esc(city.name)}</option>`).join('');
   const dialog=document.getElementById('customPlaceEditor'),form=document.getElementById('customPlaceForm'),photos=document.getElementById('customPlacePhotos');
+  citySelect.addEventListener('change',()=>initCustomGeoPicker(null));
+  document.getElementById('customPlaceAmapSearch').addEventListener('click',()=>{const city=destinations.find(item=>item.id===citySelect.value),name=document.getElementById('customPlaceName').value.trim(),address=document.getElementById('customPlaceAddress').value.trim();if(!city)return;window.open(amapSearchUrl(city,`${city.name} ${customWebUrl(address)?name:(address||name||'景点')}`),'_blank','noopener,noreferrer');});
+  document.getElementById('customPlaceCoords').addEventListener('change',event=>{const value=event.target.value.trim();if(!value){setCustomGeoLocation(null);return;}const point=parsePlaceCoords(value);if(point)setCustomGeoLocation(point);else document.getElementById('customPlaceStatus').textContent='坐标请填写“经度, 纬度”';});
+  const geoMap=document.getElementById('customGeoMap');let geoDrag=null;
+  const geoSize=()=>256*2**customGeoState.zoom,geoX=lng=>(lng+180)/360*geoSize(),geoY=lat=>(1-Math.asinh(Math.tan(lat*Math.PI/180))/Math.PI)/2*geoSize();
+  const geoLng=px=>px/geoSize()*360-180,geoLat=py=>Math.atan(Math.sinh(Math.PI*(1-2*py/geoSize())))*180/Math.PI;
+  geoMap.addEventListener('pointerdown',event=>{if(event.target.closest('button'))return;geoDrag={x:event.clientX,y:event.clientY,lng:customGeoState.lng,lat:customGeoState.lat,moved:false};geoMap.setPointerCapture(event.pointerId);});
+  geoMap.addEventListener('pointermove',event=>{if(!geoDrag)return;const dx=event.clientX-geoDrag.x,dy=event.clientY-geoDrag.y;if(Math.hypot(dx,dy)>4)geoDrag.moved=true;if(!geoDrag.moved)return;customGeoState.lng=geoLng(geoX(geoDrag.lng)-dx);customGeoState.lat=geoLat(geoY(geoDrag.lat)-dy);drawCustomGeoMap();});
+  geoMap.addEventListener('pointerup',event=>{if(!geoDrag)return;const moved=geoDrag.moved;geoDrag=null;if(moved)return;const rect=geoMap.getBoundingClientRect();setCustomGeoLocation({lng:geoLng(geoX(customGeoState.lng)+event.clientX-rect.left-rect.width/2),lat:geoLat(geoY(customGeoState.lat)+event.clientY-rect.top-rect.height/2)});});
+  geoMap.addEventListener('pointercancel',()=>{geoDrag=null;});
+  geoMap.querySelectorAll('[data-geo-zoom]').forEach(button=>button.addEventListener('click',()=>{customGeoState.zoom=Math.max(5,Math.min(17,customGeoState.zoom+Number(button.dataset.geoZoom)));drawCustomGeoMap();}));
   document.getElementById('customPlaceClose').addEventListener('click',()=>dialog.close());
   document.getElementById('customPlaceCancel').addEventListener('click',()=>dialog.close());
   dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
@@ -927,13 +965,16 @@ function initCustomPlaces(){
     const status=document.getElementById('customPlaceStatus');status.textContent='保存中…';
     const id=document.getElementById('customPlaceId').value||`place-${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
     const previous=customPlaces.find(item=>item.id===id);
+    const coordsText=document.getElementById('customPlaceCoords').value.trim();
+    if(coordsText){const point=parsePlaceCoords(coordsText);if(!point){status.textContent='坐标请填写“经度, 纬度”';return;}customGeoState.selected=point;}
     const entry={id,category:document.getElementById('customPlaceCategory').value,city:citySelect.value,
       name:document.getElementById('customPlaceName').value.trim(),type:document.getElementById('customPlaceType').value.trim(),
       duration:document.getElementById('customPlaceDuration').value.trim(),address:document.getElementById('customPlaceAddress').value.trim(),
       summary:document.getElementById('customPlaceSummary').value.trim(),guide:document.getElementById('customPlaceGuide').value.trim(),
       guideUrl:normalizeGuideUrl(document.getElementById('customPlaceGuideUrl').value)||normalizeGuideUrl(document.getElementById('customPlaceGuide').value),
-      images:customEditorImages.map(image=>({...image}))};
+      images:customEditorImages.map(image=>({...image})),location:customGeoState.selected?{...customGeoState.selected}:null};
     if(document.getElementById('customPlaceGuideUrl').value.trim()&&!entry.guideUrl){status.textContent='请填写有效的 http 或 https 攻略链接';return;}
+    let coverError='';
     try{
       for(const file of Array.from(photos.files||[])){
         if(!file.type.startsWith('image/'))continue;
@@ -941,6 +982,19 @@ function initCustomPlaces(){
         const fileID=cloudBridge?.ready?await cloudBridge.uploadImage(file):'';
         await customPlaceAssetRequest('readwrite',`${id}:${imageId}`,file);
         entry.images.push({id:imageId,name:file.name||'地点照片',fileID});
+      }
+      if(!entry.images.length&&entry.guideUrl&&cloudBridge?.ready){
+        const host=new URL(entry.guideUrl).hostname.toLowerCase();
+        if(['xhslink.cn','xhslink.com','xiaohongshu.com','www.xiaohongshu.com'].includes(host)){
+          status.textContent='正在读取小红书首图…';
+          try{
+            const file=await cloudBridge.fetchXhsCover(entry.guideUrl);
+            const imageId=`${Date.now()}-${Math.random().toString(36).slice(2,8)}`;
+            const fileID=await cloudBridge.uploadImage(file);
+            await customPlaceAssetRequest('readwrite',`${id}:${imageId}`,file);
+            entry.images.push({id:imageId,name:file.name,fileID});
+          }catch(error){coverError=error.message||'首图读取失败';}
+        }
       }
       if(cloudBridge?.ready)await cloudBridge.savePlace(entry);
       for(const image of previous?.images||[]){
@@ -953,6 +1007,7 @@ function initCustomPlaces(){
       dialog.close();photos.value='';
       if(entry.city!==activeCity)setActiveCity(entry.city);
       else{renderCustomPlaces();renderLocalMap(entry.address||entry.name);}
+      if(coverError)window.alert(`攻略链接已保存，首图暂未带入：${coverError}。可稍后编辑重试或手动上传。`);
     }catch(error){status.textContent=`保存失败：${error.message||'请重试'}`;showCloudSaveError(error);}
   });
 }
