@@ -84,6 +84,7 @@
       const days = {};
       const places = [];
       const picks = [];
+      const hiddenPois = [];
       for (const row of docs) {
         const doc = { kind: row.kind, ...(row.payload || {}) };
         if (doc.kind === 'day' && doc.date) days[doc.date] = {
@@ -91,8 +92,9 @@
         };
         if (doc.kind === 'place' && !doc.deleted && doc.place) places.push(doc.place);
         if (doc.kind === 'pick' && doc.selected && doc.key) picks.push(doc.key);
+        if (doc.kind === 'poi_hidden' && doc.hidden && doc.key) hiddenPois.push(doc.key);
       }
-      callbacks.onSnapshot?.({ days, places, picks, hasContent: docs.some(doc => ['day', 'place', 'pick'].includes(doc.kind)), initial });
+      callbacks.onSnapshot?.({ days, places, picks, hiddenPois, hasContent: docs.some(doc => ['day', 'place', 'pick', 'poi_hidden'].includes(doc.kind)), initial });
       status('已同步');
     }
 
@@ -212,6 +214,9 @@
       },
       savePick(key, selected) {
         return write(`pick_${hashKey(key)}`, { kind: 'pick', key, selected: !!selected }, '更新备选', key);
+      },
+      saveBuiltInPoiHidden(key, hidden) {
+        return write(`poi_hidden_${hashKey(key)}`, { kind: 'poi_hidden', key, hidden: !!hidden }, hidden ? '删除预置景点' : '恢复预置景点', key);
       },
       async fetchXhsCover(url) {
         if (!config.coverApiUrl) throw new Error('首图服务尚未配置');
