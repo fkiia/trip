@@ -82,6 +82,7 @@
       if (!ready || saving) return;
       const docs = await listContent();
       const days = {};
+      const dayNotes = {};
       const places = [];
       const picks = [];
       const hiddenPois = [];
@@ -90,11 +91,16 @@
         if (doc.kind === 'day' && doc.date) days[doc.date] = {
           distance: doc.distance || '', time: doc.time || '', screenshots: doc.screenshots || []
         };
+        if (doc.kind === 'day' && doc.planDate && typeof doc.note === 'string') {
+          dayNotes[doc.planDate] = doc.note;
+        }
         if (doc.kind === 'place' && !doc.deleted && doc.place) places.push(doc.place);
         if (doc.kind === 'pick' && doc.selected && doc.key) picks.push(doc.key);
         if (doc.kind === 'poi_hidden' && doc.hidden && doc.key) hiddenPois.push(doc.key);
       }
-      callbacks.onSnapshot?.({ days, places, picks, hiddenPois, hasContent: docs.some(doc => ['day', 'place', 'pick', 'poi_hidden'].includes(doc.kind)), initial });
+      const hasContent = docs.some(doc => (doc.kind === 'day' && doc.date)
+        || ['place', 'pick', 'poi_hidden'].includes(doc.kind));
+      callbacks.onSnapshot?.({ days, dayNotes, places, picks, hiddenPois, hasContent, initial });
       status('已同步');
     }
 
@@ -192,6 +198,11 @@
             id: item.id, name: item.name || '', fileID: item.fileID || ''
           }))
         }, '修改行程', date);
+      },
+      saveDayNote(date, note) {
+        return write(`day_note_${date}`, {
+          kind: 'day', planDate: date, note: String(note).slice(0, 12000)
+        }, '修改当天规划', date);
       },
       savePlace(place) {
         const clean = {
