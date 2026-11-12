@@ -290,12 +290,20 @@ html,body{min-height:100%;height:auto;overflow-x:clip;overflow-y:visible}
 .local-map-sketch svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.local-map-compass{position:absolute;left:14px;top:13px;color:#766789;font-size:11px;letter-spacing:.15em}
 .local-map-heading{justify-content:flex-end}
 .day-note{margin-top:14px;padding:14px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
-.day-note label{display:block;margin-bottom:8px;color:var(--ink);font-size:14px;font-weight:750}
+.day-note-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.day-note h2{margin:0;color:var(--ink);font-size:15px;font-weight:750}
+.day-note-content{margin:10px 0 0;color:var(--ink);font-size:15px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}
+.day-note-content:empty{display:none}
+.day-note [hidden]{display:none}
+.day-note form{margin-top:10px}
 .day-note textarea{display:block;width:100%;min-height:112px;resize:vertical;padding:10px 12px;border:1px solid #ded5e8;border-radius:10px;background:#fff;color:var(--ink);font:inherit;font-size:16px;line-height:1.55}
 .day-note textarea:focus-visible{outline:2px solid #9984ae;outline-offset:1px}
-.day-note-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px;color:#746682;font-size:12px}
-.day-note-actions button{border:1px solid #d6c8e2;border-radius:999px;background:#efe8f7;color:#48335d;padding:7px 14px;font:inherit;font-weight:700;cursor:pointer}
-.day-note-actions button:disabled{opacity:.55;cursor:default}
+.day-note-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:8px}
+.day-note button{border:1px solid #d6c8e2;border-radius:999px;background:#efe8f7;color:#48335d;padding:7px 14px;font:inherit;font-size:12px;font-weight:700;cursor:pointer}
+.day-note #dayNoteCancel{background:transparent}
+.day-note button:disabled{opacity:.55;cursor:default}
+.day-note-status{margin:8px 0 0;color:#746682;font-size:12px}
+.day-note-status:empty{display:none}
 .city-overview-map .city-map-dot{width:10px;height:10px;border:1.5px solid white;box-shadow:none;background:#2584c1;font-size:0}.city-overview-map .city-map-dot.endpoint{width:14px;height:14px;border-width:2px;box-shadow:0 0 0 1px #2584c1}.city-overview-map .city-map-dot.food{background:#e6b623}.city-overview-map .city-map-place{color:#50535b!important;font-size:11px!important;font-weight:650!important;text-shadow:0 0 3px #fff!important}.city-overview-map .city-map-place.food{color:#8e741f!important}.city-overview-map .city-map-route{stroke:#349bd2!important;stroke-width:3.2!important;opacity:1!important}.city-overview-map .city-map-leaders{stroke:#b9bcc4!important;stroke-width:.7!important;opacity:.65!important}.city-overview-map .city-map-distance{color:#82728d!important;font-size:10px!important;font-weight:400!important;text-shadow:0 0 3px #fff,0 0 3px #fff!important}.city-overview-map .city-map-north{color:#96959c!important;font-size:9px!important}.city-overview-map .city-map-attribution{color:#a8a5ae!important;font-size:7px!important}.city-overview-map{border:1px solid #efedf3!important;border-radius:12px!important;background-color:#fff!important}
 .city-overview-map .city-map-place{border:0;border-radius:0;background:transparent;color:#443258;box-shadow:none;font-size:12px;font-weight:600;text-shadow:0 0 4px #fff,0 0 4px #fff}.city-overview-map .city-map-place.food{color:#856519}.city-overview-map .city-map-leaders{stroke:#aa99bb;opacity:.5}.city-overview-map .city-map-route{stroke:#8b71aa;stroke-width:1.8;opacity:.9}.city-overview-map .city-map-distance{color:#695276;font-size:11px;text-shadow:0 0 3px #fff,0 0 3px #fff}.city-overview-map .city-map-north{background:transparent;color:#776787}.city-overview-map .city-map-attribution{background:transparent;color:#8a7d94}.city-map-legend{position:absolute;left:10px;bottom:5px;display:flex;align-items:center;gap:5px;font-size:9px;color:#6e607b}.city-map-legend i{width:7px;height:7px;border-radius:50%;background:#2584c1;display:inline-block}.city-map-legend i.food{background:#e6b623}
 .city-overview-map{position:relative!important;background-size:100% 100%!important;background-position:center!important;aspect-ratio:1.2;border-color:#d8d4e1;background-color:#eef1ec}.city-overview-map svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.city-map-leaders{stroke:#677980;stroke-width:1;opacity:.65;fill:none}.city-map-route{fill:none;stroke:#7960ad;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.85}.city-map-route.uncertain{stroke-dasharray:5 5;opacity:.45}.city-map-dot{position:absolute;z-index:4;transform:translate(-50%,-50%);display:grid;place-items:center;width:21px;height:21px;border:2px solid white;border-radius:50%;background:#2584c1;color:#fff;font-size:10px;font-weight:700;text-decoration:none;box-shadow:0 1px 4px #0005}.city-map-dot.food{background:#e6b623;color:#59460d}.city-map-place{position:absolute;z-index:3;display:flex;align-items:center;padding:4px 6px;border:1px solid #b6d0df;border-radius:7px;background:#fffffff2;color:#295e81;font-family:inherit;font-size:11px;font-weight:600;line-height:1.3;text-decoration:none;box-shadow:0 2px 6px #0002}.city-map-place.food{border-color:#dfc985;color:#7d6219}.city-map-distance{position:absolute;z-index:5;color:#5e456d;font-size:11px;font-weight:400;line-height:20px;text-decoration:none;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 5px #fff}.city-map-north{position:absolute;top:5px;left:8px;color:#59616a;font-size:10px;background:#fffd;padding:2px 4px;border-radius:4px}.city-map-attribution{position:absolute;bottom:4px;right:5px;font-size:8px;background:#fffd;color:#5c6268;padding:1px 4px;border-radius:3px}.city-route-plan{font-size:11px;color:#675a75;padding:10px 2px 0;line-height:1.6}.city-route-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}.city-route-heading button{border:1px solid #d5cadd;border-radius:99px;background:#fff;color:#6a4c88;font:inherit;padding:3px 9px;cursor:pointer}.city-route-plan p{margin:6px 0 0}.city-map-unlocated{margin-top:7px;font-size:10px;color:#8a7e94}.city-map-unlocated a{color:inherit}
@@ -461,14 +469,21 @@ html,body{min-height:100%;height:auto;overflow-x:clip;overflow-y:visible}
 
  </div>
 
- <form class="day-note" id="dayNoteForm">
-  <label id="dayNoteLabel" for="dayNoteText">当天规划</label>
-  <textarea id="dayNoteText" rows="4" maxlength="12000" placeholder="写下当天的具体安排…"></textarea>
-  <div class="day-note-actions">
-   <span id="dayNoteStatus" role="status"></span>
-   <button id="dayNoteSave" type="submit">保存</button>
+ <section class="day-note" aria-labelledby="dayNoteLabel">
+  <div class="day-note-heading">
+   <h2 id="dayNoteLabel">当天规划</h2>
+   <button id="dayNoteEdit" type="button">填写</button>
   </div>
- </form>
+  <p class="day-note-content" id="dayNoteContent"></p>
+  <form id="dayNoteForm" hidden>
+   <textarea id="dayNoteText" aria-labelledby="dayNoteLabel" rows="4" maxlength="12000" placeholder="写下当天的具体安排…"></textarea>
+   <div class="day-note-actions">
+    <button id="dayNoteCancel" type="button">取消</button>
+    <button id="dayNoteSave" type="submit">保存</button>
+   </div>
+  </form>
+  <p class="day-note-status" id="dayNoteStatus" role="status"></p>
+ </section>
 
 </section>
 
@@ -873,11 +888,12 @@ function queueCloudDay(date){if(!cloudBridge?.ready||!date)return;clearTimeout(d
 function persistTripDraft(date){try{localStorage.setItem(TRIP_PLAN_KEY,JSON.stringify(tripDraft));queueCloudDay(date);return true;}catch(e){return false;}}
 
 const DAY_NOTE_KEY = 'yunnan-day-notes-v1';
+const editingDayNotes = new Set();
 const dayNoteDrafts = new Map();
 const dayNoteMessages = new Map();
 let dayNotes = {};
 let pendingDayNotes = {};
-let savingDayNote = false;
+let savingDayNote = null;
 try {
   const saved = JSON.parse(localStorage.getItem(DAY_NOTE_KEY) || '{}');
   dayNotes = saved.notes || {};
@@ -902,16 +918,43 @@ function renderDayNote() {
   const text = document.getElementById('dayNoteText');
   const hasDraft = dayNoteDrafts.has(date);
   const hasPending = Object.hasOwn(pendingDayNotes, date);
-  const value = dayNoteDrafts.get(date) ?? pendingDayNotes[date] ?? dayNotes[date] ?? '';
+  const saved = pendingDayNotes[date] ?? dayNotes[date] ?? '';
+  const value = dayNoteDrafts.get(date) ?? saved;
+  const editing = editingDayNotes.has(date);
+  const saving = savingDayNote === date;
+  const editButton = document.getElementById('dayNoteEdit');
+  const content = document.getElementById('dayNoteContent');
   document.getElementById('dayNoteLabel').textContent = `${plan.label} 当天规划`;
+  editButton.textContent = saved || hasPending ? '编辑' : '填写';
+  editButton.hidden = editing;
+  content.textContent = saved;
+  content.hidden = editing;
+  document.getElementById('dayNoteForm').hidden = !editing;
   if (text.value !== value) text.value = value;
-  document.getElementById('dayNoteSave').disabled = savingDayNote || (!hasDraft && !hasPending);
+  text.disabled = saving;
+  document.getElementById('dayNoteCancel').disabled = saving;
+  document.getElementById('dayNoteSave').disabled = Boolean(savingDayNote) || (!hasDraft && !hasPending);
   document.getElementById('dayNoteStatus').textContent = dayNoteMessages.get(date)
     || (hasDraft ? '有未保存的修改' : hasPending ? '已保存到本机，待同步' : '');
 }
 
 function initDayNote() {
   const text = document.getElementById('dayNoteText');
+  const editButton = document.getElementById('dayNoteEdit');
+  function closeEditor(date) {
+    editingDayNotes.delete(date);
+    renderDayNote();
+    if (date === activePlanDate) editButton.focus({preventScroll:true});
+  }
+  editButton.addEventListener('click', () => {
+    editingDayNotes.add(activePlanDate);
+    renderDayNote();
+    text.focus();
+  });
+  document.getElementById('dayNoteCancel').addEventListener('click', () => {
+    dayNoteDrafts.delete(activePlanDate);
+    closeEditor(activePlanDate);
+  });
   text.addEventListener('input', () => {
     const date = activePlanDate;
     const saved = pendingDayNotes[date] ?? dayNotes[date] ?? '';
@@ -926,22 +969,28 @@ function initDayNote() {
     const date = activePlanDate;
     const note = text.value;
     const cloudEnabled = Boolean(window.TRIP_CLOUD_CONFIG?.envId);
-    dayNotes[date] = note;
-    if (cloudEnabled) pendingDayNotes[date] = note;
+    const localNotes = cloudEnabled ? pendingDayNotes : dayNotes;
+    const previous = localNotes[date];
+    localNotes[date] = note;
     const stored = storeDayNotes();
     if (stored) dayNoteDrafts.delete(date);
+    else if (previous === undefined) delete localNotes[date];
+    else localNotes[date] = previous;
     if (!cloudBridge?.ready) {
       dayNoteMessages.set(date, stored
         ? (cloudEnabled ? '已保存到本机，连接后可再次保存同步' : '已保存到本机')
         : '本机保存失败，请重试');
-      renderDayNote();
+      if (stored) closeEditor(date);
+      else renderDayNote();
       return;
     }
-    savingDayNote = true;
+    savingDayNote = date;
     dayNoteMessages.set(date, '正在保存…');
     renderDayNote();
+    let synced = false;
     try {
       await cloudBridge.saveDayNote(date, note);
+      synced = true;
       dayNotes[date] = note;
       delete pendingDayNotes[date];
       if (dayNoteDrafts.get(date) === note) dayNoteDrafts.delete(date);
@@ -951,8 +1000,9 @@ function initDayNote() {
       showCloudSaveError(error);
       dayNoteMessages.set(date, stored ? '已保存到本机，同步失败，请重试' : '保存失败，请重试');
     } finally {
-      savingDayNote = false;
-      renderDayNote();
+      savingDayNote = null;
+      if (synced || stored) closeEditor(date);
+      else renderDayNote();
     }
   });
   renderDayNote();
