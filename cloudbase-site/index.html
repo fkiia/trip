@@ -304,6 +304,15 @@ html,body{min-height:100%;height:auto;overflow-x:clip;overflow-y:visible}
 .day-note button:disabled{opacity:.55;cursor:default}
 .day-note-status{margin:8px 0 0;color:#746682;font-size:12px}
 .day-note-status:empty{display:none}
+.kunming-map-tools{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 8px}
+.kunming-map-tools button{min-height:34px;min-width:34px;border:1px solid #e1d9eb;border-radius:8px;background:#fff;color:#493561;font:inherit;font-size:12px;padding:4px 8px;cursor:pointer}
+.kunming-map-tools button:disabled{opacity:.45;cursor:default}
+.kunming-map-tools output{font-size:11px;color:#675a75;min-width:34px;text-align:center}
+.city-overview-map.kunming-map-zoomed{touch-action:none;cursor:grab}
+.city-overview-map.kunming-map-zoomed:active{cursor:grabbing}
+.city-overview-map.kunming-map-zoomed{background-repeat:no-repeat}
+.kunming-map-layer{position:absolute;inset:0}
+.kunming-map-layer .city-map-place{background:#fffffff0;border-radius:4px}
 .city-overview-map .city-map-dot{width:10px;height:10px;border:1.5px solid white;box-shadow:none;background:#2584c1;font-size:0}.city-overview-map .city-map-dot.endpoint{width:14px;height:14px;border-width:2px;box-shadow:0 0 0 1px #2584c1}.city-overview-map .city-map-dot.food{background:#e6b623}.city-overview-map .city-map-place{color:#50535b!important;font-size:11px!important;font-weight:650!important;text-shadow:0 0 3px #fff!important}.city-overview-map .city-map-place.food{color:#8e741f!important}.city-overview-map .city-map-route{stroke:#349bd2!important;stroke-width:3.2!important;opacity:1!important}.city-overview-map .city-map-leaders{stroke:#b9bcc4!important;stroke-width:.7!important;opacity:.65!important}.city-overview-map .city-map-distance{color:#82728d!important;font-size:10px!important;font-weight:400!important;text-shadow:0 0 3px #fff,0 0 3px #fff!important}.city-overview-map .city-map-north{color:#96959c!important;font-size:9px!important}.city-overview-map .city-map-attribution{color:#a8a5ae!important;font-size:7px!important}.city-overview-map{border:1px solid #efedf3!important;border-radius:12px!important;background-color:#fff!important}
 .city-overview-map .city-map-place{border:0;border-radius:0;background:transparent;color:#443258;box-shadow:none;font-size:12px;font-weight:600;text-shadow:0 0 4px #fff,0 0 4px #fff}.city-overview-map .city-map-place.food{color:#856519}.city-overview-map .city-map-leaders{stroke:#aa99bb;opacity:.5}.city-overview-map .city-map-route{stroke:#8b71aa;stroke-width:1.8;opacity:.9}.city-overview-map .city-map-distance{color:#695276;font-size:11px;text-shadow:0 0 3px #fff,0 0 3px #fff}.city-overview-map .city-map-north{background:transparent;color:#776787}.city-overview-map .city-map-attribution{background:transparent;color:#8a7d94}.city-map-legend{position:absolute;left:10px;bottom:5px;display:flex;align-items:center;gap:5px;font-size:9px;color:#6e607b}.city-map-legend i{width:7px;height:7px;border-radius:50%;background:#2584c1;display:inline-block}.city-map-legend i.food{background:#e6b623}
 .city-overview-map{position:relative!important;background-size:100% 100%!important;background-position:center!important;aspect-ratio:1.2;border-color:#d8d4e1;background-color:#eef1ec}.city-overview-map svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.city-map-leaders{stroke:#677980;stroke-width:1;opacity:.65;fill:none}.city-map-route{fill:none;stroke:#7960ad;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.85}.city-map-route.uncertain{stroke-dasharray:5 5;opacity:.45}.city-map-dot{position:absolute;z-index:4;transform:translate(-50%,-50%);display:grid;place-items:center;width:21px;height:21px;border:2px solid white;border-radius:50%;background:#2584c1;color:#fff;font-size:10px;font-weight:700;text-decoration:none;box-shadow:0 1px 4px #0005}.city-map-dot.food{background:#e6b623;color:#59460d}.city-map-place{position:absolute;z-index:3;display:flex;align-items:center;padding:4px 6px;border:1px solid #b6d0df;border-radius:7px;background:#fffffff2;color:#295e81;font-family:inherit;font-size:11px;font-weight:600;line-height:1.3;text-decoration:none;box-shadow:0 2px 6px #0002}.city-map-place.food{border-color:#dfc985;color:#7d6219}.city-map-distance{position:absolute;z-index:5;color:#5e456d;font-size:11px;font-weight:400;line-height:20px;text-decoration:none;white-space:nowrap;text-shadow:0 0 3px #fff,0 0 3px #fff,0 0 5px #fff}.city-map-north{position:absolute;top:5px;left:8px;color:#59616a;font-size:10px;background:#fffd;padding:2px 4px;border-radius:4px}.city-map-attribution{position:absolute;bottom:4px;right:5px;font-size:8px;background:#fffd;color:#5c6268;padding:1px 4px;border-radius:3px}.city-route-plan{font-size:11px;color:#675a75;padding:10px 2px 0;line-height:1.6}.city-route-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}.city-route-heading button{border:1px solid #d5cadd;border-radius:99px;background:#fff;color:#6a4c88;font:inherit;padding:3px 9px;cursor:pointer}.city-route-plan p{margin:6px 0 0}.city-map-unlocated{margin-top:7px;font-size:10px;color:#8a7e94}.city-map-unlocated a{color:inherit}
@@ -638,24 +647,125 @@ destinations.sort((a,b)=>itineraryOrder.indexOf(a.id)-itineraryOrder.indexOf(b.i
 
 function amapSearchUrl(city,keyword){const params=new URLSearchParams({keyword:keyword||city.name,city:city.name,view:'map',callnative:'0',src:'yunnan-guide'});return 'https://uri.amap.com/search?'+params.toString();}
 let cityRouteReverse={};
+const kunmingMapView={zoom:1,x:.5,y:.5};
+
+function setupKunmingMap(box,w,h,west,south,east,north,merc){
+ const view=kunmingMapView;
+ const margin=.5/view.zoom;
+ const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
+ view.x=clamp(view.x,margin,1-margin);
+ view.y=clamp(view.y,margin,1-margin);
+ const offset=()=>[(.5-view.x*view.zoom)*w,(.5-view.y*view.zoom)*h];
+ const [left,top]=offset();
+ const position=(x,y)=>box.style.setProperty('background-position',`${x}px ${y}px`,'important');
+ position(left,top);
+ box.style.setProperty('background-size',`${w*view.zoom}px ${h*view.zoom}px`,'important');
+ box.classList.toggle('kunming-map-zoomed',view.zoom>1);
+ let tools=box.previousElementSibling;
+ if(!tools?.classList.contains('kunming-map-tools')){
+  tools=document.createElement('div');
+  tools.className='kunming-map-tools';
+  tools.innerHTML='<button type="button" data-zoom="out" aria-label="缩小昆明地图">−</button><output aria-label="昆明地图缩放比例"></output><button type="button" data-zoom="in" aria-label="放大昆明地图">＋</button><button type="button" data-zoom="cuihu">翠湖周边</button><button type="button" data-zoom="reset">全图</button>';
+  box.before(tools);
+  tools.addEventListener('click',event=>{
+   switch(event.target.closest('button')?.dataset.zoom){
+    case 'in': view.zoom=Math.min(24,view.zoom*2);break;
+    case 'out': view.zoom=Math.max(1,view.zoom/2);break;
+    case 'cuihu':
+     view.zoom=16;
+     view.x=(102.702518-west)/(east-west);
+     view.y=(merc(north)-merc(25.051492))/(merc(north)-merc(south));
+     break;
+    case 'reset': Object.assign(view,{zoom:1,x:.5,y:.5});break;
+    default:return;
+   }
+   renderLocalMap();
+  });
+ }
+ tools.querySelector('output').textContent=`${view.zoom}×`;
+ tools.querySelector('[data-zoom="out"]').disabled=view.zoom===1;
+ tools.querySelector('[data-zoom="in"]').disabled=view.zoom===24;
+ let drag;
+ box.onpointerdown=event=>{
+  if(view.zoom===1||!event.isPrimary||event.button!==0)return;
+  drag={id:event.pointerId,x:event.clientX,y:event.clientY,dx:0,dy:0,moved:false};
+ };
+ box.onpointermove=event=>{
+  if(drag?.id!==event.pointerId)return;
+  drag.dx=event.clientX-drag.x;drag.dy=event.clientY-drag.y;
+  if(!drag.moved&&Math.hypot(drag.dx,drag.dy)<5)return;
+  if(!drag.moved){box.setPointerCapture(event.pointerId);drag.moved=true;}
+  drag.dx=clamp(drag.dx,w-w*view.zoom-left,-left);
+  drag.dy=clamp(drag.dy,h-h*view.zoom-top,-top);
+  position(left+drag.dx,top+drag.dy);
+  box.querySelector('.kunming-map-layer').style.transform=`translate(${drag.dx}px,${drag.dy}px)`;
+ };
+ box.onpointerup=event=>{
+  if(drag?.id!==event.pointerId)return;
+  if(drag.moved){
+   view.x-=drag.dx/(w*view.zoom);view.y-=drag.dy/(h*view.zoom);
+   renderLocalMap();
+  }
+  drag=null;
+ };
+ box.onpointercancel=()=>{if(drag?.moved)renderLocalMap();drag=null;};
+ box.ondragstart=event=>event.preventDefault();
+ return {zoom:view.zoom,left,top};
+}
+
 function renderLocalMap(){
  const city=destinations.find(c=>c.id===activeCity),box=document.getElementById('localMapSketch'),data=window.TRIP_CITY_MAPS?.[activeCity];
  if(!city||!box||!data)return;
  box.className='local-map-sketch city-overview-map';box.style.width='100%';box.style.aspectRatio='auto';box.style.backgroundImage=`linear-gradient(#ffffffdf,#ffffffdf),url("${data.image}")`;box.style.removeProperty('--map-height');
  const w=box.clientWidth||600,h=Math.max(330,w*.8);box.style.height=h+'px';
  const merc=lat=>Math.asinh(Math.tan(lat*Math.PI/180)),[west,south,east,north]=data.bounds;
- const project=p=>({x:(p[0]-west)/(east-west)*w,y:(merc(north)-merc(p[1]))/(merc(north)-merc(south))*h});
+ const kunming=city.id==='kunming';
+ const {zoom,left,top}=kunming?setupKunmingMap(box,w,h,west,south,east,north,merc):{zoom:1,left:0,top:0};
+ const project=p=>({x:(p[0]-west)/(east-west)*w*zoom+left,y:(merc(north)-merc(p[1]))/(merc(north)-merc(south))*h*zoom+top});
  const entries=[...visibleCityPois(city).map(p=>({name:p.name,location:data.positions[p.name],kind:p.type==='地方美食'?'food':'play'})),...customPlaces.filter(p=>p.city===city.id).map(p=>({name:p.name,location:p.location?[Number(p.location.lng),Number(p.location.lat)]:data.positions[p.name],kind:p.category==='food'?'food':'play'}))];
- const located=entries.filter(p=>p.location&&p.location.every(Number.isFinite)).map(p=>({...p,...project(p.location)})).filter(p=>p.x>0&&p.x<w&&p.y>0&&p.y<h),unlocated=entries.filter(p=>!located.some(q=>q.name===p.name));
+ const located=entries.filter(p=>p.location&&p.location.every(Number.isFinite)&&p.location[0]>west&&p.location[0]<east&&p.location[1]>south&&p.location[1]<north).map(p=>({...p,...project(p.location)})),unlocated=entries.filter(p=>!located.some(q=>q.name===p.name));
+ const onScreen=p=>p.x>=6&&p.x<=w-6&&p.y>=6&&p.y<=h-6;
  let order=data.order.filter(name=>located.some(p=>p.name===name));if(cityRouteReverse[city.id])order.reverse();
  for(const p of located.filter(p=>!order.includes(p.name))){let at=0,best=Infinity;order.forEach((name,i)=>{const q=located.find(p=>p.name===name),distance=(q.x-p.x)**2+(q.y-p.y)**2;if(distance<best){best=distance;at=i+1;}});order.splice(at,0,p.name);}
- const occupied=[],leaders=[];
+ const occupied=kunming?[{x:0,y:0,w:36,h:22},{x:0,y:h-23,w,h:23}]:[],leaders=[];
+ const markers=located.filter(p=>!kunming||onScreen(p)).map(p=>{
+  if(!kunming)return {p,x:p.x,y:p.y};
+  for(let radius=0;radius<=48;radius+=12){
+   for(let step=0;step<8;step++){
+    const angle=step*Math.PI/4,x=p.x+radius*Math.cos(angle),y=p.y+radius*Math.sin(angle);
+    const b={x:x-8,y:y-8,w:16,h:16};
+    if(x<9||x>w-9||y<9||y>h-9||occupied.some(o=>b.x<o.x+o.w&&o.x<b.x+b.w&&b.y<o.y+o.h&&o.y<b.y+b.h))continue;
+    occupied.push(b);
+    if(radius)leaders.push(`<path d="M${p.x},${p.y} L${x},${y}"/>`);
+    return {p,x,y};
+   }
+  }
+  return {p,x:p.x,y:p.y};
+ });
  const placeLabel=(x,y,bw,bh)=>{
-  const candidates=[[x+12,y-bh/2],[x-bw-12,y-bh/2],[x-bw/2,y+14],[x-bw/2,y-bh-14],[x+12,y+14],[x-bw-12,y-bh-14]];let best;
+  const candidates=[[x+12,y-bh/2],[x-bw-12,y-bh/2],[x-bw/2,y+14],[x-bw/2,y-bh-14],[x+12,y+14],[x-bw-12,y-bh-14]];
+  if(kunming){
+   for(let distance=26;distance<=158;distance+=22){
+    for(let step=0;step<8;step++){
+     const angle=step*Math.PI/4;
+     candidates.push([x+Math.cos(angle)*(bw/2+distance)-bw/2,y+Math.sin(angle)*(bh/2+distance)-bh/2]);
+    }
+   }
+  }
+  let best;
   for(let [bx,by] of candidates){bx=Math.max(5,Math.min(w-bw-5,bx));by=Math.max(18,Math.min(h-bh-24,by));const overlap=occupied.reduce((sum,b)=>sum+Math.max(0,Math.min(bx+bw,b.x+b.w)-Math.max(bx,b.x))*Math.max(0,Math.min(by+bh,b.y+b.h)-Math.max(by,b.y)),0);const score=overlap*100+Math.hypot(bx+bw/2-x,by+bh/2-y);if(!best||score<best.score)best={x:bx,y:by,w:bw,h:bh,score};}
+  if(kunming&&occupied.some(o=>best.x<o.x+o.w&&o.x<best.x+bw&&best.y<o.y+o.h&&o.y<best.y+bh))return null;
   occupied.push(best);return best;
  };
- const markerHtml=located.map(p=>{const num=order.indexOf(p.name)+1,bw=Math.min(132,w*.36),bh=p.name.length>12?43:30,label=placeLabel(p.x,p.y,bw,bh);leaders.push(`<path d="M${p.x},${p.y} L${label.x+label.w/2},${label.y+label.h/2}"/>`);const href=amapSearchUrl(city,`${city.name} ${p.name}`);return `<a class="city-map-dot ${p.kind==='food'?'food':''} ${num===1||num===order.length?'endpoint':''}" href="${esc(href)}" target="_blank" rel="noopener noreferrer" style="left:${p.x}px;top:${p.y}px" aria-label="第${num}站：${esc(p.name)}" title="${esc(p.name)}"></a><a class="city-map-place ${p.kind==='food'?'food':''}" href="${esc(href)}" target="_blank" rel="noopener noreferrer" style="left:${label.x}px;top:${label.y}px;width:${bw}px;min-height:${bh}px">${esc(p.name)}</a>`;}).join('');
+ const markerHtml=markers.map(({p,x,y})=>{
+  const num=order.indexOf(p.name)+1,bw=Math.min(132,w*.36),bh=Math.max(30,Math.ceil(p.name.length/Math.max(1,Math.floor((bw-12)/11)))*15+8);
+  const label=placeLabel(x,y,bw,kunming?bh:p.name.length>12?43:30),href=amapSearchUrl(city,`${city.name} ${p.name}`);
+  const kind=p.kind==='food'?'food':'',endpoint=num===1||num===order.length?'endpoint':'';
+  const dot=`<a class="city-map-dot ${kind} ${endpoint}" href="${esc(href)}" target="_blank" rel="noopener noreferrer" style="left:${x}px;top:${y}px" aria-label="第${num}站：${esc(p.name)}" title="${esc(p.name)}"></a>`;
+  if(!label)return dot;
+  leaders.push(`<path d="M${x},${y} L${label.x+label.w/2},${label.y+label.h/2}"/>`);
+  return dot+`<a class="city-map-place ${kind}" href="${esc(href)}" target="_blank" rel="noopener noreferrer" style="left:${label.x}px;top:${label.y}px;width:${bw}px;min-height:${label.h}px">${esc(p.name)}</a>`;
+ }).join('');
  const paths=[],distanceLabels=[];
  for(let i=1;i<order.length;i++){
   const a=located.find(p=>p.name===order[i-1]),b=located.find(p=>p.name===order[i]);
@@ -664,9 +774,10 @@ function renderLocalMap(){
   const dx=b.x-a.x,dy=b.y-a.y,length=Math.hypot(dx,dy)||1,bend=Math.min(40,length*.2),cx=(a.x+b.x)/2-dy/length*bend,cy=(a.y+b.y)/2+dx/length*bend;
   let road=leg?.path?.length?leg.path.map(project):null;if(road&&leg.from!==a.name)road.reverse();
   paths.push(`<path d="${road?road.map((p,j)=>`${j?'L':'M'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' '):`M${a.x},${a.y} Q${cx},${cy} ${b.x},${b.y}`}" class="city-map-route ${km==null?'uncertain':''}"/>`);
-  if(km!=null&&km>.05){const middle=road?.[Math.floor(road.length/2)]||{x:a.x*.25+cx*.5+b.x*.25,y:a.y*.25+cy*.5+b.y*.25},label=placeLabel(middle.x,middle.y,68,20);const value=km<10?km.toFixed(1):Math.round(km),url=`https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=${a.location[1]}%2C${a.location[0]}%3B${b.location[1]}%2C${b.location[0]}`;distanceLabels.push(`<a class="city-map-distance" href="${esc(url)}" target="_blank" rel="noopener noreferrer" style="left:${label.x}px;top:${label.y}px" title="${esc(a.name)} → ${esc(b.name)}：OSRM道路估算，实际入口可能不同">约${value}公里</a>`);}
+  if(km!=null&&km>.05){const middle=road?.[Math.floor(road.length/2)]||{x:a.x*.25+cx*.5+b.x*.25,y:a.y*.25+cy*.5+b.y*.25},label=(!kunming||onScreen(middle))?placeLabel(middle.x,middle.y,68,20):null;if(!label)continue;const value=km<10?km.toFixed(1):Math.round(km),url=`https://www.openstreetmap.org/directions?engine=fossgis_osrm_car&route=${a.location[1]}%2C${a.location[0]}%3B${b.location[1]}%2C${b.location[0]}`;distanceLabels.push(`<a class="city-map-distance" href="${esc(url)}" target="_blank" rel="noopener noreferrer" style="left:${label.x}px;top:${label.y}px" title="${esc(a.name)} → ${esc(b.name)}：OSRM道路估算，实际入口可能不同">约${value}公里</a>`);}
  }
- box.innerHTML=`<svg viewBox="0 0 ${w} ${h}" aria-hidden="true"><defs><marker id="city-route-arrow" viewBox="0 0 10 10" refX="14" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9Z" fill="#8b71aa"/></marker></defs><g class="city-map-leaders">${leaders.join('')}</g>${paths.join('')}</svg>${markerHtml}${distanceLabels.join('')}<span class="city-map-north">北 ↑</span><span class="city-map-attribution">© Esri · OSM / 高德</span><span class="city-map-legend"><i></i>景点 <i class="food"></i>美食</span>`;
+ const mapContent=`<svg viewBox="0 0 ${w} ${h}" aria-hidden="true"><defs><marker id="city-route-arrow" viewBox="0 0 10 10" refX="14" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 1 L9 5 L0 9Z" fill="#8b71aa"/></marker></defs><g class="city-map-leaders">${leaders.join('')}</g>${paths.join('')}</svg>${markerHtml}${distanceLabels.join('')}`;
+ box.innerHTML=`${kunming?`<div class="kunming-map-layer">${mapContent}</div>`:mapContent}<span class="city-map-north">北 ↑</span><span class="city-map-attribution">© Esri · OSM / 高德</span><span class="city-map-legend"><i></i>景点 <i class="food"></i>美食</span>`;
  const section=box.closest('.local-map-section');section.querySelector('.city-route-plan')?.remove();const plan=document.createElement('div');plan.className='city-route-plan';plan.innerHTML=`<div class="city-route-heading"><span>${esc(data.mode)} · 顺路参考</span><button type="button" id="reverseCityRoute">反向查看 ⇄</button></div><p>${order.map((n,i)=>`${i+1}. ${esc(n)}`).join(' → ')}</p>${unlocated.length?`<div class="city-map-unlocated">待定位：${unlocated.map(p=>`<a href="${esc(amapSearchUrl(city,city.name+' '+p.name))}" target="_blank" rel="noopener noreferrer">${esc(p.name)} ↗</a>`).join('、')}</div>`:''}`;section.appendChild(plan);plan.querySelector('button').onclick=()=>{cityRouteReverse[city.id]=!cityRouteReverse[city.id];renderLocalMap();};
 }
 
